@@ -23,7 +23,7 @@ export default function Viagem() {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/viagens/', viagem);
+            const response = await axios.post('http://localhost:8080/viagens/cadastrar', viagem);
             console.log('Resposta do servidor:', response.data);
             alert('Viagem foi cadastrada com sucesso!');
             setData('');
