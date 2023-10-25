@@ -1,0 +1,182 @@
+#page {
+    height: 100vh;
+    zoom: .6;
+    display: flex;
+}
+
+#page .bg-flex {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    padding: 0;
+}
+
+#page .flex>* {
+    width: 70%;
+}
+
+#page img {
+    width: 100%;
+    object-fit: cover;
+}
+
+#page header img {
+    width: 16rem;
+    height: 5.4rem;
+}
+
+#page>div {
+    padding: 4rem 11.2rem;
+}
+
+#page main {
+    margin-top: 7rem;
+}
+
+#page .headline {
+    max-width: 32rem;
+    font-weight: 500;
+}
+
+#page h1 {
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    color: var(--text);
+}
+
+#page h1+p {
+    color: var(--grey);
+    font-size: 1.4rem;
+    margin-top: 1.6rem;
+}
+
+#page form {
+    margin-top: 4rem;
+}
+
+#page .input-wrapper {
+    position: relative;
+    font-size: 1.4rem;
+}
+
+#page .input-wrapper+.input-wrapper {
+    margin-top: 1.6rem;
+}
+
+#page .input-wrapper label {
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    color: var(--text);
+}
+
+#page .input-wrapper .label-wrapper {
+    justify-content: space-between;
+}
+
+#page .input-wrapper .label-wrapper label+a {
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+}
+
+#page .input-wrapper input::placeholder {
+    color: var(--grey);
+}
+
+#page .input-wrapper input {
+    width: 100%;
+    background: var(--background);
+    border: 1px solid #e2e8f0;
+    border-radius: 0.4rem;
+    padding: 1.6rem 1.2rem;
+    margin-top: 0.8rem;
+    line-height: 2.1rem;
+    color: var(--grey);
+    font: var(--body-font);
+}
+
+#page .input-wrapper input:focus,
+#page .input-wrapper input:hover {
+    border: 1px solid var(--pink);
+    outline: 0;
+}
+
+#page .input-wrapper input:disabled {
+    opacity: 0.35;
+}
+
+#page .input-wrapper .eye {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 55%;
+    right: 5%;
+}
+
+#page .input-wrapper .hide {
+    display: none;
+}
+
+#page .input-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+#page form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.6rem 2.4rem;
+    background: var(--pink);
+    border-radius: 0.4rem;
+    width: 100%;
+    font-weight: bold;
+    color: #ffffff;
+    margin-block: 3.2rem;
+    cursor: pointer;
+}
+
+#page form button:focus {
+    outline: 2px solid black;
+    border-radius: 0.2rem;
+}
+
+#page form button:hover {
+    background: #f5497a;
+}
+
+#page .create-account {
+    color: var(--grey);
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+#page .bg-flex {
+    display: flex;
+
+    object-fit: fill;
+}
+
+@media (max-width: 900px) {
+    #page>* {
+        width: 100%;
+    }
+
+    #page img {
+        display: none;
+    }
+
+    #page>div {
+        padding: 11rem;
+    }
+
+    #page main {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    #page>div {
+        padding: 4rem;
+    }
+}

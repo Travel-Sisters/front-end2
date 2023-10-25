@@ -1,0 +1,35 @@
+:root {
+  --header-height: 4.5rem;
+
+  --hue: 159;
+  
+  --pink: #CF3460;
+  --blue: #23C7A8;
+  --grey: #94A3B8;
+  --base-color-second: magenta;
+  --base-color-alt: #ff477b;
+  --text: #202020;
+  --text-color: #868686;
+  --text-color-light: #ffffff;
+  --body-color: #FAFAFA;
+
+  --title-font-size: 1.875rem;
+  --subtitle-font-size: 1rem;
+
+  --title-font: 'Poppins', sans-serif;
+  --body-font: 'Poppins', sans-serif;
+
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+
+  font: 400 1rem var(--body-font);
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: antialiased;
+}
+
