@@ -76,7 +76,7 @@ export default function LandingPage() {
                                 </h1>
                                 <p className="home-description">
                                     junte-se à comunidade de Sisters e vivencie viagens cheias de empoderamento, amizade e descobertas.                                </p>
-                                <Link to="/cadastro" target="_blank" className="button button-flex">
+                                <Link to="/escolha-cadastro" target="_blank" className="button button-flex">
                                     descubra
                                 </Link>
                             </div>

@@ -56,7 +56,7 @@ export default function Register() {
                 </header>
                 <main>
                     <div className="headline">
-                        <h1>criar uma conta</h1>
+                        <h1>criar uma conta como passageira</h1>
                         <p>
                             faça login ou registre-se para começar a para trilhar seu caminho
                             ainda hoje.
