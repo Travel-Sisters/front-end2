@@ -1,0 +1,134 @@
+
+@media screen and (min-width: 1024px) {
+    :root {
+        --biggest-font-size: 3rem;
+        --normal-font-size: 1rem;
+        --smaller-font-size: .813rem;
+    }
+}
+
+#splash-screen-page body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    font-weight: 500;
+    color: var(--text);
+}
+
+#splash-screen-page .container {
+    max-width: 1024px;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+#splash-screen-page .main {
+    overflow: hidden;
+}
+
+#splash-screen-page .home {
+    background-color: var(--body-color);
+    padding: 9rem 0 2rem;
+    height: 100vh;
+    display: grid;
+}
+
+#splash-screen-page .home-container {
+    display: grid;
+    align-content: center;
+    row-gap: 2.5rem;
+}
+
+#splash-screen-page .home-data {
+    text-align: center;
+}
+
+#splash-screen-page .home-subtitle {
+    color: var(--pink);
+}
+
+#splash-screen-page .home-title {
+    font-size: var(--biggest-font-size);
+    margin: .75rem 0;
+}
+
+#splash-screen-page .home-description {
+   color: var(--text-color)
+}
+
+#splash-screen-page .home-button {
+    margin-top: 2rem;
+    display: inline-block;
+    background-color: var(--pink);
+    color:  #fff;
+    padding: 1rem 1.75rem;
+    border-radius: .5rem;
+    transition: .4s;
+}
+
+#splash-screen-page .home-button:hover {
+    box-shadow: 0 4px 12px hsla(38, 69%, 8%, .2);
+}
+
+#splash-screen-page .home-button-second {
+    margin-top: 2rem;
+    display: inline-block;
+    margin-left: 1rem;
+    color:  var(--pink);
+    transition: .4s;
+    text-decoration: none;
+}
+
+#splash-screen-page .home-img img {
+    width: 230px;
+    animation: floaty 1.8s infinite alternate;
+}
+
+#splash-screen-page .home-img {
+    justify-self: center;
+}
+
+@media screen and (max-width: 320px) {
+    #splash-screen-page .home {
+        padding-top: 7rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #splash-screen-page .home-container {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        column-gap: 2rem;
+    }
+
+    #splash-screen-page .home-data {
+        text-align: initial;
+    }
+
+    #splash-screen-page .home-img img {
+        width: 400px;
+    }
+
+}
+
+@media screen and (min-width: 1048px) {
+    #splash-screen-page .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 2048px) {
+    #splash-screen-page body {
+        zoom: 1.7;
+    }
+
+    #splash-screen-page .home {
+        height: initial;
+        row-gap: 4rem;
+    }
+}
+
+@media screen and (min-width: 3840px) {
+    #splash-screen-page body {
+        zoom: 3.1;
+    }
+}

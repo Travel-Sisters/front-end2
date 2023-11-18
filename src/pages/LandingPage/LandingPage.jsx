@@ -39,7 +39,7 @@ export default function LandingPage() {
 
     return (
         <>
-            <div>
+            <div id="page-all-users">
                 <header className="header" id="header">
                     <nav className="nav container">
                         <a href="#" className="nav-logo">
@@ -60,6 +60,9 @@ export default function LandingPage() {
                                 <li className="nav-item">
                                     <a href="#faqs" className="nav-link">FAQs</a>
                                 </li>
+                                <li className="nav-item">
+                                    <a href="#faqs" className="nav-link">cadastro</a>
+                                </li>
                             </ul>
                         </div>
                     </nav>
@@ -76,7 +79,7 @@ export default function LandingPage() {
                                 </h1>
                                 <p className="home-description">
                                     junte-se à comunidade de Sisters e vivencie viagens cheias de empoderamento, amizade e descobertas.                                </p>
-                                <Link to="/escolha-cadastro" target="_blank" className="button button-flex">
+                                <Link to="/cadastro" target="_blank" className="button button-flex">
                                     descubra
                                 </Link>
                             </div>

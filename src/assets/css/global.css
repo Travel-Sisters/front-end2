@@ -6,8 +6,6 @@
   --pink: #CF3460;
   --blue: #23C7A8;
   --grey: #94A3B8;
-  --base-color-second: magenta;
-  --base-color-alt: #ff477b;
   --text: #202020;
   --text-color: #868686;
   --text-color-light: #ffffff;
@@ -33,3 +31,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
