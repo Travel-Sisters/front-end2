@@ -34,7 +34,7 @@ export default function Login() {
 
                 sessionStorage.setItem('authToken', token);
                 sessionStorage.setItem('usuario', response.data.nome);
-                sessionStorage.setItem('respostaUsuarioLrogin', JSON.stringify(response));
+                sessionStorage.setItem('respostaUsuarioLogin', response.data.userId);
 
                 console.log('Resposta do servidor:', response.data);
                 alert('Usuário entrou com sucesso!');
@@ -42,15 +42,15 @@ export default function Login() {
                 setSenha('');
 
                 if (response.data.userId !== null && response.data.userId !== undefined) {
-                    const responseMotorista = await axios.get(`http://localhost:8080/usuarios/verificar-perfil/${
-                        response.data.userId
-                    }`);
-
-                    if (responseMotorista.status === 204) {
-                        alert("Não é motorista")
-                        navigate('/sair')
+                    const responseM = await axios.get(`http://localhost:8080/usuarios/verificar-perfil/${response.data.userId}`);
+                    
+                    console.log('RESPONSE MOTORISTA '+  responseM.data.id); 
+                       
+                    sessionStorage.setItem('respostaMotoristaLogin',responseM.data.id);
+                    if (responseM.status === 204) {
+                        
+                        navigate('/passageira')
                     } else {
-                        sessionStorage.setItem('respostaMotoristaLogin', JSON.stringify(responseMotorista));
                         Swal.fire({
                             title: 'Escolha uma opção:',
                             icon: 'question',
@@ -61,11 +61,11 @@ export default function Login() {
                             if (result.isConfirmed) {
 
                                 Swal.fire('Passageira', '', 'success');
-                                navigate('/sair')
+                                navigate('/passageira')
                             } else if (result.isDismissed) {
 
                                 Swal.fire('Motorista', '', 'success');
-                                navigate('/viagem')
+                                navigate('/motorista')
                             }
                         });
                     }

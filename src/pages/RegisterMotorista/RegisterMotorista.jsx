@@ -12,8 +12,8 @@ export default function Register() {
     const navigate = useNavigate();
     const [cnh, setCnh] = useState('');
     const [placaVan, setPlacaVan] = useState('');
-    const [fkEmpresa, setFkEmpresa] = useState('');
-    const [fkUsuario, setFkUsuario] = useState('');
+    const [fkEmpresa, setFkEmpresa] = useState({});
+    const [fkUsuario, setFkUsuario] = useState({});
 
 
     const handleFormSubmit = async (evento) => {
@@ -26,19 +26,15 @@ export default function Register() {
         };
 
         try {
-            const storedResposta = sessionStorage.getItem('resposta');
-            const meusDados = storedResposta ? JSON.parse(storedResposta) : null;
+            const idUsuario = sessionStorage.getItem('id');
 
-            console.log('SESSION STORAGE MEUS DADOS' + storedResposta)
+            console.log('SESSION STORAGE MEUS DADOS' + idUsuario)
         
-            setFkUsuario(meusDados.userId)
 
-            const response = await axios.post('http://localhost:8080/motoristas/cadastrar', motorista);
+            const response = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
             console.log('Resposta do servidor:', response.data);
-            alert('Usuário foi cadastrado com sucesso!');
-            setCnh('');
-            setPlacaVan('');
-            setFkEmpresa('');
+            alert('Motorista foi cadastrado com sucesso!');
+            navigate("/login")
 
             navigate('');
         } catch (error) {

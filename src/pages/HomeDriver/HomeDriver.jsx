@@ -16,11 +16,15 @@ import holambra from '@/assets/img/holambra.png';
 import brotas from '@/assets/img/brotas.png';
 import mis from '@/assets/img/mis.png';
 
-
-
-
-
 export default function HomePassenger() {
+    const respostaUsuario = sessionStorage.getItem('respostaUsuarioLogin') || {};
+    const respostaMotorista = sessionStorage.getItem('respostaMotoristaLogin') || {};
+
+    sessionStorage.setItem('respostaUsuario', respostaUsuario);
+    sessionStorage.setItem('respostaMotorista', respostaMotorista);
+
+    console.log(' resposta usuario '+ respostaUsuario);
+    console.log(' resposta motorista '+ respostaMotorista);
 
     return (
         <>
@@ -61,8 +65,8 @@ export default function HomePassenger() {
                                     passageira, é com você!
                                 </h1>
                                 <p className="home-description"> somos uma comunidade exclusiva para mulheres que desejam explorar juntas.</p>
-                                <Link to="/cadastro" target="_blank" className="button button-flex">
-                                    descubra
+                                <Link to="/viagem" target="_blank" className="button button-flex">
+                                    Cadastrar viagem
                                 </Link>
                             </div>
                         </div>
