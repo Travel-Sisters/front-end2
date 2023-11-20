@@ -1,14 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import './HomeDriver.css';
 
-import passageira from '@/assets/img/passageira.png';
-import passageiraAmarelo from '@/assets/img/fpassageira.png';
+import motoristaRoxo from '@/assets/img/fmotorista.png';
 import logo from '@/assets/img/logo.png';
-import hopihari from '@/assets/img/hh.png';
-import pico from '@/assets/img/poda.png';
-import praia from '@/assets/img/pg.png';
+import app from '@/assets/img/app.png'
 import zoologico from '@/assets/img/zoo.png';
 import sebastiao from '@/assets/img/sebastiao.png';
 import parque from '@/assets/img/parque.png';
@@ -16,15 +12,11 @@ import holambra from '@/assets/img/holambra.png';
 import brotas from '@/assets/img/brotas.png';
 import mis from '@/assets/img/mis.png';
 
-
-
-
-
-export default function HomePassenger() {
+export default function HomeDriver() {
 
     return (
         <>
-            <div id="page-passenger">
+            <div id="page-driver">
                 <header className="header" id="header">
                     <nav className="nav container">
                         <a href="#" className="nav-logo">
@@ -54,44 +46,13 @@ export default function HomePassenger() {
                 <main className="main">
                     <section className="home" id="home">
                         <div className="home-container container grid">
-                            <img src={passageiraAmarelo} alt="" className="home-img" />
+                            <img src={motoristaRoxo} alt="" className="home-img" />
 
                             <div className="home-data">
                                 <h1 className="home-title">
-                                    passageira, é com você!
+                                    motorista, <br /> é com você!
                                 </h1>
-                                <p className="home-description"> somos uma comunidade exclusiva para mulheres que desejam explorar juntas.</p>
-                                <Link to="/cadastro" target="_blank" className="button button-flex">
-                                    descubra
-                                </Link>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="about section container" id="about">
-                        <div className="about-container grid">
-                            <img src={passageira} alt="" className="about-img" />
-
-                            <div className="about-data">
-                                <h2 className="section-title about-title">
-                                    ainda com dúvidas sobre como funciona?
-                                </h2>
-                                <div className="about-details">
-                                    <p className="about-details-description">
-                                        <i className="ri-checkbox-fill about-details-icon"></i>
-                                        localização: conte para nós onde você está atualmente.
-                                    </p>
-                                    <p className="about-details-description">
-                                        <i className="ri-checkbox-fill about-details-icon"></i>
-                                        destino e ponto de encontro: a fim de facilitar, aqui você terá acesso aos destinos e pontos de encontro já definidos.
-
-                                    </p>
-                                    <p className="about-details-description">
-                                        <i className="ri-checkbox-fill about-details-icon"></i>
-                                        planeje sua viagem: personalize todos os detalhes da sua aventura, após clicar em "buscar agora".
-                                    </p>
-                                </div>
-
+                                <p className="home-description">explore o mundo conosco e crie memórias inesquecíveis. somos uma comunidade exclusiva para mulheres que desejam explorar, aprender e crescer juntas, sem limites.</p>
                             </div>
                         </div>
                     </section>
@@ -120,65 +81,58 @@ export default function HomePassenger() {
                                     <i className="ph-caret-down-light"></i>
                                 </div>
 
-                                <button className="button button-flex">buscar agora</button>
+                                <button className="button button-flex">confirmar</button>
                             </form>
                         </div>
                     </section>
 
-                    <section className="recommendations section container" id="recommendations">
-                        <div className="recommendations-container grid">
-                            <h2 className="section-title about-title">
-                                sugestões do dia
-                            </h2>
-                            <section class="cards">
-                                <div class="card">
-                                    <img src={pico} alt="" />
+                    <section className="giving section container">
+                        <h2 className="section-title">
+                            como é trabalhar conosco?
+                        </h2>
 
-                                    <div class="content">
-                                        <h3>Pico do Olho D’Água</h3>
-                                        <p>
-                                            faça uma trilha incrível e explore novos horizontes.
-                                        </p>
+                        <div className="us-container grid">
+                            <div className="us-content">
+                                <i className="fa-solid fa-map"></i>
+                                <h3 className="us-title">escolha o destino</h3>
+                                <p className="us-description">selecione uma de nossas vastas opções para viajar e criar momentos.</p>
+                            </div>
 
-                                        <div class="location">
-                                            <i class="ph-map-pin-light"></i>
-                                            São Paulo - SP
-                                        </div>
-                                    </div>
-                                </div>
+                            <div className="us-content">
+                                <i className="fa-solid fa-gear"></i>
+                                <h3 className="us-title">defina os detalhes</h3>
+                                <p className="us-description">descreva os detalhes cruciais da viagem: ponto de encontro, preços, horários, regras...</p>
+                            </div>
 
-                                <div class="card">
-                                    <img src={hopihari} alt="" />
+                            <div className="us-content">
+                                <i className="fa-solid fa-message"></i>
+                                <h3 className="us-title">entre no chat</h3>
+                                <p className="us-description">finalize os últimos detalhes da viagem no chat e tire dúvidas até o dia da viagem.</p>
+                            </div>
 
-                                    <div class="content">
-                                        <h3>Hopi Hari</h3>
-                                        <p>
-                                            divirta-se, perca o folego e aproveite as atrações do dia.
-                                        </p>
-
-                                        <div class="location">
-                                            <i class="ph-map-pin-light"></i>
-                                            São Paulo - SP
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <img src={praia} alt="" />
-                                    <div class="content">
-                                        <h3>Praia da Enseada</h3>
-                                        <p>
-                                            pé na areia, a caipirinha, água de coco, a cervejinha.
-                                        </p>
-                                        <div class="location">
-                                            <i class="ph-map-pin-light"></i>
-                                            São Paulo - SP
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+                            <div className="us-content">
+                                <i className="fa-solid fa-heart"></i>
+                                <h3 className="us-title">crie experiências</h3>
+                                <p className="us-description">proporcione maravilhosas experiências, crie conexões e faça uma viagem calma.</p>
+                            </div>
                         </div>
                     </section>
+
+                    <section className="about section container" id="about">
+                        <div className="about-container grid">
+                            <img src={app} alt="" className="about-img" />
+
+                            <div className="about-data">
+                                <h2 className="section-title about-title">
+                                    em breve nosso aplicativo!
+                                </h2>
+                                <div className="about-details">
+                                    <p className="home-description">nosso aplicativo vem com o propósito de facilitar ainda mais nossa conexão entre você e as passageiras. em breve novidades! </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
 
                     <section className="visited section container" id="visited">
                         <div className="visited-container grid">
