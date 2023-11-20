@@ -5,12 +5,9 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default function Viagem() {
 
-    const idUsuario = (sessionStorage.getItem('respostaUsuario')) || {};
-    const idMotorista = (sessionStorage.getItem('respostaMotorista')) || {};
+    const idUsuario = sessionStorage.getItem('idUsuarioLogin') || {};
+    const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
 
-    console.log('SESSION STORAGE USUARIO ' + idUsuario.userId);
-    console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
-    
     const [data, setData] = useState('');
     const [enderecos, setEnderecos] = useState([]);
     const [pontoEmbarque, setpontoEm] = useState(null);
@@ -63,7 +60,10 @@ export default function Viagem() {
         };
 
         try {
-       
+
+            console.log('SESSION STORAGE USUARIO ' + idUsuario);
+            console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
+
             const response = await axios.post(`http://localhost:8080/viagens/cadastrar/${idUsuario}/${idMotorista}`, viagem);
             console.log('Resposta do servidor:', response.data);
 

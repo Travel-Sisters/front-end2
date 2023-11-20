@@ -35,8 +35,6 @@ export default function Register() {
             console.log('Resposta do servidor:', response.data);
             alert('Motorista foi cadastrado com sucesso!');
             navigate("/login")
-
-            navigate('');
         } catch (error) {
             console.error('Erro ao cadastrar o usuário:', error);
             alert('OPS! Alguma coisa deu errado!');

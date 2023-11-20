@@ -11,6 +11,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default function Login() {
     const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -34,7 +35,7 @@ export default function Login() {
 
                 sessionStorage.setItem('authToken', token);
                 sessionStorage.setItem('usuario', response.data.nome);
-                sessionStorage.setItem('respostaUsuarioLogin', response.data.userId);
+                sessionStorage.setItem('idUsuarioLogin', response.data.userId);
 
                 console.log('Resposta do servidor:', response.data);
                 alert('Usuário entrou com sucesso!');
@@ -44,9 +45,8 @@ export default function Login() {
                 if (response.data.userId !== null && response.data.userId !== undefined) {
                     const responseM = await axios.get(`http://localhost:8080/usuarios/verificar-perfil/${response.data.userId}`);
                     
-                    console.log('RESPONSE MOTORISTA '+  responseM.data.id); 
-                       
-                    sessionStorage.setItem('respostaMotoristaLogin',responseM.data.id);
+                    sessionStorage.setItem('idMotoristaLogin', responseM.data.id);
+
                     if (responseM.status === 204) {
                         
                         navigate('/passageira')
