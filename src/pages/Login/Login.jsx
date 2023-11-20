@@ -11,6 +11,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default function Login() {
     const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -34,7 +35,7 @@ export default function Login() {
 
                 sessionStorage.setItem('authToken', token);
                 sessionStorage.setItem('usuario', response.data.nome);
-                sessionStorage.setItem('respostaUsuarioLrogin', JSON.stringify(response));
+                sessionStorage.setItem('idUsuarioLogin', response.data.userId);
 
                 console.log('Resposta do servidor:', response.data);
                 alert('Usuário entrou com sucesso!');
@@ -42,15 +43,14 @@ export default function Login() {
                 setSenha('');
 
                 if (response.data.userId !== null && response.data.userId !== undefined) {
-                    const responseMotorista = await axios.get(`http://localhost:8080/usuarios/verificar-perfil/${
-                        response.data.userId
-                    }`);
+                    const responseM = await axios.get(`http://localhost:8080/usuarios/verificar-perfil/${response.data.userId}`);
+                    
+                    sessionStorage.setItem('idMotoristaLogin', responseM.data.id);
 
-                    if (responseMotorista.status === 204) {
-                        alert("Não é motorista")
-                        navigate('/sair')
+                    if (responseM.status === 204) {
+                        
+                        navigate('/passageira')
                     } else {
-                        sessionStorage.setItem('respostaMotoristaLogin', JSON.stringify(responseMotorista));
                         Swal.fire({
                             title: 'Escolha uma opção:',
                             icon: 'question',
@@ -61,11 +61,11 @@ export default function Login() {
                             if (result.isConfirmed) {
 
                                 Swal.fire('Passageira', '', 'success');
-                                navigate('/sair')
+                                navigate('/passageira')
                             } else if (result.isDismissed) {
 
                                 Swal.fire('Motorista', '', 'success');
-                                navigate('/viagem')
+                                navigate('/motorista')
                             }
                         });
                     }

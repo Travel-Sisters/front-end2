@@ -52,25 +52,25 @@ export default function HomeDriver() {
                             Travel Sisters
                         </a>
 
-                        <div className="nav-menu" id="nav-menu">
-                            <ul className="nav-list">
-                                <li className="nav-item">
-                                    <a href="#home" className="nav-link active-link">início</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="#about" className="nav-link">dúvidas</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="#search" className="nav-link">agendar</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="#recommendations" className="nav-link">populares</a>
-                                </li>
+                    <div className="nav-menu" id="nav-menu">
+                        <ul className="nav-list">
+                            <li className="nav-item">
+                                <a href="#home" className="nav-link active-link">início</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="#about" className="nav-link">dúvidas</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="#search" className="nav-link">agendar</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="#recommendations" className="nav-link">populares</a>
+                            </li>
 
-                            </ul>
-                        </div>
-                    </nav>
-                </header>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
 
                 <main className="main">
                     <section className="home" id="home">
@@ -100,29 +100,29 @@ export default function HomeDriver() {
                         </div>
                     </section>
 
-                    <section className="search" id="search">
-                        <div className="search-container container grid">
-                            <form className="search" >
-                                <div className="search-field select">
-                                    <label className="sr-only" htmlFor="city">localização</label>
-                                    <i className="ph-map-pin-light"></i>
-                                    <select name="city" id="city">
-                                        <option value="0" selected>escolha a localização</option>
-                                        <option value="sao-paulo">São Paulo</option>
-                                    </select>
-                                    <i className="ph-caret-down-light"></i>
-                                </div>
-                                <div className="search-field select">
-                                    <label className="sr-only" htmlFor="city">destino</label>
-                                    <i className="ph-map-pin-light"></i>
-                                    <select name="city" id="city">
-                                        <option value="0" selected>defina destino e ponto de encontro</option>
-                                        <option value="sao-paulo">Guarulhos - Metrô Barra Funda</option>
-                                        <option value="sao-paulo">Praia Grande - Metrô Barra Funda</option>
-                                        <option value="sao-paulo">Monguagá - Metrô Luz</option>
-                                    </select>
-                                    <i className="ph-caret-down-light"></i>
-                                </div>
+                <section className="search" id="search">
+                    <div className="search-container container grid">
+                        <form className="search">
+                            <div className="search-field select">
+                                <label className="sr-only" htmlFor="city">localização</label>
+                                <i className="ph-map-pin-light"></i>
+                                <select name="city" id="city">
+                                    <option value="0" selected>escolha a localização</option>
+                                    <option value="sao-paulo">São Paulo</option>
+                                </select>
+                                <i className="ph-caret-down-light"></i>
+                            </div>
+                            <div className="search-field select">
+                                <label className="sr-only" htmlFor="city">destino</label>
+                                <i className="ph-map-pin-light"></i>
+                                <select name="city" id="city">
+                                    <option value="0" selected>defina destino e ponto de encontro</option>
+                                    <option value="sao-paulo">Guarulhos - Metrô Barra Funda</option>
+                                    <option value="sao-paulo">Praia Grande - Metrô Barra Funda</option>
+                                    <option value="sao-paulo">Monguagá - Metrô Luz</option>
+                                </select>
+                                <i className="ph-caret-down-light"></i>
+                            </div>
 
                                 <button className="button button-flex">confirmar</button>
                             </form>
@@ -177,59 +177,66 @@ export default function HomeDriver() {
                     </section>
 
 
-                    <section className="visited section container" id="visited">
-                        <div className="visited-container grid">
-                            <div className="visited-data">
-                                <h2 className="section-title visited-title">
-                                    mais visitados que inspiram
-                                </h2>
-                                <div id="container-visitados">
-                                    <div class="div1">
-                                        <img src={zoologico} alt="" />
-                                    </div>
-                                    <div class="div2">
-                                        <img src={parque} alt="" />
-                                    </div>
-                                    <div class="div3">
-                                        <img src={mis} alt="" />
-                                    </div>
-                                    <div class="div4">
-                                        <img src={sebastiao} alt="" />
-                                    </div>
-                                    <div class="div5">
-                                        <img src={brotas} alt="" />
+                <section className="visited section container" id="visited">
+                    <div className="visited-container grid">
+                        <div className="visited-data">
+                            <h2 className="section-title visited-title">
+                                mais visitados que inspiram
+                            </h2>
+                            <div id="container-visitados">
+                                <div class="div1">
+                                    <img src={zoologico}
+                                        alt=""/>
+                                </div>
+                                <div class="div2">
+                                    <img src={parque}
+                                        alt=""/>
+                                </div>
+                                <div class="div3">
+                                    <img src={mis}
+                                        alt=""/>
+                                </div>
+                                <div class="div4">
+                                    <img src={sebastiao}
+                                        alt=""/>
+                                </div>
+                                <div class="div5">
+                                    <img src={brotas}
+                                        alt=""/>
 
-                                    </div>
-                                    <div class="div6">
-                                        <img src={holambra} alt="" />
-                                    </div>
+                                </div>
+                                <div class="div6">
+                                    <img src={holambra}
+                                        alt=""/>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </section>
 
-                    <section className="message section container" id="message">
-                        <div className="message-container grid">
-                            <div className="message-data">
-                                <h2 className="section-title message-title">
-                                    inscreva-se para receber as novidades do nosso site!
-                                </h2>
-                                <a href="#" className="button">quero agora</a>
-                            </div>
-                        </div>
-                    </section>
-                </main>
-
-                <footer className="section">
-                    <div className="container grid">
-                        <div className="brand">
-                            <img className='logo' src={logo} alt="" />
-                            <p>©2023 Travel Sisters</p>
-                            <p>todos os direitos reservados.</p>
+                <section className="message section container" id="message">
+                    <div className="message-container grid">
+                        <div className="message-data">
+                            <h2 className="section-title message-title">
+                                inscreva-se para receber as novidades do nosso site!
+                            </h2>
+                            <a href="#" className="button">quero agora</a>
                         </div>
                     </div>
-                </footer>
-            </div>
-        </>
-    )
-}
+                </section>
+            </main>
+
+            <footer className="section">
+                <div className="container grid">
+                    <div className="brand">
+                        <img className='logo'
+                            src={logo}
+                            alt=""/>
+                        <p>©2023 Travel Sisters</p>
+                        <p>todos os direitos reservados.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </>
+)}

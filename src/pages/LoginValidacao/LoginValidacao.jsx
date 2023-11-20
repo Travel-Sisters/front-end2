@@ -32,7 +32,7 @@ export default function Login() {
 
                 sessionStorage.setItem('authToken', token);
                 sessionStorage.setItem('usuario', response.data.nome);
-                sessionStorage.setItem('resposta', JSON.stringify(response));
+                sessionStorage.setItem('id', response.data.userId);
 
                 console.log('Resposta do servidor:', response.data);
                 alert('Usuário encontrado!');

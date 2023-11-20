@@ -5,13 +5,8 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default function Viagem() {
 
-    const storedResposta = sessionStorage.getItem('respostaUsuarioLogin');
-    const respostaUsuario = storedResposta ? JSON.parse(storedResposta) : null;
-    const idUsuario = respostaUsuario.data.userId
-
-    const storedRespostaMotorista = sessionStorage.getItem('respostaMotoristaLogin');
-    const respostaMotorista = storedRespostaMotorista ? JSON.parse(storedRespostaMotorista) : null;
-    const idMotorista = respostaMotorista.data.userId 
+    const idUsuario = sessionStorage.getItem('idUsuarioLogin') || {};
+    const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
 
     const [data, setData] = useState('');
     const [enderecos, setEnderecos] = useState([]);
@@ -20,11 +15,8 @@ export default function Viagem() {
     const [descricao, setDescricao] = useState('');
     const [horario, setHorario] = useState('');
     const [valor, setValor] = useState(0.0);
-    const [usuario, setUsuario] = useState(null);
-    const [motorista, setMotorista] = useState(null);
-
-    console.log('SESSION STORAGE USUARIO ' + idUsuario)
-    console.log('SESSION STORAGE MOTORISTA ' + idMotorista)
+    const [usuario, setUsuario] = useState({});
+    const [motorista, setMotorista] = useState({});
 
     const handleChange = (event, pontoType) => {
         const selectedAddress = enderecos.find((endereco) => endereco.rua === event.target.value);
@@ -68,8 +60,11 @@ export default function Viagem() {
         };
 
         try {
-       
-            const response = await axios.post('http://localhost:8080/viagens/cadastrar', viagem);
+
+            console.log('SESSION STORAGE USUARIO ' + idUsuario);
+            console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
+
+            const response = await axios.post(`http://localhost:8080/viagens/cadastrar/${idUsuario}/${idMotorista}`, viagem);
             console.log('Resposta do servidor:', response.data);
 
             alert('Viagem foi cadastrada com sucesso!');

@@ -61,9 +61,6 @@ export default function HomePassenger() {
                                     passageira, é com você!
                                 </h1>
                                 <p className="home-description"> somos uma comunidade exclusiva para mulheres que desejam explorar juntas.</p>
-                                <Link to="/cadastro" target="_blank" className="button button-flex">
-                                    descubra
-                                </Link>
                             </div>
                         </div>
                     </section>
