@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import './HomeDriver.css';
 
@@ -13,6 +16,32 @@ import brotas from '@/assets/img/brotas.png';
 import mis from '@/assets/img/mis.png';
 
 export default function HomeDriver() {
+
+    const navigate = useNavigate();
+
+    const navegarViagem = () => {
+        navigate('/viagem');
+    };
+
+    const gerarCsv = () => {
+        try {
+            const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
+            const response = axios.get(`http://localhost:8080/viagens/csv/${idMotorista}`);
+
+            if (response.status === 200) {
+
+                console.log('Resposta do servidor:', response.data);
+                alert('Csv entrou com sucesso!');
+
+            } else {
+                throw new Error('Ops! Ocorreu um erro interno.');
+            }
+        } catch (error) {
+            console.error('Erro ao gerar arquivo:', error);
+            alert('OPS! Alguma coisa deu errado!');
+        }
+    };
+
 
     return (
         <>
@@ -53,7 +82,21 @@ export default function HomeDriver() {
                                     motorista, <br /> é com você!
                                 </h1>
                                 <p className="home-description">explore o mundo conosco e crie memórias inesquecíveis. somos uma comunidade exclusiva para mulheres que desejam explorar, aprender e crescer juntas, sem limites.</p>
+                                <button onClick={navegarViagem}
+                                    className="button button-flex">
+                                    Cadastrar viagem
+                                </button>
+
+                                <br />
+                                <br />
+
+                                <button onClick={gerarCsv}
+                                    className="button button-flex">
+                                    Gerar Csv com todas as suas viagens
+                                </button>
                             </div>
+
+
                         </div>
                     </section>
 
