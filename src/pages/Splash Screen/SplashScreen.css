@@ -46,6 +46,7 @@
 }
 
 #splash-screen-page .home-title {
+    color: var(--text);
     font-size: var(--biggest-font-size);
     margin: .75rem 0;
 }

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import HomeDriver from './pages/HomeDriver/HomeDriver'
+import HomePassenger from './pages/HomePassenger/HomePassenger'
 import SplashScreen from './pages/Splash Screen/SplashScreen'
 import Redirection from './pages/Redirection/Redirection'
 import Register from './pages/Register/Register'
@@ -20,6 +22,8 @@ function Rota() {
         <>
             <Router>
                 <Routes>
+                    <Route path="/motorista" element={<HomeDriver />} />
+                    <Route path="/passageira" element={<HomePassenger />} />
                     <Route path="/index" element={<SplashScreen />} />
                     <Route path="/direcionador" element={<Redirection />} />
                     <Route path="/contratacao" element={<Hiring />} />
@@ -32,7 +36,7 @@ function Rota() {
                     <Route path="/home" element={<LandingPage />} />
                     <Route path="/viagem" element={<Viagem />} />
                     <Route path="/sair" element={<Sair />} />
-                    
+
 
                 </Routes>
             </Router>

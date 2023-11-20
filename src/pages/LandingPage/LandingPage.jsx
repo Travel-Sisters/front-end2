@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import './LandingPage.css';
 import { Link } from 'react-router-dom';
+import './LandingPage.css';
 import bgAmarelo from '@/assets/img/bg-amarelo.png';
 import bgBlue from '@/assets/img/bg-blue.png';
 import logo from '@/assets/img/logo.png';
