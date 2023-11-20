@@ -1,15 +1,58 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 
 export default function Viagem() {
+
+    const storedResposta = sessionStorage.getItem('respostaUsuarioLogin');
+    const respostaUsuario = storedResposta ? JSON.parse(storedResposta) : null;
+    const idUsuario = respostaUsuario.data.userId
+
+    const storedRespostaMotorista = sessionStorage.getItem('respostaMotoristaLogin');
+    const respostaMotorista = storedRespostaMotorista ? JSON.parse(storedRespostaMotorista) : null;
+    const idMotorista = respostaMotorista.data.userId 
+
     const [data, setData] = useState('');
-    const [pontoEmbarque, setpontoEm] = useState('');
-    const [pontoDesembarque, setpontoDes] = useState('');
+    const [enderecos, setEnderecos] = useState([]);
+    const [pontoEmbarque, setpontoEm] = useState(null);
+    const [pontoDesembarque, setpontoDes] = useState(null);
     const [descricao, setDescricao] = useState('');
     const [horario, setHorario] = useState('');
     const [valor, setValor] = useState(0.0);
+    const [usuario, setUsuario] = useState(null);
+    const [motorista, setMotorista] = useState(null);
+
+    console.log('SESSION STORAGE USUARIO ' + idUsuario)
+    console.log('SESSION STORAGE MOTORISTA ' + idMotorista)
+
+    const handleChange = (event, pontoType) => {
+        const selectedAddress = enderecos.find((endereco) => endereco.rua === event.target.value);
+
+        if (pontoType === 'embarque') {
+            setpontoEm(selectedAddress);
+        } else if (pontoType === 'desembarque') {
+            setpontoDes(selectedAddress);
+        }
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/enderecos/');
+                const data = await response.json();
+
+                setEnderecos(data);
+                console.log(data)
+
+            } catch (error) {
+                console.error('Erro ao buscar dados do banco de dados:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
 
     const handleFormSubmit = async (evento) => {
         evento.preventDefault();
@@ -19,51 +62,24 @@ export default function Viagem() {
             pontoDesembarque,
             descricao,
             horario,
-            valor
+            valor,
+            usuario,
+            motorista
         };
 
         try {
+       
             const response = await axios.post('http://localhost:8080/viagens/cadastrar', viagem);
             console.log('Resposta do servidor:', response.data);
+
             alert('Viagem foi cadastrada com sucesso!');
-            setData('');
-            setpontoEm('');
-            setpontoDes('');
-            setDescricao('');
-            setHorario('');
-            setValor('');
+
         } catch (error) {
             console.error('Erro ao cadastrar o viagem:', error);
             alert('OPS! Alguma coisa deu errado!');
         }
     };
 
-    const handleFormSubmitCsv = async (evento) => {
-        evento.preventDefault();
-        const viagem = {
-            data,
-            pontoEmbarque,
-            pontoDesembarque,
-            descricao,
-            horario,
-            valor
-        };
-
-        try {
-            const response = await axios.post('http://localhost:8080/viagens/csv', viagem);
-            console.log('Resposta do servidor:', response.data);
-            alert('Dados da viagem foram enviadados com sucesso!');
-            setData('');
-            setpontoEm('');
-            setpontoDes('');
-            setDescricao('');
-            setHorario('');
-            setValor('');
-        } catch (error) {
-            console.error('Erro ao enviar os dados da viagem:', error);
-            alert('OPS! Alguma coisa deu errado!');
-        }
-    };
 
     return (
         <div id="page" className="flex">
@@ -87,31 +103,57 @@ export default function Viagem() {
                                 placeholder="data viagem"/>
                         </div>
 
+
                         <div className="input-wrapper">
-                            <label htmlFor="text">Ponto de embarque</label>
-                            <input id="pontoEmbarque" name="pontoEmbarque"
+                            <label htmlFor="pontoEmbarque">Escolha um ponto de embarque:</label>
+                            <select id="pontoEmbarque" name="pontoEmbarque"
                                 value={
-                                    pontoEmbarque.pontoEmbarque
+                                    pontoEmbarque ? pontoEmbarque.rua : ''
                                 }
                                 onChange={
-                                    (e) => setpontoEm(e.target.value)
-                                }
-                                required
-                                placeholder="ponto embarque"/>
+                                    (e) => handleChange(e, 'embarque')
+                            }>
+                                <option value="">Selecione um endereço</option>
+                                {
+                                enderecos.map((endereco) => (
+                                    <option key={
+                                            endereco.id
+                                        }
+                                        value={
+                                            endereco.rua
+                                    }>
+                                        {
+                                        endereco.rua
+                                    } </option>
+                                ))
+                            } </select>
                         </div>
 
                         <div className="input-wrapper">
-                            <label htmlFor="text">Ponto de desembarque</label>
-                            <input id="pontoDesembarque" name="pontoDesembarque"
+                            <label htmlFor="pontoDesembarque">Escolha um ponto de desembarque:</label>
+                            <select id="pontoDesembarque" name="pontoDesembarque"
                                 value={
-                                    pontoDesembarque.pontoDesembarque
+                                    pontoDesembarque ? pontoDesembarque.rua : ''
                                 }
                                 onChange={
-                                    (e) => setpontoDes(e.target.value)
-                                }
-                                required
-                                placeholder="ponto desembarque"/>
+                                    (e) => handleChange(e, 'desembarque')
+                            }>
+                                <option value="">Selecione um endereço</option>
+                                {
+                                enderecos.map((endereco) => (
+                                    <option key={
+                                            endereco.id
+                                        }
+                                        value={
+                                            endereco.rua
+                                    }>
+                                        {
+                                        endereco.rua
+                                    } </option>
+                                ))
+                            } </select>
                         </div>
+
 
                         <div className="input-wrapper">
                             <label htmlFor="text">Descrição</label>
@@ -152,12 +194,9 @@ export default function Viagem() {
                                 placeholder="valor"/>
                         </div>
 
-
                         <button type="submit"
                             onClick={handleFormSubmit}>criar</button>
 
-                        <button type="submit"
-                            onClick={handleFormSubmitCsv}>Gerar arquivo CSV</button>
 
                     </form>
 

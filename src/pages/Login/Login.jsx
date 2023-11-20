@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './Login.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import rosa from '../../assets/img/rosa.png';
 import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg.jpg';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -21,7 +23,7 @@ export default function Login() {
         evento.preventDefault();
         const usuario = {
             email,
-            senha,
+            senha
         };
 
         try {
@@ -32,13 +34,45 @@ export default function Login() {
 
                 sessionStorage.setItem('authToken', token);
                 sessionStorage.setItem('usuario', response.data.nome);
+                sessionStorage.setItem('respostaUsuarioLrogin', JSON.stringify(response));
 
                 console.log('Resposta do servidor:', response.data);
                 alert('Usuário entrou com sucesso!');
                 setEmail('');
                 setSenha('');
 
-                navigate('/sair');
+                if (response.data.userId !== null && response.data.userId !== undefined) {
+                    const responseMotorista = await axios.get(`http://localhost:8080/usuarios/verificar-perfil/${
+                        response.data.userId
+                    }`);
+
+                    if (responseMotorista.status === 204) {
+                        alert("Não é motorista")
+                        navigate('/sair')
+                    } else {
+                        sessionStorage.setItem('respostaMotoristaLogin', JSON.stringify(responseMotorista));
+                        Swal.fire({
+                            title: 'Escolha uma opção:',
+                            icon: 'question',
+                            showCancelButton: true,
+                            confirmButtonText: 'Passageira',
+                            cancelButtonText: 'Motorista'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+
+                                Swal.fire('Passageira', '', 'success');
+                                navigate('/sair')
+                            } else if (result.isDismissed) {
+
+                                Swal.fire('Motorista', '', 'success');
+                                navigate('/viagem')
+                            }
+                        });
+                    }
+
+                }
+
+                // navigate('/sair');
             } else {
                 throw new Error('Ops! Ocorreu um erro interno.');
             }
@@ -50,11 +84,12 @@ export default function Login() {
 
     return (
         <>
-            <div id="page" className="flex" >
+            <div id="page" className="flex">
 
                 <div>
-                    <header >
-                        <img src={rosa} alt="" />
+                    <header>
+                        <img src={rosa}
+                            alt=""/>
                     </header>
                     <main>
                         <div className="headline">
@@ -66,15 +101,15 @@ export default function Login() {
                         <form>
                             <div className="input-wrapper">
                                 <label htmlFor="email">e-mail</label>
-                                <input
-                                    id="email"
-                                    type="email"
-                                    name="email"
-                                    value={email.email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                <input id="email" type="email" name="email"
+                                    value={
+                                        email.email
+                                    }
+                                    onChange={
+                                        (e) => setEmail(e.target.value)
+                                    }
                                     required
-                                    placeholder="digite seu e-mail"
-                                />
+                                    placeholder="digite seu e-mail"/>
                             </div>
 
                             <div className="input-wrapper">
@@ -82,40 +117,49 @@ export default function Login() {
                                     <label htmlFor="senha">senha</label>
                                 </div>
 
-                                <input
-                                    type={passwordVisible ? 'text' : 'password'}
+                                <input type={
+                                        passwordVisible ? 'text' : 'password'
+                                    }
                                     id="senha"
-                                    value={senha.senha}
-                                    onChange={(e) => setSenha(e.target.value)}
-                                    placeholder="digite sua senha"
-                                />
+                                    value={
+                                        senha.senha
+                                    }
+                                    onChange={
+                                        (e) => setSenha(e.target.value)
+                                    }
+                                    placeholder="digite sua senha"/>
 
-                                <img
-                                    onClick={togglePassword}
-                                    className={`eye ${passwordVisible ? 'hide' : ''}`}
+                                <img onClick={togglePassword}
+                                    className={
+                                        `eye ${
+                                            passwordVisible ? 'hide' : ''
+                                        }`
+                                    }
                                     src={eyeOff}
-                                    alt=""
-                                />
-                                <img
-                                    onClick={togglePassword}
-                                    className={`eye ${passwordVisible ? '' : 'hide'}`}
+                                    alt=""/>
+                                <img onClick={togglePassword}
+                                    className={
+                                        `eye ${
+                                            passwordVisible ? '' : 'hide'
+                                        }`
+                                    }
                                     src={eye}
-                                    alt=""
-                                />
+                                    alt=""/>
                             </div>
 
-                            <button type="submit" onClick={handleFormSubmit}>entrar</button>
+                            <button type="submit"
+                                onClick={handleFormSubmit}>entrar</button>
 
                             <div className="create-account">
                                 não tem uma conta?
-                                <a href="#"> criar</a>
+                                <a href="#">
+                                    criar</a>
                             </div>
                         </form>
 
                     </main>
                 </div>
-                {/* <img src={bg} alt="giovana" /> */}
-            </div>
+                {/* <img src={bg} alt="giovana" /> */} </div>
         </>
     )
 }
