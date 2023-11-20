@@ -2,71 +2,10 @@ import React from 'react';
 
 import './Hiring.css';
 
-
-import './Hiring.css'
-
 function Hiring() {
-
-  const [name, setName] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const [whatsapp, setWhatsapp] = useState('');
-  const [bio, setBio] = useState('');
-
-  const [subject, setSubject] = useState('');
-  const [cost, setCost] = useState('');
-  const [scheduleItems, setScheduleItems] = useState([
-    { week_day: 0, from: '', to: '' }
-  ]);
-
-  function addNewScheduleItem() {
-    setScheduleItems([
-      ...scheduleItems,
-      { week_day: 0, from: '', to: '' }
-    ]);
-  }
-
-  function setScheduleItemValue(position, field, value) {
-    const updatedScheduleItems = scheduleItems.map((scheduleItem, index) => {
-      if (index === position) {
-        return { ...scheduleItem, [field]: value };
-      }
-
-      return scheduleItem;
-    });
-
-    setScheduleItems(updatedScheduleItems);
-  }
-
-  function handleCreateClass(e) {
-    e.preventDefault();
-  }
 
   return (
     <>
-      {/* <div id="navbar">
-        <div class="nav-logo">
-          <a href="">
-            <p>Travel Sisters</p>
-          </a>
-
-        </div>
-        <div class="nav-itens">
-          <ul class="lista">
-            <a href="">
-              <li>home</li>
-            </a>
-            <a href="">
-              <li>agendar</li>
-            </a>
-            <a href="">
-              <li>sugestões</li>
-            </a>
-            <a href="">
-              <li>populares</li>
-            </a>
-          </ul>
-        </div>
-      </div> */}
       <div id="container">
         <div class="titulo">
           <p>
