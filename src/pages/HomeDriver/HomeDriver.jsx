@@ -23,24 +23,17 @@ export default function HomeDriver() {
         navigate('/viagem');
     };
 
+    const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
+    
     const gerarCsv = () => {
-        try {
-            const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
             const response = axios.get(`http://localhost:8080/viagens/csv/${idMotorista}`);
-
-            if (response.status === 200) {
-
-                console.log('Resposta do servidor:', response.data);
                 alert('Csv entrou com sucesso!');
-
-            } else {
-                throw new Error('Ops! Ocorreu um erro interno.');
-            }
-        } catch (error) {
-            console.error('Erro ao gerar arquivo:', error);
-            alert('OPS! Alguma coisa deu errado!');
-        }
     };
+
+    const gerarTxt = () => {
+        const response = axios.get(`http://localhost:8080/viagens/txt/${idMotorista}`);
+            alert('Txt entrou com sucesso!');
+};
 
 
     return (
@@ -93,6 +86,14 @@ export default function HomeDriver() {
                                 <button onClick={gerarCsv}
                                     className="button button-flex">
                                     Gerar Csv com todas as suas viagens
+                                </button>
+
+                                <br />
+                                <br />
+
+                                <button onClick={gerarTxt}
+                                    className="button button-flex">
+                                    Gerar Txt com todas as suas viagens
                                 </button>
                             </div>
 

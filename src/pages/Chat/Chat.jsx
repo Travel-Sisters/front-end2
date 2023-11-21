@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+/*import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
 import './Chat.css';
@@ -57,4 +57,4 @@ export default function Chat() {
       </div>
     </div>
   );
-}
+}*/

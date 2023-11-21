@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import './LandingPage.css';
 import bgAmarelo from '@/assets/img/bg-amarelo.png';
 import bgBlue from '@/assets/img/bg-blue.png';
@@ -60,9 +60,12 @@ export default function LandingPage() {
                                 <li className="nav-item">
                                     <a href="#faqs" className="nav-link">FAQs</a>
                                 </li>
-                                <li className="nav-item">
-                                    <a href="#faqs" className="nav-link">cadastro</a>
-                                </li>
+                                <Link to="/escolha-cadastro" target="_blank" className="nav-item">
+                                    cadastrar
+                                </Link>
+                                <Link to="/login" target="_blank" className="nav-item">
+                                    entrar
+                                </Link>
                             </ul>
                         </div>
                     </nav>
@@ -71,14 +74,17 @@ export default function LandingPage() {
                 <main className="main">
                     <section className="home" id="home">
                         <div className="home-container container grid">
-                            <img src={bgAmarelo} alt="" className="home-img" />
+                            <img src={bgAmarelo}
+                                alt=""
+                                className="home-img"/>
 
                             <div className="home-data">
                                 <h1 className="home-title">
                                     união em aventuras inspiradoras.
                                 </h1>
                                 <p className="home-description">
-                                    junte-se à comunidade de Sisters e vivencie viagens cheias de empoderamento, amizade e descobertas.                                </p>
+                                    junte-se à comunidade de Sisters e vivencie viagens cheias de empoderamento, amizade e descobertas.
+                                </p>
                                 <Link to="/escolha-cadastro" target="_blank" className="button button-flex">
                                     descubra
                                 </Link>
@@ -87,7 +93,9 @@ export default function LandingPage() {
                     </section>
                     <section className="about section container" id="about">
                         <div className="about-container grid">
-                            <img src={bgBlue} alt="" className="about-img" />
+                            <img src={bgBlue}
+                                alt=""
+                                className="about-img"/>
 
                             <div className="about-data">
                                 <h2 className="section-title about-title">
@@ -119,7 +127,7 @@ export default function LandingPage() {
                             </h2>
 
                             <div className="steps-container grid">
-                            <div className="steps-card">
+                                <div className="steps-card">
                                     <div className="steps-card-number">01</div>
                                     <h3 className="steps-card-title">escolha seu destino</h3>
                                     <p className="steps-card-description">
@@ -252,7 +260,9 @@ export default function LandingPage() {
                 <footer className="section">
                     <div className="container grid">
                         <div className="brand">
-                            <img className='logo' src={logo} alt="" />
+                            <img className='logo'
+                                src={logo}
+                                alt=""/>
                             <p>©2023 Travel Sisters</p>
                             <p>todos os direitos reservados.</p>
                         </div>
