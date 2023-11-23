@@ -6,7 +6,7 @@ import './Chat.css';
 export default function Chat() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  const socket = io('http://localhost:3001');
+  const socket = io('http://localhost:5173');
 
   useEffect(() => {
     socket.on('message', (message) => {
