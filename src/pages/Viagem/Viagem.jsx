@@ -5,7 +5,6 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default function Viagem() {
 
-    const idUsuario = sessionStorage.getItem('idUsuarioLogin') || {};
     const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
 
     const [data, setData] = useState('');
@@ -15,7 +14,6 @@ export default function Viagem() {
     const [descricao, setDescricao] = useState('');
     const [horario, setHorario] = useState('');
     const [valor, setValor] = useState(0.0);
-    const [usuario, setUsuario] = useState({});
     const [motorista, setMotorista] = useState({});
 
     const handleChange = (event, pontoType) => {
@@ -55,16 +53,13 @@ export default function Viagem() {
             descricao,
             horario,
             valor,
-            usuario,
             motorista
         };
 
         try {
-
-            console.log('SESSION STORAGE USUARIO ' + idUsuario);
             console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
 
-            const response = await axios.post(`http://localhost:8080/viagens/cadastrar/${idUsuario}/${idMotorista}`, viagem);
+            const response = await axios.post(`http://localhost:8080/viagens/cadastrar/${idMotorista}`, viagem);
             console.log('Resposta do servidor:', response.data);
 
             alert('Viagem foi cadastrada com sucesso!');
