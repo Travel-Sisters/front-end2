@@ -26,17 +26,16 @@ export default function Register() {
         };
 
         try {
-            const idUsuario = sessionStorage.getItem('id');
+            const idUsuario = sessionStorage.getItem('idUusario');
 
-            console.log('SESSION STORAGE MEUS DADOS' + idUsuario)
+            console.log('SESSION STORAGE USUARIO' + idUsuario)
         
-
             const response = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
             console.log('Resposta do servidor:', response.data);
             alert('Motorista foi cadastrado com sucesso!');
             navigate("/login")
         } catch (error) {
-            console.error('Erro ao cadastrar o usuário:', error);
+            console.error('Erro ao cadastrar o motorista:', error);
             alert('OPS! Alguma coisa deu errado!');
         }
     };
