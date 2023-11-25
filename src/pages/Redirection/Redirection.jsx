@@ -6,8 +6,6 @@ import Rosa from '@/assets/img/direction-pink.png';
 import Blue from '@/assets/img/direction-blue.png';
 import Roxo from '@/assets/img/direction-purple.png';
 
-
-
 function Redirection() {
     return (
         <div className="container" id='redirection-page'>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -35,6 +35,11 @@ export default function HomeDriver() {
         alert('Txt entrou com sucesso!');
     };
 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
 
     return (
         <>
@@ -59,8 +64,29 @@ export default function HomeDriver() {
                                 <li className="nav-item">
                                     <a href="#recommendations" className="nav-link">populares</a>
                                 </li>
+                                <div className={`dropdown ${isDropdownOpen ? 'show-dropdown' : ''}`} id="dropdown-content">
+                                <button className="dropdown-button" id="dropdown-button" onClick={toggleDropdown}>
+                                    <span className="dropdown-name">perfil</span>
+                                    <div className="dropdown-icons">
+                                        <i className="ri-arrow-down-s-line dropdown-arrow"></i>
+                                        <i className="ri-close-line dropdown-close"></i>
+                                    </div>
+                                </button>
 
+                                <ul className="dropdown-menu">
+                                    <li className="dropdown-item">
+                                        <i className="ri-message-3-line dropdown-icon"></i>
+                                        <span className="dropdown-name">chat</span>
+                                    </li>
+
+                                    <li className="dropdown-item">
+                                        <i className="ri-settings-3-line dropdown-icon"></i>
+                                        <span className="dropdown-name">configurações</span>
+                                    </li>
+                                </ul>
+                            </div>
                             </ul>
+                            
                         </div>
                     </nav>
                 </header>
@@ -153,7 +179,7 @@ export default function HomeDriver() {
                         <div className="visited-container grid">
                             <div className="visited-data">
                                 <h2 className="section-title visited-title">
-                                   viagens que você poderá proporcionar
+                                    viagens que você poderá proporcionar
                                 </h2>
                                 <div id="container-visitados">
                                     <div class="div1">
