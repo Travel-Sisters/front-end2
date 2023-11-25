@@ -155,7 +155,7 @@ export default function LandingPage() {
                     </section>
                     <section className="questions section" id="faqs">
                         <h2 className="section-title-center questions-title container">
-                            FAQ
+                            perguntas frequentes
                         </h2>
 
                         <div className="questions-container container grid">

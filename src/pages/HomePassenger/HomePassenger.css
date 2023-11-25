@@ -356,6 +356,7 @@
 }
 
 #page-passenger .search-field {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: .8rem;
@@ -366,6 +367,7 @@
 
 #page-passenger input,
 #page-passenger select {
+  width: 100%;
   color: var(--text-color);
   min-width: 1rem;
 }

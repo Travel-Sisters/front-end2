@@ -6,18 +6,12 @@ import './HomePassenger.css';
 import passageira from '@/assets/img/passageira.png';
 import passageiraAmarelo from '@/assets/img/fpassageira.png';
 import logo from '@/assets/img/logo.png';
-import hopihari from '@/assets/img/hh.png';
-import pico from '@/assets/img/poda.png';
-import praia from '@/assets/img/pg.png';
 import zoologico from '@/assets/img/zoo.png';
 import sebastiao from '@/assets/img/sebastiao.png';
 import parque from '@/assets/img/parque.png';
 import holambra from '@/assets/img/holambra.png';
 import brotas from '@/assets/img/brotas.png';
 import mis from '@/assets/img/mis.png';
-
-
-
 
 
 export default function HomePassenger() {
@@ -85,18 +79,18 @@ export default function HomePassenger() {
                                     </p>
                                     <p className="about-details-description">
                                         <i className="ri-checkbox-fill about-details-icon"></i>
-                                        planeje sua viagem: personalize todos os detalhes da sua aventura, após clicar em "buscar agora".
+                                        planeje sua viagem: defina o ponto de embarque e desembarque, depois clique em "contratar".
                                     </p>
                                 </div>
-
                             </div>
                         </div>
                     </section>
 
                     <section className="search" id="search">
                         <div className="search-container container grid">
+                            <br />
                             <form className="search" >
-                                <div className="search-field select">
+                                {/* <div className="search-field select">
                                     <label className="sr-only" htmlFor="city">localização</label>
                                     <i className="ph-map-pin-light"></i>
                                     <select name="city" id="city">
@@ -104,11 +98,11 @@ export default function HomePassenger() {
                                         <option value="sao-paulo">São Paulo</option>
                                     </select>
                                     <i className="ph-caret-down-light"></i>
-                                </div>
+                                </div> */}
                                 <div className="search-field select">
-                                    <label className="sr-only" htmlFor="city">destino</label>
+                                    <label className="sr-only" htmlFor="destino">destino</label>
                                     <i className="ph-map-pin-light"></i>
-                                    <select name="city" id="city">
+                                    <select name="destino" id="destino">
                                         <option value="0" selected>escolha destino e ponto de encontro</option>
                                         <option value="sao-paulo">Guarulhos - Metrô Barra Funda</option>
                                         <option value="sao-paulo">Praia Grande - Metrô Barra Funda</option>
@@ -116,13 +110,12 @@ export default function HomePassenger() {
                                     </select>
                                     <i className="ph-caret-down-light"></i>
                                 </div>
-
-                                <button className="button button-flex">buscar agora</button>
+                                <button className="button button-flex">contratar</button>
                             </form>
                         </div>
                     </section>
 
-                    <section className="recommendations section container" id="recommendations">
+                    {/* <section className="recommendations section container" id="recommendations">
                         <div className="recommendations-container grid">
                             <h2 className="section-title about-title">
                                 sugestões do dia
@@ -175,7 +168,7 @@ export default function HomePassenger() {
                                 </div>
                             </section>
                         </div>
-                    </section>
+                    </section> */}
 
                     <section className="visited section container" id="visited">
                         <div className="visited-container grid">

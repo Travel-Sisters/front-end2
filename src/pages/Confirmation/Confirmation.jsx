@@ -22,14 +22,13 @@ function Confirmation() {
                             </div>
                         </div>
                         <div class="select-box">
-                            <select name="select1" id="select1">
-                                <option value="" disabled selected>selecione uma saída</option>
-                            </select>
-                            <select name="select2" id="select2">
-                                <option value="" disabled selected>selecione um destino</option>
-                            </select>
+                            <input type="text" />
+                            <input type="text" placeholder='oi' disabled/>
                             <button id="button" onclick="getLongAndLat()">
-                                <p>confirmar</p>
+                                confirmar
+                            </button>
+                            <button id="button" onclick="getLongAndLat()">
+                                cancelar
                             </button>
                         </div>
                     </div>
