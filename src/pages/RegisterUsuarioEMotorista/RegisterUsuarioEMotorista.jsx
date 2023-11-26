@@ -10,6 +10,7 @@ import bg from '../../assets/img/bg.jpg';
 
 export default function Register() {
     const navigate = useNavigate();
+
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [cpf, setCPF] = useState('');
@@ -19,7 +20,6 @@ export default function Register() {
     const [cnh, setCnh] = useState('');
     const [placaVan, setPlacaVan] = useState('');
     const [fkEmpresa, setFkEmpresa] = useState('');
-    const [fkUsuario, setFkUsuario] = useState('');
 
     const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -41,69 +41,24 @@ export default function Register() {
             cnh,
             placaVan,
             fkEmpresa,
-            fkUsuario
         };
 
-       /* try {
-           const responseUsuario = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
-            console.log('Resposta do servidor:', responseUsuario.data);
-
-            setFkUsuario(responseUsuario.data.id)
-            console.log('Id usuário ', responseUsuario.data.id)
-
-
-            alert('Usuário foi cadastrado com sucesso!');
-            setNome('');
-            setEmail('');
-            setCPF('');
-            setNascimento('');
-            setSenha('');
-
-            if (responseUsuario.data.id != null || responseUsuario.data.id != 0) {
-                
-                setFkUsuario(responseUsuario.data.id)
-
-                const responseMotorista = axios.post('http://localhost:8080/motoristas/cadastrar', motorista);
-                console.log('Resposta do servidor:', responseMotorista.data);
-                alert('Motorista foi cadastrado com sucesso!');
-                setCnh('');
-                setPlacaVan('');
-                setFkEmpresa('');
-                setFkUsuario('')
-
-                navigate('/login');
-
-            }
-        } catch (error) {
-            console.error('Erro ao cadastrar o usuário:', error);
-            alert('OPS! Alguma coisa deu errado!');
-        }
-    };*/
-
+     
     try {
-        // Cadastrar o usuário
         const responseUsuario = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
         console.log('Resposta do servidor (Usuário):', responseUsuario.data);
 
-        // Verificar se o cadastro de usuário foi bem-sucedido
         if (responseUsuario.data.id != null) {
-            setFkUsuario(responseUsuario.data.id);
             console.log('Id usuário: ', responseUsuario.data.id);
             alert('Usuário foi cadastrado com sucesso!');
 
-            // Cadastrar o motorista
-            const responseMotorista = await axios.post('http://localhost:8080/motoristas/cadastrar', motorista);
+            const idUsuario = responseUsuario.data.id;
+            const responseMotorista = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
             console.log('Resposta do servidor (Motorista):', responseMotorista.data);
             
             alert('Motorista foi cadastrado com sucesso!');
-            setCnh('');
-            setPlacaVan('');
-            setFkEmpresa('');
-
-            // Redirecionar para a página de login
             navigate('/login');
         } else {
-            // Tratar o caso em que o cadastro de usuário falhou
             alert('Erro ao cadastrar o usuário. Verifique os dados e tente novamente.');
         }
     } catch (error) {

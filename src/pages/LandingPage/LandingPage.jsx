@@ -60,7 +60,7 @@ export default function LandingPage() {
                                 <li className="nav-item">
                                     <a href="#faqs" className="nav-link">FAQs</a>
                                 </li>
-                                <Link to="/escolha-cadastro" target="_blank" className="nav-item">
+                                <Link to="/direcionador" target="_blank" className="nav-item">
                                     cadastrar
                                 </Link>
                                 <Link to="/login" target="_blank" className="nav-item">
@@ -85,7 +85,7 @@ export default function LandingPage() {
                                 <p className="home-description">
                                     junte-se à comunidade de Sisters e vivencie viagens cheias de empoderamento, amizade e descobertas.
                                 </p>
-                                <Link to="/escolha-cadastro" target="_blank" className="button button-flex">
+                                <Link to="/direcionador" target="_blank" className="button button-flex">
                                     descubra
                                 </Link>
                             </div>

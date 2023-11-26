@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import 'sweetalert2/dist/sweetalert2.min.css';
-
+import {useNavigate} from 'react-router-dom';
 
 export default function Viagem() {
 
     const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
+
+    const navigate = useNavigate();
 
     const [data, setData] = useState('');
     const [enderecos, setEnderecos] = useState([]);
@@ -17,7 +19,7 @@ export default function Viagem() {
     const [motorista, setMotorista] = useState({});
 
     const handleChange = (event, pontoType) => {
-        const selectedAddress = enderecos.find((endereco) => endereco.rua === event.target.value);
+        const selectedAddress = enderecos.find((endereco) => endereco.nome === event.target.value);
 
         if (pontoType === 'embarque') {
             setpontoEm(selectedAddress);
@@ -63,6 +65,9 @@ export default function Viagem() {
             console.log('Resposta do servidor:', response.data);
 
             alert('Viagem foi cadastrada com sucesso!');
+            sessionStorage.setItem('embarque', response.data.pontoEmbarque.nome);
+            sessionStorage.setItem('desembarque', response.data.pontoDesembarque.nome);
+            navigate('/confirmacao');
 
         } catch (error) {
             console.error('Erro ao cadastrar o viagem:', error);
@@ -98,7 +103,7 @@ export default function Viagem() {
                             <label htmlFor="pontoEmbarque">Escolha um ponto de embarque:</label>
                             <select id="pontoEmbarque" name="pontoEmbarque"
                                 value={
-                                    pontoEmbarque ? pontoEmbarque.rua : ''
+                                    pontoEmbarque ? pontoEmbarque.nome : ''
                                 }
                                 onChange={
                                     (e) => handleChange(e, 'embarque')
@@ -110,10 +115,10 @@ export default function Viagem() {
                                             endereco.id
                                         }
                                         value={
-                                            endereco.rua
+                                            endereco.nome
                                     }>
                                         {
-                                        endereco.rua
+                                        endereco.nome
                                     } </option>
                                 ))
                             } </select>
@@ -123,7 +128,7 @@ export default function Viagem() {
                             <label htmlFor="pontoDesembarque">Escolha um ponto de desembarque:</label>
                             <select id="pontoDesembarque" name="pontoDesembarque"
                                 value={
-                                    pontoDesembarque ? pontoDesembarque.rua : ''
+                                    pontoDesembarque ? pontoDesembarque.nome : ''
                                 }
                                 onChange={
                                     (e) => handleChange(e, 'desembarque')
@@ -135,10 +140,10 @@ export default function Viagem() {
                                             endereco.id
                                         }
                                         value={
-                                            endereco.rua
+                                            endereco.nome
                                     }>
                                         {
-                                        endereco.rua
+                                        endereco.nome
                                     } </option>
                                 ))
                             } </select>

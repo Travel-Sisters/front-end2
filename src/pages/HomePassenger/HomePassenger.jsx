@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import './HomePassenger.css';
@@ -15,6 +16,7 @@ import mis from '@/assets/img/mis.png';
 
 
 export default function HomePassenger() {
+    const navigate = useNavigate();
 
     return (
         <>
@@ -54,7 +56,8 @@ export default function HomePassenger() {
                                 <h1 className="home-title">
                                     passageira, é com você!
                                 </h1>
-                                <p className="home-description"> somos uma comunidade exclusiva para mulheres que desejam explorar juntas.</p>
+                                <p className="home-description"> somos uma comunidade exclusiva para 
+                                mulheres que desejam explorar juntas.</p>
                             </div>
                         </div>
                     </section>
