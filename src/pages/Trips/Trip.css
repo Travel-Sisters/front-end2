@@ -1,3 +1,5 @@
+
+
 #page-trip .section {
     margin-top: -6rem;
 }
@@ -54,6 +56,10 @@
 #page-trip .card p {
     color: var(--text-color);
     opacity: 0.75;
+}
+
+#page-trip .card a {
+    font-weight: 500;
 }
 
 #page-trip .card .location {

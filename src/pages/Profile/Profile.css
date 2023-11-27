@@ -2,6 +2,16 @@
     margin-top: -6rem;
 }
 
+#page-profile .header {
+    width: 100%;
+    background-color: var(--body-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    transition: .4s;
+  }
+
 #page-profile .section-title {
     font-size: var(--h3-font-size);
     color: var(--text);
@@ -61,7 +71,7 @@ input.text.w3lpass {
     margin: 1.4em 0;
 }
 
-button[type="submit"] {
+#page-profile button[type="submit"] {
     width: 15%;
     margin: 2em 0;
     padding: 1rem 1rem;
@@ -76,12 +86,12 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-.button-flex:focus {
+#page-profile .button-flex:focus {
     outline: 0.2rem solid var(--pink);
     border-radius: 0.2rem;
 }
 
-.button-flex:hover{
+#page-profile .button-flex:hover{
     background-color: rgb(201, 43, 69);
 }
 

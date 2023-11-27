@@ -11,7 +11,7 @@ export default function Trip() {
             <Menu />
             <section className="recommendations section container" id="recommendations">
                 <div className="recommendations-container grid">
-                    <h2 className="section-title about-title">
+                    <h2 className="section-title about-title" style={{ fontSize: '1.8rem' }}>
                         confira suas viagens até agora
                     </h2>
                     <section class="cards">
@@ -25,7 +25,7 @@ export default function Trip() {
                                 </p>
                                 <div style={{ display: 'flex' }}>
                                     <a href="" className='link' style={{color: 'var(--purple)'}}>gerar CSV</a>
-                                    <a href="" className='link' style={{ marginLeft: '1.3rem', color:'var(--purple)' }}>gerar TXT</a>
+                                    <a href="" className='link' style={{ marginLeft: '1.3rem', color:'var(--purple) ' }}>gerar TXT</a>
                                 </div>
                             </div>
                         </div>

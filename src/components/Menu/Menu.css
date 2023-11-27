@@ -46,15 +46,7 @@
     cursor: pointer;
 }
 
-.header {
-    width: 100%;
-    background-color: var(--body-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: var(--z-fixed);
-    transition: .4s;
-  }
+
 
 @media screen and (max-width: 767px) {
     .nav-menu {
