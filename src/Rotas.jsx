@@ -15,6 +15,8 @@ import Sair from './pages/LogOff/LogOff'
 import RegisterMotorista from './pages/RegisterMotorista/RegisterMotorista'
 import LoginValidacao from './pages/LoginValidacao/LoginValidacao'
 import RegisterUsuarioEMotorista from './pages/RegisterUsuarioEMotorista/RegisterUsuarioEMotorista'
+import Viagens from './pages/Trips/Trip'
+import Profile from './pages/Profile/Profile'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -35,7 +37,9 @@ function Rota() {
                     <Route path="/login-validacao" element={<LoginValidacao />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/home" element={<LandingPage />} />
+                    <Route path="/viagens" element={<Viagens />} />
                     <Route path="/viagem" element={<Viagem />} />
+                    <Route path="/perfil" element={<Profile />} />
                     {/* <Route path="/chat" element={<Chat />} /> */}
                     <Route path="/sair" element={<Sair />} />
 

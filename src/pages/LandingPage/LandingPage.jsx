@@ -1,9 +1,11 @@
-import React, {useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import './LandingPage.css';
+import Footer from '@/components/Footer/Footer';
+
 import bgAmarelo from '@/assets/img/bg-amarelo.png';
 import bgBlue from '@/assets/img/bg-blue.png';
-import logo from '@/assets/img/logo.png';
 
 export default function LandingPage() {
     useEffect(() => {
@@ -76,7 +78,7 @@ export default function LandingPage() {
                         <div className="home-container container grid">
                             <img src={bgAmarelo}
                                 alt=""
-                                className="home-img"/>
+                                className="home-img" />
 
                             <div className="home-data">
                                 <h1 className="home-title">
@@ -95,7 +97,7 @@ export default function LandingPage() {
                         <div className="about-container grid">
                             <img src={bgBlue}
                                 alt=""
-                                className="about-img"/>
+                                className="about-img" />
 
                             <div className="about-data">
                                 <h2 className="section-title about-title">
@@ -254,20 +256,9 @@ export default function LandingPage() {
                             </div>
                         </div>
                     </section>
-
                 </main>
 
-                <footer className="section">
-                    <div className="container grid">
-                        <div className="brand">
-                            <img className='logo'
-                                src={logo}
-                                alt=""/>
-                            <p>©2023 Travel Sisters</p>
-                            <p>todos os direitos reservados.</p>
-                        </div>
-                    </div>
-                </footer>
+                <Footer />
             </div>
         </>
     )

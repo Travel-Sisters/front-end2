@@ -1,0 +1,118 @@
+#page-profile .section {
+    margin-top: -6rem;
+}
+
+#page-profile .section-title {
+    font-size: var(--h3-font-size);
+    color: var(--text);
+}
+
+#page-profile .container {
+    max-width: 968px;
+    margin-left: var(--mb-1-5);
+    margin-right: var(--mb-1-5);
+}
+
+#page-profile .grid {
+    display: grid;
+}
+
+#page-profile .main {
+    overflow: hidden;
+}
+
+#page-profile .main-w3layouts {
+    padding: 3em 0 1em;
+}
+
+#page-profile .main-agileinfo {
+    max-width: 968px;
+    width: 100%;
+    margin: 3em auto;
+    background: var(--body-color);
+    border: 0.1rem solid #eaeaea;
+    border-radius: 1rem;
+}
+
+#page-profile .agileits-top {
+    padding: 3em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    background: var(--background);
+    border: 0.1rem solid #e2e8f0;
+    border-radius: 0.4rem;
+    padding: 1rem 1rem;
+    color: var(--text);
+    font: var(--body-font);
+}
+
+input:focus,
+input:hover {
+    border: 0.1rem solid var(--pink);
+    outline: 0;
+}
+
+input.email,
+input.text.w3lpass {
+    margin: 1.4em 0;
+}
+
+button[type="submit"] {
+    width: 15%;
+    margin: 2em 0;
+    padding: 1rem 1rem;
+    outline: none;
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #FFF;
+    border-radius: .5rem;
+    font-weight: var(--font-medium);
+    font-family: var(--body-font);
+    transition: .5s;
+    cursor: pointer;
+}
+
+.button-flex:focus {
+    outline: 0.2rem solid var(--pink);
+    border-radius: 0.2rem;
+}
+
+.button-flex:hover{
+    background-color: rgb(201, 43, 69);
+}
+
+
+@media screen and (max-width: 320px) {
+    #page-profile .container {
+        margin-left: var(--mb-1);
+        margin-right: var(--mb-1);
+    }
+}
+
+@media screen and (min-width: 767px) {
+    #page-profile body {
+        margin: 0;
+    }
+}
+
+
+@media screen and (min-width: 992px) {
+    #page-profile .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #page-profile .section {
+        padding: 8rem 0 1rem;
+    }
+
+    #page-profile .section-title,
+    #page-profile .section-title-center {
+        font-size: var(--h1-font-size);
+    }
+
+}

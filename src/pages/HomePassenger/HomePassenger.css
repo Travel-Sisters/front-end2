@@ -230,7 +230,7 @@
 }
 
 #page-passenger .home {
-  padding: 3.5rem 0 2rem;
+  margin-top: -3rem;
 }
 
 #page-passenger .home-container {
@@ -485,55 +485,24 @@
 }
 
 #page-passenger .message-container {
-  row-gap: 1rem;
+  padding-bottom: 2rem;
 }
 
-#page-passenger .message-data {
+#page-passenger .message-content {
+  display: grid;
+  row-gap: 1.5rem;
+  background-color: red;
+  padding: 3rem 1rem 2.5rem;
+  border-radius: .5rem;
   text-align: center;
 }
 
-#page-passenger .message-title {
-  margin-bottom: var(--mb-1-5);
+.message-title,
+.message-description {
+  color: red;
+  font-size: var(--big-font-size);
 }
 
-#page-passenger .message-description {
-  margin-bottom: var(--mb-2-5);
-}
-
-
-#page-passenger footer {
-  background: var(--pink);
-}
-
-#page-passenger footer.section {
-  padding: 4rem 0;
-}
-
-#page-passenger footer .logo {
-  display: inline-block;
-  width: 144px;
-  position: relative;
-  right: 2rem;
-}
-
-#page-passenger footer .brand p {
-  color: var(--container-color);
-  margin-bottom: 0.75rem;
-}
-
-#page-passenger footer .social {
-  grid-auto-flow: column;
-  width: fit-content;
-}
-
-#page-passenger footer .social a {
-  transition: 0.3s;
-  display: inline-block;
-}
-
-#page-passenger footer .social a:hover {
-  transform: translateY(-8px);
-}
 
 ::-webkit-scrollbar {
   width: .6rem;
@@ -602,8 +571,7 @@
 
   #page-passenger .home-container,
   #page-passenger .about-container,
-  #page-passenger .questions-container,
-  #page-passenger .footer-container {
+  #page-passenger .questions-container{
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -657,10 +625,6 @@
 @media screen and (min-width: 1200px) {
   #page-passenger .about-container {
     column-gap: 7rem;
-  }
-
-  #page-passenger footer.section {
-    padding: 3.75rem 0;
   }
 
   #page-passenger footer .container {

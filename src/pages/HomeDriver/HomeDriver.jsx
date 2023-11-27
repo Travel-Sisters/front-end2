@@ -4,9 +4,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import './HomeDriver.css';
+import Footer from '@/components/Footer/Footer';
 
 import motoristaRoxo from '@/assets/img/fmotorista.png';
-import logo from '@/assets/img/logo.png';
 import app from '@/assets/img/app.png'
 import zoologico from '@/assets/img/zoo.png';
 import sebastiao from '@/assets/img/sebastiao.png';
@@ -56,37 +56,37 @@ export default function HomeDriver() {
                                     <a href="#home" className="nav-link active-link">início</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a href="#about" className="nav-link">dúvidas</a>
+                                    <a href="#us" className="nav-link">trabalhe conosco</a>
                                 </li>
+
                                 <li className="nav-item">
-                                    <a href="#search" className="nav-link">agendar</a>
+                                    <a href="#visited" className="nav-link">populares</a>
                                 </li>
-                                <li className="nav-item">
-                                    <a href="#recommendations" className="nav-link">populares</a>
-                                </li>
-                                <div className={`dropdown ${isDropdownOpen ? 'show-dropdown' : ''}`} id="dropdown-content">
-                                <button className="dropdown-button" id="dropdown-button" onClick={toggleDropdown}>
-                                    <span className="dropdown-name">perfil</span>
-                                    <div className="dropdown-icons">
-                                        <i className="ri-arrow-down-s-line dropdown-arrow"></i>
-                                        <i className="ri-close-line dropdown-close"></i>
+                                <li>
+                                    <div className={`dropdown ${isDropdownOpen ? 'show-dropdown' : ''}`} id="dropdown-content">
+                                        <button className="dropdown-button" id="dropdown-button" onClick={toggleDropdown}>
+                                            <span className="dropdown-name">perfil</span>
+                                            <div className="dropdown-icons">
+                                                {/* <i className="ri-arrow-down-s-line dropdown-arrow"></i>  */}
+                                                {/* <i className="ri-close-line dropdown-close"></i> */}
+                                            </div>
+                                        </button>
+
+                                        <ul className="dropdown-menu">
+                                            <li className="dropdown-item">
+                                                <i className="ri-map-2-line dropdown-icon"></i>
+                                                <span className="dropdown-name">minhas viagens</span>
+                                            </li>
+
+                                            <li className="dropdown-item">
+                                                <i className="ri-settings-3-line dropdown-icon"></i>
+                                                <span className="dropdown-name">editar perfil</span>
+                                            </li>
+                                        </ul>
                                     </div>
-                                </button>
-
-                                <ul className="dropdown-menu">
-                                    <li className="dropdown-item">
-                                        <i className="ri-message-3-line dropdown-icon"></i>
-                                        <span className="dropdown-name">chat</span>
-                                    </li>
-
-                                    <li className="dropdown-item">
-                                        <i className="ri-settings-3-line dropdown-icon"></i>
-                                        <span className="dropdown-name">configurações</span>
-                                    </li>
-                                </ul>
-                            </div>
+                                </li>
                             </ul>
-                            
+
                         </div>
                     </nav>
                 </header>
@@ -127,9 +127,9 @@ export default function HomeDriver() {
                         </div>
                     </section>
 
-                    <section className="giving section container">
+                    <section className="us section container" id='us'>
                         <h2 className="section-title">
-                            como é trabalhar conosco?
+                            trabalhe conosco
                         </h2>
 
                         <div className="us-container grid">
@@ -211,7 +211,7 @@ export default function HomeDriver() {
                             </div>
                         </div>
                     </section>
-
+                    {/* 
                     <section className="message section container" id="message">
                         <div className="message-container grid">
                             <div className="message-data">
@@ -221,20 +221,9 @@ export default function HomeDriver() {
                                 <a href="#" className="button">quero agora</a>
                             </div>
                         </div>
-                    </section>
+                    </section> */}
                 </main>
-
-                <footer className="section">
-                    <div className="container grid">
-                        <div className="brand">
-                            <img className='logo'
-                                src={logo}
-                                alt="" />
-                            <p>©2023 Travel Sisters</p>
-                            <p>todos os direitos reservados.</p>
-                        </div>
-                    </div>
-                </footer>
+                <Footer />
             </div>
         </>
     )
