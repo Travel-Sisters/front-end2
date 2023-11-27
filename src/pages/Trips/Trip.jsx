@@ -60,25 +60,7 @@ export default function Trip() {
                             </div>
                         </div>
 
-                        <div class="card">
-                            <img src={roxo} alt="" />
-
-                            <div class="content">
-                                <h3>Holambra</h3>
-                                <p>
-                                    conheça e fique encantada com a cidade das flores.
-                                </p>
-
-                                {/* <div class="location">
-                                    <i class="ph-map-pin-light"></i>
-                                    São Paulo - SP
-                                </div> */}
-                                <div style={{ display: 'flex' }}>
-                                    <a href="" className='link' style={{color: 'var(--purple)'}}>gerar CSV</a>
-                                    <a href="" className='link' style={{ marginLeft: '1.3rem', color:'var(--purple)' }}>gerar TXT</a>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </section>
                 </div>
             </section>
