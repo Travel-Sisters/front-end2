@@ -1,5 +1,6 @@
 import React from 'react';
 import * as map from './mapa.js';
+//import L from 'leaflet';
 
 import './Confirmation.css'
 import axios from 'axios';
@@ -24,28 +25,35 @@ function Confirmation() {
             alert('OPS! Alguma coisa deu errado!');
         }
     };
-
+    const plot = () => {
+        const map = L.map('mapa', {
+            layers: MQ.mapLayer(),
+            center: [-23.5475000, -46.6361100],
+            zoom: 11
+        });
+    }
+   
 
     return (
         <>
             <div id="page-confirmation">
                 <div id="container">
-                    <div class="elementos">
+                    <div className="elementos">
                         <div id="textos">
-                            <div class="titulo">
+                            <div className="titulo">
                                 <p>
                                     <b>
                                         confirme seu destino
                                     </b>
                                 </p>
                             </div>
-                            <div class="resumo">
+                            <div className="resumo">
                                 <p>escolha o destino da sua viagem, revise
                                                                          todos os detalhes cuidadosamente e crie um grupo de viagem!
                                 </p>
                             </div>
                         </div>
-                        <div class="select-box">
+                        <div className="select-box">
                             <input type="text"
                                 placeholder={embarque}
                                 disabled/>
@@ -65,7 +73,7 @@ function Confirmation() {
                             </button>
                         </div>
                     </div>
-                    <div onLoad={map.plotMap} className="mapa" id="mapa"></div>
+                    <div className="mapa" id="mapa"></div>
                 </div>
             </div>
         </>
