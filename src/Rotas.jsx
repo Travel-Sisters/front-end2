@@ -5,7 +5,7 @@ import HomePassenger from './pages/HomePassenger/HomePassenger'
 import SplashScreen from './pages/Splash Screen/SplashScreen'
 import Redirection from './pages/Redirection/Redirection'
 import Confirmation from './pages/Confirmation/Confirmation'
-// import Chat from './pages/Chat/Chat'
+import Chat from './pages/Chat/Chat'
 import Register from './pages/Register/Register'
 import LandingPage from './pages/LandingPage/LandingPage'
 import Login from './pages/Login/Login'
@@ -36,10 +36,8 @@ function Rota() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/home" element={<LandingPage />} />
                     <Route path="/viagem" element={<Viagem />} />
-                    {/* <Route path="/chat" element={<Chat />} /> */}
+                    <Route path="/chat" element={<Chat />} />
                     <Route path="/sair" element={<Sair />} />
-
-
                 </Routes>
             </Router>
         </>

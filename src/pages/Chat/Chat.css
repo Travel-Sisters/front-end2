@@ -119,7 +119,7 @@
 #page-chat input {
     flex: 1;
     outline: none;
-    color: #e1e1e6;
+    color: #98989c;
 }
 
 #page-chat form:focus-within {
@@ -128,7 +128,7 @@
 
 #page-chat input::placeholder {
     font-family: var(--body-font);
-    color: #e1e1e6;
+    color: #bebec2;
     font-size: 1rem;
     line-height: 1.4rem;
 }

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import * as map from './mapa.js';
 
 import './Confirmation.css'
 import axios from 'axios';
@@ -53,7 +54,9 @@ function Confirmation() {
                                 placeholder={desembarque}
                                 disabled/>
                             <br/>
-                            <button id="button" onclick="getLongAndLat()">
+                            <button id="button" 
+                                //onclick={getLongAndLat()}
+                                >
                                 confirmar
                             </button>
                             <button id="button"
@@ -62,7 +65,7 @@ function Confirmation() {
                             </button>
                         </div>
                     </div>
-                    <div class="mapa" id="mapa"></div>
+                    <div onLoad={map.plotMap} className="mapa" id="mapa"></div>
                 </div>
             </div>
         </>
