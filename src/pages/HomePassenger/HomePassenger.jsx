@@ -1,8 +1,9 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import './HomePassenger.css';
+import Footer from '../../components/Footer/Footer';
 
 import passageira from '@/assets/img/passageira.png';
 import passageiraAmarelo from '@/assets/img/fpassageira.png';
@@ -39,7 +40,7 @@ export default function HomePassenger() {
                                     <a href="#search" className="nav-link">agendar</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a href="#recommendations" className="nav-link">populares</a>
+                                    <a href="#visited" className="nav-link">populares</a>
                                 </li>
 
                             </ul>
@@ -54,10 +55,10 @@ export default function HomePassenger() {
 
                             <div className="home-data">
                                 <h1 className="home-title">
-                                    passageira, é com você!
+                                    passageira, <br /> é com você!
                                 </h1>
-                                <p className="home-description"> somos uma comunidade exclusiva para 
-                                mulheres que desejam explorar juntas.</p>
+                                <p className="home-description"> somos uma comunidade exclusiva para
+                                    mulheres que desejam explorar juntas.</p>
                             </div>
                         </div>
                     </section>
@@ -203,28 +204,8 @@ export default function HomePassenger() {
                             </div>
                         </div>
                     </section>
-
-                    <section className="message section container" id="message">
-                        <div className="message-container grid">
-                            <div className="message-data">
-                                <h2 className="section-title message-title">
-                                    inscreva-se para receber as novidades do nosso site!
-                                </h2>
-                                <a href="#" className="button">quero agora</a>
-                            </div>
-                        </div>
-                    </section>
                 </main>
-
-                <footer className="section">
-                    <div className="container grid">
-                        <div className="brand">
-                            <img className='logo' src={logo} alt="" />
-                            <p>©2023 Travel Sisters</p>
-                            <p>todos os direitos reservados.</p>
-                        </div>
-                    </div>
-                </footer>
+                <Footer />
             </div>
         </>
     )
