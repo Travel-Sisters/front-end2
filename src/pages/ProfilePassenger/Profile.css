@@ -1,8 +1,8 @@
-#page-profile .section {
+#page-profile-passenger .section {
     margin-top: -6rem;
 }
 
-#page-profile .header {
+#page-profile-passenger .header {
     width: 100%;
     background-color: var(--body-color);
     position: fixed;
@@ -12,30 +12,30 @@
     transition: .4s;
 }
 
-#page-profile .section-title {
+#page-profile-passenger .section-title {
     font-size: var(--h3-font-size);
     color: var(--text);
 }
 
-#page-profile .container {
+#page-profile-passenger .container {
     max-width: 968px;
     margin-left: var(--mb-1-5);
     margin-right: var(--mb-1-5);
 }
 
-#page-profile .grid {
+#page-profile-passenger .grid {
     display: grid;
 }
 
-#page-profile .main {
+#page-profile-passenger .main {
     overflow: hidden;
 }
 
-#page-profile .main-w3layouts {
+#page-profile-passenger .main-w3layouts {
     padding: 3em 0 1em;
 }
 
-#page-profile .main-agileinfo {
+#page-profile-passenger .main-agileinfo {
     max-width: 968px;
     width: 100%;
     height: 80%;
@@ -45,7 +45,7 @@
     border-radius: 1rem;
 }
 
-#page-profile .agileits-top {
+#page-profile-passenger .agileits-top {
     padding: 2em;
 }
 
@@ -63,7 +63,7 @@ input[type="password"] {
 
 input:focus,
 input:hover {
-    border: 0.1rem solid var(--purple);
+    border: 0.1rem solid var(--pink);
     outline: 0;
 }
 
@@ -72,13 +72,13 @@ input.text.w3lpass {
     margin: 1.4em 0;
 }
 
-#page-profile button[type="submit"] {
+#page-profile-passenger button[type="submit"] {
     width: 15%;
     margin: 2em 0;
     padding: 1rem 1rem;
     outline: none;
     display: inline-block;
-    background-color: var(--purple);
+    background-color: var(--pink);
     color: #FFF;
     border-radius: .5rem;
     font-weight: var(--font-medium);
@@ -87,42 +87,42 @@ input.text.w3lpass {
     cursor: pointer;
 }
 
-#page-profile .button-flex:focus {
-    outline: 0.2rem solid var(--purple);
+#page-profile-passenger .button-flex:focus {
+    outline: 0.2rem solid var(--pink);
     border-radius: 0.2rem;
 }
 
-#page-profile .button-flex:hover {
-    background-color: #884dff;
+#page-profile-passenger .button-flex:hover {
+    background-color: rgb(223, 73, 123);
 }
 
 
 @media screen and (max-width: 320px) {
-    #page-profile .container {
+    #page-profile-passenger .container {
         margin-left: var(--mb-1);
         margin-right: var(--mb-1);
     }
 }
 
 @media screen and (min-width: 767px) {
-    #page-profile body {
+    #page-profile-passenger body {
         margin: 0;
     }
 }
 
 
 @media screen and (min-width: 992px) {
-    #page-profile .container {
+    #page-profile-passenger .container {
         margin-left: auto;
         margin-right: auto;
     }
 
-    #page-profile .section {
+    #page-profile-passenger .section {
         padding: 8rem 0 1rem;
     }
 
-    #page-profile .section-title,
-    #page-profile .section-title-center {
+    #page-profile-passenger .section-title,
+    #page-profile-passenger .section-title-center {
         font-size: var(--h1-font-size);
     }
 

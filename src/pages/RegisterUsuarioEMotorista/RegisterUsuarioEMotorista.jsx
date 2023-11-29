@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Register.css';
 
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
-import rosa from '../../assets/img/rosa.png';
+import { useNavigate } from 'react-router-dom';
+import roxo from '../../assets/img/logo-roxo.png';
 import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
-import bg from '../../assets/img/bg.jpg';
+import bg from '../../assets/img/bg-roxo.png';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -43,29 +43,29 @@ export default function Register() {
             fkEmpresa,
         };
 
-     
-    try {
-        const responseUsuario = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
-        console.log('Resposta do servidor (Usuário):', responseUsuario.data);
 
-        if (responseUsuario.data.id != null) {
-            console.log('Id usuário: ', responseUsuario.data.id);
-            alert('Usuário foi cadastrado com sucesso!');
+        try {
+            const responseUsuario = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
+            console.log('Resposta do servidor (Usuário):', responseUsuario.data);
 
-            const idUsuario = responseUsuario.data.id;
-            const responseMotorista = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
-            console.log('Resposta do servidor (Motorista):', responseMotorista.data);
-            
-            alert('Motorista foi cadastrado com sucesso!');
-            navigate('/login');
-        } else {
-            alert('Erro ao cadastrar o usuário. Verifique os dados e tente novamente.');
+            if (responseUsuario.data.id != null) {
+                console.log('Id usuário: ', responseUsuario.data.id);
+                alert('Usuário foi cadastrado com sucesso!');
+
+                const idUsuario = responseUsuario.data.id;
+                const responseMotorista = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
+                console.log('Resposta do servidor (Motorista):', responseMotorista.data);
+
+                alert('Motorista foi cadastrado com sucesso!');
+                navigate('/login');
+            } else {
+                alert('Erro ao cadastrar o usuário. Verifique os dados e tente novamente.');
+            }
+        } catch (error) {
+            console.error('Erro ao cadastrar o usuário:', error);
+            alert('OPS! Alguma coisa deu errado!');
         }
-    } catch (error) {
-        console.error('Erro ao cadastrar o usuário:', error);
-        alert('OPS! Alguma coisa deu errado!');
-    }
-};
+    };
 
 
     /* const handleFormSubmitMotorista = async (evento) => {
@@ -96,18 +96,18 @@ export default function Register() {
     };*/
 
     return (
-        <div id="page" className="flex">
+        <div id="page-moto-user" className="flex">
             <div>
                 <header>
-                    <img src={rosa}
-                        alt=""/>
+                    <img src={roxo}
+                        alt="" />
                 </header>
                 <main>
                     <div className="headline">
-                        <h1>criar uma conta como Motorista</h1>
+                        <h1>criar uma conta como motorista</h1>
                         <p>
                             faça login ou registre-se para começar a para trilhar seu caminho
-                                                                                                                                                                        ainda hoje.
+                            ainda hoje.
                         </p>
                     </div>
                     <form>
@@ -121,7 +121,7 @@ export default function Register() {
                                     (e) => setNome(e.target.value)
                                 }
                                 required
-                                placeholder="digite seu nome completo"/>
+                                placeholder="digite seu nome completo" />
                         </div>
 
                         <div className="input-wrapper">
@@ -134,7 +134,7 @@ export default function Register() {
                                     (e) => setEmail(e.target.value)
                                 }
                                 required
-                                placeholder="digite seu e-mail"/>
+                                placeholder="digite seu e-mail" />
                         </div>
 
                         <div className="input-wrapper">
@@ -147,7 +147,7 @@ export default function Register() {
                                     (e) => setCPF(e.target.value)
                                 }
                                 required
-                                placeholder="digite seu CPF"/>
+                                placeholder="digite seu CPF" />
                         </div>
 
                         <div className="input-wrapper">
@@ -160,7 +160,7 @@ export default function Register() {
                                     (e) => setNascimento(e.target.value)
                                 }
                                 required
-                                placeholder="digite sua data de nascimento"/>
+                                placeholder="digite sua data de nascimento" />
                         </div>
 
                         <div className="input-wrapper">
@@ -173,11 +173,11 @@ export default function Register() {
                                     (e) => setCnh(e.target.value)
                                 }
                                 required
-                                placeholder="cnh"/>
+                                placeholder="digite o número de sua CNH" />
                         </div>
 
                         <div className="input-wrapper">
-                            <label htmlFor="placaVan">Placa da Van</label>
+                            <label htmlFor="placaVan">placa da Van</label>
                             <input id="placaVan" name="placaVan"
                                 value={
                                     placaVan.placaVan
@@ -186,11 +186,11 @@ export default function Register() {
                                     (e) => setPlacaVan(e.target.value)
                                 }
                                 required
-                                placeholder="Placa Van"/>
+                                placeholder="digite o número da placa" />
                         </div>
 
                         <div className="input-wrapper">
-                            <label htmlFor="number">Código da empresa</label>
+                            <label htmlFor="number">código da empresa</label>
                             <input id="fkEmpresa" name="fkEmpresa"
                                 value={
                                     fkEmpresa.fkEmpresa
@@ -199,7 +199,7 @@ export default function Register() {
                                     (e) => setFkEmpresa(e.target.value)
                                 }
                                 required
-                                placeholder="digite seu Código da empresa"/>
+                                placeholder="digite seu código de empresa" />
                         </div>
 
                         <div className="input-wrapper">
@@ -208,8 +208,8 @@ export default function Register() {
                                 {/* <a href="#">esqueceu a senha?</a> */} </div>
 
                             <input type={
-                                    passwordVisible ? 'text' : 'password'
-                                }
+                                passwordVisible ? 'text' : 'password'
+                            }
                                 id="senha"
                                 value={
                                     senha.senha
@@ -217,37 +217,34 @@ export default function Register() {
                                 onChange={
                                     (e) => setSenha(e.target.value)
                                 }
-                                placeholder="digite sua senha"/>
+                                placeholder="digite sua senha" />
 
                             <img onClick={togglePassword}
                                 className={
-                                    `eye ${
-                                        passwordVisible ? 'hide' : ''
+                                    `eye ${passwordVisible ? 'hide' : ''
                                     }`
                                 }
                                 src={eyeOff}
-                                alt=""/>
+                                alt="" />
                             <img onClick={togglePassword}
                                 className={
-                                    `eye ${
-                                        passwordVisible ? '' : 'hide'
+                                    `eye ${passwordVisible ? '' : 'hide'
                                     }`
                                 }
                                 src={eye}
-                                alt=""/>
+                                alt="" />
                         </div>
 
                         <button type="submit"
                             onClick={handleFormSubmit}>criar</button>
 
                         <div className="create-account">
-                            já possui uma conta?
-                            <a href="#">
-                                entrar</a>
+                            <p>já possui uma conta?</p><a href="#"> entrar</a>
                         </div>
                     </form>
                 </main>
             </div>
-            {/* <img src={bg} alt="" /> */} </div>
+            <img src={bg} alt="" />
+        </div>
     );
 }

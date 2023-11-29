@@ -17,6 +17,8 @@ import LoginValidacao from './pages/LoginValidacao/LoginValidacao'
 import RegisterUsuarioEMotorista from './pages/RegisterUsuarioEMotorista/RegisterUsuarioEMotorista'
 import Viagens from './pages/Trips/Trip'
 import Profile from './pages/Profile/Profile'
+import ProfilePassenger from './pages/ProfilePassenger/ProfilePassenger'
+
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -41,7 +43,8 @@ function Rota() {
                     <Route path="/viagem" element={<Viagem />} />
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/sair" element={<Sair />} />
-                    <Route path="/perfil" element={<Profile />} />                    
+                    <Route path="/perfil-motorista" element={<Profile />} />
+                    <Route path="/perfil-passageira" element={<ProfilePassenger />} />                    
                 </Routes>
             </Router>
         </>

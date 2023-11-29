@@ -64,9 +64,10 @@
     font-size: 18px;
 }
 
-#page-confirmation .mapa {
-    border: 2px solid red;
-    margin-top: 10%;
-    height: 62vh;
-    width: 40vw;
+#page-confirmation .chat-container {
+    /* Adicione estilos específicos para o chat aqui */
+    /* Por exemplo: */
+    border: 2px solid blue;
+    height: 200px;
+    overflow: auto; /* Para permitir rolar o chat se necessário */
 }

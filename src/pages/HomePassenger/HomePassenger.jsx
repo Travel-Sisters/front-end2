@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -18,6 +18,11 @@ import mis from '@/assets/img/mis.png';
 
 export default function HomePassenger() {
     const navigate = useNavigate();
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
 
     return (
         <>
@@ -42,7 +47,29 @@ export default function HomePassenger() {
                                 <li className="nav-item">
                                     <a href="#visited" className="nav-link">populares</a>
                                 </li>
+                                <li>
+                                    <div className={`dropdown ${isDropdownOpen ? 'show-dropdown' : ''}`} id="dropdown-content">
+                                        <button className="dropdown-button" id="dropdown-button" onClick={toggleDropdown}>
+                                            <span className="dropdown-name">perfil</span>
+                                            <div className="dropdown-icons">
+                                                {/* <i className="ri-arrow-down-s-line dropdown-arrow"></i>  */}
+                                                {/* <i className="ri-close-line dropdown-close"></i> */}
+                                            </div>
+                                        </button>
 
+                                        <ul className="dropdown-menu">
+                                            <li className="dropdown-item">
+                                                <i className="ri-map-2-line dropdown-icon"></i>
+                                                <span className="dropdown-name">minhas viagens</span>
+                                            </li>
+
+                                            <li className="dropdown-item">
+                                                <i className="ri-settings-3-line dropdown-icon"></i>
+                                                <span className="dropdown-name">editar perfil</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </nav>

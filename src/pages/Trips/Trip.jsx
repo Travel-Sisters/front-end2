@@ -1,11 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import './Trip.css'
+
 import Menu from '../../components/Menu/Menu';
 
 import roxo from '@/assets/img/roxo.png';
 
 export default function Trip() {
+
+
+    const navigate = useNavigate();
+
+    const navegarViagem = () => {
+        navigate('/viagem');
+    };
+
+    const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
+
+    const gerarCsv = () => {
+        const response = axios.get(`http://localhost:8080/viagens/csv/${idMotorista}`);
+        alert('Csv entrou com sucesso!');
+    };
+
+    const gerarTxt = () => {
+        const response = axios.get(`http://localhost:8080/viagens/txt/${idMotorista}`);
+        alert('Txt entrou com sucesso!');
+    };
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
     return (
         <div id="page-trip">
             <Menu />
@@ -23,10 +52,6 @@ export default function Trip() {
                                 <p>
                                     faça uma trilha incrível e explore novos horizontes.
                                 </p>
-                                <div style={{ display: 'flex' }}>
-                                    <a href="" className='link' style={{color: 'var(--purple)'}}>gerar CSV</a>
-                                    <a href="" className='link' style={{ marginLeft: '1.3rem', color:'var(--purple) ' }}>gerar TXT</a>
-                                </div>
                             </div>
                         </div>
 
@@ -38,11 +63,6 @@ export default function Trip() {
                                 <p>
                                     divirta-se, pegue um bronze e construa castelos na areia!
                                 </p>
-
-                                <div style={{ display: 'flex' }}>
-                                    <a href="" className='link' style={{color: 'var(--purple)'}}>gerar CSV</a>
-                                    <a href="" className='link' style={{ marginLeft: '1.3rem', color:'var(--purple)' }}>gerar TXT</a>
-                                </div>
                             </div>
                         </div>
 
@@ -53,15 +73,18 @@ export default function Trip() {
                                 <p>
                                     pé na areia, a caipirinha, água de coco, a cervejinha.
                                 </p>
-                                <div style={{ display: 'flex' }}>
-                                    <a href="" className='link' style={{color: 'var(--purple)'}}>gerar CSV</a>
-                                    <a href="" className='link' style={{ marginLeft: '1.3rem', color:'var(--purple)' }}>gerar TXT</a>
-                                </div>
                             </div>
                         </div>
-
-                        
                     </section>
+                    <br />
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', width: '100%' }}>
+                    <button onClick={gerarCsv} className="button">
+                        gerar CSV
+                    </button>
+                    <button onClick={gerarTxt} className="button">
+                        gerar TXT
+                    </button>
                 </div>
             </section>
         </div>

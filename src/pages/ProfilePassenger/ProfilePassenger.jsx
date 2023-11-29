@@ -3,12 +3,12 @@ import React from 'react'
 import './Profile.css'
 import Menu from '../../components/Menu/Menu'
 
-export default function Profile() {
+export default function ProfilePassenger() {
     return (
-        <section className="profile" id="page-profile">
+        <section className="profile" id="page-profile-passenger">
             <div className="profile-container container grid">
                 <Menu />
-
+                
                 <div className="main-w3layouts wrapper">
                     <div className="main-agileinfo">
                         <div className="agileits-top">

@@ -40,7 +40,7 @@ export default function Register() {
             setCPF('');
             setNascimento('');
             setSenha('');
-            
+
             navigate('/login');
         } catch (error) {
             console.error('Erro ao cadastrar o usuário:', error);
@@ -57,11 +57,9 @@ export default function Register() {
                 <main>
                     <div className="headline">
                         <h1>criar uma conta como passageira</h1>
-                        <p>
-                            faça login ou registre-se para começar a para trilhar seu caminho
-                            ainda hoje.
-                        </p>
+                        <p> faça login ou registre-se para começar.</p>
                     </div>
+
                     <form>
                         <div className="input-wrapper">
                             <label htmlFor="text">nome completo</label>
@@ -145,13 +143,13 @@ export default function Register() {
                         <button type="submit" onClick={handleFormSubmit}>criar</button>
 
                         <div className="create-account">
-                            já possui uma conta?
-                            <a href="#"> entrar</a>
+                            <p>já possui uma conta?</p><a href="#"> entrar</a>
                         </div>
                     </form>
+
                 </main>
             </div>
-            {/* <img src={bg} alt="" /> */}
+            <img src={bg} alt="" />
         </div>
     );
 }

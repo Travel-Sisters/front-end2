@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import './Login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import rosa from '../../assets/img/rosa.png';
+import azul from '../../assets/img/logo-azul.png';
 import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
-import bg from '../../assets/img/bg.jpg';
+import bg from '../../assets/img/bg-azul.png';
+import { analyze } from 'eslint-scope';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -51,16 +52,18 @@ export default function Login() {
 
     return (
         <>
-            <div id="page" className="flex" >
+            <div id="page-moto" className="flex" >
 
                 <div>
                     <header >
-                        <img src={rosa} alt="" />
+                        <img src={azul} alt="" />
                     </header>
                     <main>
+                        <br /><br /><br />
                         <div className="headline">
-                            <h1>faça login primeiro pra te redirecionarmos ao cadasdtro de motorista.</h1>
-                                                    </div>
+                            <h1>acesse a plataforma</h1>
+                            <p>faça login primeiro pra te redirecionarmos ao cadastro de motorista.</p>
+                        </div>
                         <form>
                             <div className="input-wrapper">
                                 <label htmlFor="email">e-mail</label>
@@ -107,7 +110,7 @@ export default function Login() {
 
                     </main>
                 </div>
-                {/* <img src={bg} alt="giovana" /> */}
+                <img src={bg} alt="" />
             </div>
         </>
     )

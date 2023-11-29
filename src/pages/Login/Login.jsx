@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import rosa from '../../assets/img/rosa.png';
 import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
@@ -44,11 +44,11 @@ export default function Login() {
 
                 if (response.data.userId !== null && response.data.userId !== undefined) {
                     const responseM = await axios.get(`http://localhost:8080/usuarios/verificar-perfil/${response.data.userId}`);
-                    
+
                     sessionStorage.setItem('idMotoristaLogin', responseM.data.id);
 
                     if (responseM.status === 204) {
-                        
+
                         navigate('/passageira')
                     } else {
                         Swal.fire({
@@ -89,7 +89,7 @@ export default function Login() {
                 <div>
                     <header>
                         <img src={rosa}
-                            alt=""/>
+                            alt="" />
                     </header>
                     <main>
                         <div className="headline">
@@ -109,7 +109,7 @@ export default function Login() {
                                         (e) => setEmail(e.target.value)
                                     }
                                     required
-                                    placeholder="digite seu e-mail"/>
+                                    placeholder="digite seu e-mail" />
                             </div>
 
                             <div className="input-wrapper">
@@ -118,8 +118,8 @@ export default function Login() {
                                 </div>
 
                                 <input type={
-                                        passwordVisible ? 'text' : 'password'
-                                    }
+                                    passwordVisible ? 'text' : 'password'
+                                }
                                     id="senha"
                                     value={
                                         senha.senha
@@ -127,39 +127,36 @@ export default function Login() {
                                     onChange={
                                         (e) => setSenha(e.target.value)
                                     }
-                                    placeholder="digite sua senha"/>
+                                    placeholder="digite sua senha" />
 
                                 <img onClick={togglePassword}
                                     className={
-                                        `eye ${
-                                            passwordVisible ? 'hide' : ''
+                                        `eye ${passwordVisible ? 'hide' : ''
                                         }`
                                     }
                                     src={eyeOff}
-                                    alt=""/>
+                                    alt="" />
                                 <img onClick={togglePassword}
                                     className={
-                                        `eye ${
-                                            passwordVisible ? '' : 'hide'
+                                        `eye ${passwordVisible ? '' : 'hide'
                                         }`
                                     }
                                     src={eye}
-                                    alt=""/>
+                                    alt="" />
                             </div>
 
                             <button type="submit"
                                 onClick={handleFormSubmit}>entrar</button>
 
                             <div className="create-account">
-                                não tem uma conta?
-                                <a href="#">
-                                    criar</a>
+                                <p>já possui uma conta?</p><a href="#"> entrar</a>
                             </div>
                         </form>
 
                     </main>
                 </div>
-                {/* <img src={bg} alt="giovana" /> */} </div>
+                <img src={bg} alt="giovana" />
+            </div>
         </>
     )
 }
