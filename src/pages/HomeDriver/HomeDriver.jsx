@@ -20,7 +20,7 @@ export default function HomeDriver() {
     const navigate = useNavigate();
 
     const navegarViagem = () => {
-        navigate('/viagem');
+        navigate('/contratacao');
     };
 
     const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
@@ -39,6 +39,10 @@ export default function HomeDriver() {
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
+    };
+
+    const navegarPerfil = () => {
+        navigate('/perfil-motorista');
     };
 
     return (
@@ -75,12 +79,12 @@ export default function HomeDriver() {
                                         <ul className="dropdown-menu">
                                             <li className="dropdown-item">
                                                 <i className="ri-map-2-line dropdown-icon"></i>
-                                                <span className="dropdown-name">minhas viagens</span>
+                                                <span onClick={navegarPerfil} className="dropdown-name">meu perfil</span>
                                             </li>
 
                                             <li className="dropdown-item">
                                                 <i className="ri-settings-3-line dropdown-icon"></i>
-                                                <span className="dropdown-name">editar perfil</span>
+                                                <span className="dropdown-name">sair</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -106,21 +110,7 @@ export default function HomeDriver() {
                                     Cadastrar viagem
                                 </button>
 
-                                <br />
-                                <br />
-
-                                <button onClick={gerarCsv}
-                                    className="button button-flex">
-                                    Gerar Csv com todas as suas viagens
-                                </button>
-
-                                <br />
-                                <br />
-
-                                <button onClick={gerarTxt}
-                                    className="button button-flex">
-                                    Gerar Txt com todas as suas viagens
-                                </button>
+                            
                             </div>
 
 

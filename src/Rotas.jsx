@@ -10,12 +10,10 @@ import Register from './pages/Register/Register'
 import LandingPage from './pages/LandingPage/LandingPage'
 import Login from './pages/Login/Login'
 import Hiring from './pages/Hiring/Hiring'
-import Viagem from './pages/Viagem/Viagem'
 import Sair from './pages/LogOff/LogOff'
 import RegisterMotorista from './pages/RegisterMotorista/RegisterMotorista'
 import LoginValidacao from './pages/LoginValidacao/LoginValidacao'
 import RegisterUsuarioEMotorista from './pages/RegisterUsuarioEMotorista/RegisterUsuarioEMotorista'
-import Viagens from './pages/Trips/Trip'
 import Profile from './pages/Profile/Profile'
 import ProfilePassenger from './pages/ProfilePassenger/ProfilePassenger'
 
@@ -39,8 +37,6 @@ function Rota() {
                     <Route path="/login-validacao" element={<LoginValidacao />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/home" element={<LandingPage />} />
-                    <Route path="/viagens" element={<Viagens />} />
-                    <Route path="/viagem" element={<Viagem />} />
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/sair" element={<Sair />} />
                     <Route path="/perfil-motorista" element={<Profile />} />
