@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import React, {useEffect, useState, useRef} from 'react';
+import {MapContainer, TileLayer, Marker} from "react-leaflet";
+import { useNavigate } from 'react-router-dom';
 import * as map from './mapa.js';
 import L from 'leaflet';
 
@@ -7,10 +8,16 @@ import './Confirmation.css'
 import axios from 'axios';
 
 function Confirmation() {
+    const navigate = useNavigate();    
 
     const embarque = sessionStorage.getItem('embarque') || {};
     const desembarque = sessionStorage.getItem('desembarque') || {};
     const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
+
+    const navegarChat = () => {
+        alert('Viagem confirmada!')
+        navigate('/chat');
+    };
 
     const handleFormSubmit = async (evento) => {
         try {
@@ -19,7 +26,8 @@ function Confirmation() {
             const response = await axios.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
             console.log('Resposta do servidor:', response.data);
 
-            alert('Pilha desfeita com sucesso!');
+            alert('Viagem desfeita com sucesso!');
+            navigate('/contratacao');
 
         } catch (error) {
             console.error('Erro ao cancelar:', error);
@@ -27,7 +35,7 @@ function Confirmation() {
         }
     };
 
-    const [center, setCenter] = useState({ lat: 13.084622, lng: 80.248357 });
+    const [center, setCenter] = useState({lat: 13.084622, lng: 80.248357});
     const ZOOM_LEVEL = 9;
     const mapRef = useRef();
 
@@ -61,43 +69,48 @@ function Confirmation() {
                                 </p>
                             </div>
                             <div className="resumo">
-                                <p>escolha o destino da sua viagem, revise
-                                    todos os detalhes cuidadosamente e crie um grupo de viagem!
+                                <p>revise
+                                                                                                            todos os detalhes cuidadosamente!
                                 </p>
                             </div>
                         </div>
+
+                        <br/>
+
                         <div className="select-box">
+                            <label htmlFor="text">ponto de encontro</label>
+
                             <input type="text"
                                 placeholder={embarque}
-                                disabled />
-                            <br />
+                                disabled/>
+                            <br/>
+
+                            <label htmlFor="text">ponto de desembarque</label>
                             <input type="text"
                                 placeholder={desembarque}
-                                disabled />
-                            <br />
+                                disabled/>
+                            <br/>
                             <button id="button"
-                            //onclick={getLongAndLat()}
-                            >
+                            onClick={navegarChat}>
                                 confirmar
                             </button>
+
                             <button id="button"
                                 onClick={handleFormSubmit}>
                                 cancelar
                             </button>
+
                         </div>
                     </div>
                     <div className="mapa" id="mapa">
                         <div className="mapa-container">
-                            <MapContainer
-                                className="markercluster-map"
-                                center={[51.0, 19.0]}
+                            <MapContainer className="markercluster-map"
+                                center={
+                                    [51.0, 19.0]
+                                }
                                 zoom={4}
-                                maxZoom={18}
-                            >
-                                <TileLayer
-                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                />
+                                maxZoom={18}>
+                                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
                             </MapContainer>
                         </div>
                     </div>

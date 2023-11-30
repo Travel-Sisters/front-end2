@@ -16,10 +16,7 @@ export default function Menu() {
               <a href="#home" className="nav-link active-link">início</a>
             </li>
             <li className="nav-item">
-              <a href="#about" className="nav-link">minhas viagens</a>
-            </li>
-            <li className="nav-item">
-              <a href="#driver" className="nav-link">editar perfil</a>
+              <a href="#driver" className="nav-link">perfil</a>
             </li>
           </ul>
         </div>
