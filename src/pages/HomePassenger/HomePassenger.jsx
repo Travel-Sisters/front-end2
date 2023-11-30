@@ -134,7 +134,7 @@ export default function HomePassenger() {
                                     <label className="sr-only" htmlFor="destino">destino</label>
                                     <i className="ph-map-pin-light"></i>
                                     <select name="destino" id="destino">
-                                        <option value="0" selected>escolha destino e ponto de encontro</option>
+                                        <option value="0" selected disabled>escolha destino e ponto de encontro</option>
                                         <option value="sao-paulo">Guarulhos - Metrô Barra Funda</option>
                                         <option value="sao-paulo">Praia Grande - Metrô Barra Funda</option>
                                         <option value="sao-paulo">Monguagá - Metrô Luz</option>

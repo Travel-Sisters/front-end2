@@ -45,8 +45,7 @@
 }
 
 #page-moto-user img {
-    flex-basis: 60%;
-    width: 100%;
+    flex-basis: 55%;
     object-fit: cover;
 }
 
@@ -71,8 +70,8 @@
 }
 
 #page-moto-user h1 {
-    font-size: 3.6rem;
-    line-height: 5.5rem;
+    font-size: 3rem;
+    /* line-height: 5.5rem; */
     color: var(--text);
 }
 

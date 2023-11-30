@@ -10,7 +10,7 @@ function SplashScreen() {
                 <section className="home">
                     <div className="home-container container">
                         <div className="home-data">
-                            <span className="home-subtitle">Travel Sisters</span>
+                            <span className="home-subtitle"><b>Travel Sisters</b></span>
                             <h1 className="home-title">
                                 trilhe seu próprio
                                 caminho</h1>
@@ -22,10 +22,10 @@ function SplashScreen() {
                             <a href="#" className="home-button">
                                 quero conhecer
                             </a>
-                            <a href="#" className="home-button-second">
+                            <b><a href="#" className="home-button-second">
                                 quero me inscrever →
                             </a>
-                            
+                            </b>
                         </div>
 
                         <div className="home-img">

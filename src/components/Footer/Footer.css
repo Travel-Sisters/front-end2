@@ -12,10 +12,6 @@
     transition: 0.3s;
 }
 
-.footer-logo:hover {
-    color: var(--azulDegrade);
-}
-
 .footer-title {
     margin-bottom: 1.5rem;
 }

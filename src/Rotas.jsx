@@ -29,7 +29,7 @@ function Rota() {
                 <Routes>
                     <Route path="/motorista" element={<HomeDriver />} />
                     <Route path="/passageira" element={<HomePassenger />} />
-                    <Route path="/index" element={<SplashScreen />} />
+                    <Route path={"/"} element={<SplashScreen />} />
                     <Route path="/direcionador" element={<Redirection />} />
                     <Route path="/contratacao" element={<Hiring />} />
                     <Route path="/confirmacao" element={<Confirmation />} />
@@ -44,8 +44,9 @@ function Rota() {
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/sair" element={<Sair />} />
                     <Route path="/perfil-motorista" element={<Profile />} />
-                    <Route path="/perfil-passageira" element={<ProfilePassenger />} />                    
+                    <Route path="/perfil-passageira" element={<ProfilePassenger />} />
                 </Routes>
+
             </Router>
         </>
     )

@@ -4,10 +4,10 @@ import './Footer.css'
 
 export default function Footer() {
   return (
-    <footer className="footer section">
+    <footer className="footer section" id='footer'>
       <div className="footer-container container grid">
         <div className="footer-content">
-          <a href="#" className="footer-logo">Travel Sisters</a>
+          <a href="#" className="footer-logo" style={{color: '#CF3460'}}>Travel Sisters</a>
         </div>
         <div className="footer-content">
           <h3 className="footer-title">sobre nós</h3>

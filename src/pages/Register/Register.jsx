@@ -3,7 +3,7 @@ import './Register.css';
 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import rosa from '../../assets/img/rosa.png';
+import rosa from '../../assets/img/logo-rosa.png';
 import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg.jpg';
@@ -49,7 +49,7 @@ export default function Register() {
     };
 
     return (
-        <div id="page" className="flex">
+        <div id="page-register" className="flex">
             <div>
                 <header>
                     <img src={rosa} alt="" />
