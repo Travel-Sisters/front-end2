@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './Register.css';
-
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import rosa from '../../assets/img/rosa.png';
 import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg.jpg';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -21,6 +22,11 @@ export default function Register() {
         setPasswordVisible((prev) => !prev);
     };
 
+    const handleNumberChange = (event, setStateFunction) => {
+        const cleanedValue = event.target.value.replace(/\D/g, '');
+        setStateFunction(cleanedValue);
+    };
+
     const handleFormSubmit = async (evento) => {
         evento.preventDefault();
         const usuario = {
@@ -30,6 +36,48 @@ export default function Register() {
             nascimento,
             senha,
         };
+
+        const dataNascimento = new Date(nascimento);
+        const anoNascimento = dataNascimento.getFullYear();
+        const anoAtual = new Date().getFullYear();
+        if (!nome.trim() || !email.trim() || !cpf.trim() || !nascimento.trim() || !senha.trim()) {
+            Swal.fire({
+                title: 'Preencha todos os campos!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
+        // Regex para validar tudo do e-mail: const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /@/;
+        if (!emailRegex.test(email.trim())) {
+            Swal.fire({
+                title: 'E-mail inválido!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
+        const cpfNumerico = cpf.replace(/\D/g, '');
+        const cpfRegex = /^\d{11}$/;
+        if (!cpfRegex.test(cpfNumerico)) {
+            Swal.fire({
+                title: 'CPF inválido!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+        if (anoAtual - anoNascimento < 18) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Você deve ter pelo menos 18 anos para se cadastrar.',
+            });
+            return;
+        }
 
         try {
             const response = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
@@ -44,7 +92,12 @@ export default function Register() {
             navigate('/login');
         } catch (error) {
             console.error('Erro ao cadastrar o usuário:', error);
-            alert('OPS! Alguma coisa deu errado!');
+            Swal.fire({
+                title: 'Erro ao cadastrar usuário',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            document.getElementById('senha').value = '';
         }
     };
 
@@ -93,11 +146,15 @@ export default function Register() {
                             <input
                                 id="cpf"
                                 name="cpf"
-                                value={cpf.cpf}
-                                onChange={(e) => setCPF(e.target.value)}
+                                value={cpf}
+                                onChange={(e) => {
+                                    setCPF(e.target.value);
+                                    handleNumberChange(e, setCPF);
+                                }}
                                 required
                                 placeholder="digite seu CPF"
                             />
+
                         </div>
 
                         <div className="input-wrapper">
@@ -106,7 +163,9 @@ export default function Register() {
                                 id="date"
                                 name="data"
                                 value={nascimento.nascimento}
-                                onChange={(e) => setNascimento(e.target.value)}
+                                onChange={(e) => {
+                                    setNascimento(e.target.value);
+                                }}
                                 required
                                 placeholder="digite sua data de nascimento"
                             />
@@ -143,7 +202,7 @@ export default function Register() {
                         <button type="submit" onClick={handleFormSubmit}>criar</button>
 
                         <div className="create-account">
-                            <p>já possui uma conta?</p><a href="#"> entrar</a>
+                            <p>já possui uma conta?</p><a><span onClick={() => navigate('/login')}> entrar</span></a>
                         </div>
                     </form>
 

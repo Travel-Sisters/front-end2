@@ -20,12 +20,22 @@ export default function Login() {
         setPasswordVisible((prev) => !prev);
     };
 
+
     const handleFormSubmit = async (evento) => {
         evento.preventDefault();
         const usuario = {
             email,
             senha
         };
+                if (!email || !senha) {
+            Swal.fire({
+                title: 'Preencha todos os campos!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
 
         try {
             const response = await axios.post('http://localhost:8080/usuarios/entrar', usuario);
@@ -78,7 +88,12 @@ export default function Login() {
             }
         } catch (error) {
             console.error('Erro ao logar usuário:', error);
-            alert('OPS! Alguma coisa deu errado!');
+            Swal.fire({
+                title: 'E-mail ou senha incorretos',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            document.getElementById('senha').value = '';
         }
     };
 
@@ -149,7 +164,8 @@ export default function Login() {
                                 onClick={handleFormSubmit}>entrar</button>
 
                             <div className="create-account">
-                                <p>já possui uma conta?</p><a href="#"> entrar</a>
+                                {/* <p>não possui uma conta?</p><a href="#"> cadastrar-se</a> */}
+                                <p>não possui uma conta?</p><a><span onClick={() => navigate('/cadastro')}>cadastrar-se</span></a>
                             </div>
                         </form>
 

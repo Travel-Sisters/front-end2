@@ -7,9 +7,12 @@ import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg-azul.png';
 import { analyze } from 'eslint-scope';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default function Login() {
     const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -24,6 +27,14 @@ export default function Login() {
             email,
             senha,
         };
+        if (!email || !senha) {
+            Swal.fire({
+                title: 'Preencha todos os campos!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
 
         try {
             const response = await axios.post('http://localhost:8080/usuarios/entrar', usuario);
@@ -46,7 +57,12 @@ export default function Login() {
             }
         } catch (error) {
             console.error('Erro ao encontrar usuário:', error);
-            alert('OPS! Alguma coisa deu errado!');
+            Swal.fire({
+                title: 'E-mail ou senha incorretos',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            document.getElementById('senha').value = '';
         }
     };
 
