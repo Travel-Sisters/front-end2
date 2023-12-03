@@ -1,14 +1,15 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {MapContainer, TileLayer, Marker} from "react-leaflet";
+import React, { useEffect, useState, useRef } from 'react';
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useNavigate } from 'react-router-dom';
 import * as map from './mapa.js';
 import L from 'leaflet';
-
-import './Confirmation.css'
 import axios from 'axios';
 
+import './Confirmation.css'
+import Menu from '../../components/Menu/Menu'
+
 function Confirmation() {
-    const navigate = useNavigate();    
+    const navigate = useNavigate();
 
     const embarque = sessionStorage.getItem('embarque') || {};
     const desembarque = sessionStorage.getItem('desembarque') || {};
@@ -35,7 +36,7 @@ function Confirmation() {
         }
     };
 
-    const [center, setCenter] = useState({lat: 13.084622, lng: 80.248357});
+    const [center, setCenter] = useState({ lat: 13.084622, lng: 80.248357 });
     const ZOOM_LEVEL = 9;
     const mapRef = useRef();
 
@@ -57,7 +58,22 @@ function Confirmation() {
 
     return (
         <>
-            <div id="page-confirmation">
+            <section className="confirmation id=" confirmation>
+                <div className="confirmation-container container grid">
+                    <Menu/>
+                    <div className="confirmation-data">
+                        <h2 className="confirmation-title">confirme o destino</h2>
+                        <p className="confirmation-description">
+                            revise os detalhes da sua viagem e junte-se ao seu grupo de viagem!
+                        </p>
+                    </div>
+
+
+                </div>
+            </section>
+
+
+            {/* <div id="page-confirmation">
                 <div id="container">
                     <div className="elementos">
                         <div id="textos">
@@ -116,7 +132,7 @@ function Confirmation() {
                     </div>
 
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }

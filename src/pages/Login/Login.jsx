@@ -50,7 +50,7 @@ export default function Login() {
                     if (responseM.status === 204) {
 
                         navigate('/passageira')
-                    } else {
+                    } else if (responseM.status === 200) {
                         Swal.fire({
                             title: 'Escolha uma opção:',
                             icon: 'question',

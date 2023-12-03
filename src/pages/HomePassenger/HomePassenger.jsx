@@ -176,7 +176,7 @@ export default function HomePassenger() {
                                         onChange={
                                             (e) => handleChange(e, 'viagem')
                                     }>
-                                        <option value="">escolha os lugares disponíveis</option>
+                                        <option value="" disabled>escolha os lugares disponíveis</option>
                                         {
                                         viagens.map((viagem) => (
                                             <option key={

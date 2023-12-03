@@ -61,14 +61,18 @@ input[type="password"] {
     font: var(--body-font);
 }
 
-input:focus,
-input:hover {
+#page-profile input[type="text"]:focus,
+#page-profile input[type="email"]:focus,
+#page-profileinput [type="password"]:focus,
+#page-profile input[type="password"]:hover,
+#page-profileinput [type="email"]:hover,
+#page-profile input[type="text"]:hover {
     border: 0.1rem solid var(--purple);
     outline: 0;
 }
 
-input.email,
-input.text.w3lpass {
+#page-profile input.email,
+#page-profile input.text.w3lpass {
     margin: 1.4em 0;
 }
 

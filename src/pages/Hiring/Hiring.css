@@ -1,91 +1,124 @@
+#page-profile .section {
+  margin-top: -6rem;
+}
+
+#page-profile .header {
+  width: 100%;
+  background-color: var(--body-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  transition: .4s;
+}
+
+#page-profile .section-title {
+  font-size: var(--h3-font-size);
+  color: var(--text);
+}
+
+#page-profile .container {
+  max-width: 968px;
+  margin-left: var(--mb-1-5);
+  margin-right: var(--mb-1-5);
+}
+
+#page-profile .grid {
+  display: grid;
+}
+
+#page-profile .main {
+  overflow: hidden;
+}
+
 #container {
-    margin: 0% 10%;
-    height: 53vh;
-    margin-top: 7%;
-  }
-  
-  .inputs {
-    display: flex;
-  }
-  
-  .inputs input {
-    width: 38vw;
-    height: 5vh;
-    padding: 1.2rem;
-    border-radius: 5px;
-    padding-left: 10px;
-  
-    border: 0.1rem solid #e2e8f0;
-    border-radius: 0.4rem;
-    padding: 1.6rem 1.2rem;
-    margin-top: 0.8rem;
-  
-    color: var(--grey);
-    font: var(--body-font);
-  }
-  
-  .inputs input:focus,
-  .inputs input:hover{
-    border: 0.1rem solid var(--pink);
-    outline: 0;
-    
-  }
-  
-  .inputs input label {
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
-    color: var(--text);
-  }
-  
-  
-  .titulo {
-    font-size: 30px;
-  }
-  
-  .sub p {
-    font-size: 20px;
-    margin-bottom: 2%;
-  
-  }
-  
-  .inputs p {
-    font-size: 15px;
-  }
-  
-  .lado2 {
-    margin-left: 2%;
-  }
-  
-  .descricao p {
-    font-size: 15px;
-  }
-  
-  .descricao input {
-    width: 79vw;
-    height: 10vh;
-    border-radius: 5px;
-    padding-left: 10px;
-  }
-  
-  .butt {
-    margin: 0% 10%;
-  }
-  
-  #cad {
-    padding: 10px 10px;
-    background-color: var(--pink);
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-    width: auto;
-    border: none;
-    margin-top: 7%;
-  }
-  
-  #limp {
-    background-color: transparent;
-    border: none;
-    margin-left: 2%;
-    cursor: pointer;
-  } 
+  /* margin: 0% 10%; */
+  height: 53vh;
+  margin-top: 10%;
+}
+
+.inputs {
+  display: flex;
+}
+
+.inputs input {
+  width: 38vw;
+  height: 5vh;
+  padding: 1.2rem;
+  border-radius: 5px;
+  padding-left: 10px;
+
+  border: 0.1rem solid #e2e8f0;
+  border-radius: 0.4rem;
+  padding: 1.6rem 1.2rem;
+  margin-top: 0.8rem;
+
+  color: var(--grey);
+  font: var(--body-font);
+}
+
+.inputs input:focus,
+.inputs input:hover {
+  border: 0.1rem solid var(--pink);
+  outline: 0;
+
+}
+
+.inputs input label {
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: var(--text);
+}
+
+
+.titulo {
+  font-size: 30px;
+}
+
+.sub p {
+  font-size: 20px;
+  margin-bottom: 2%;
+
+}
+
+.inputs p {
+  font-size: 15px;
+}
+
+.lado2 {
+  margin-left: 2%;
+}
+
+.descricao p {
+  font-size: 15px;
+}
+
+.descricao input {
+  width: 79vw;
+  height: 10vh;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.butt {
+  margin: 0% 10%;
+}
+
+#cad {
+  padding: 10px 10px;
+  background-color: var(--pink);
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  width: auto;
+  border: none;
+  margin-top: 7%;
+}
+
+#limp {
+  background-color: transparent;
+  border: none;
+  margin-left: 2%;
+  cursor: pointer;
+}
