@@ -183,6 +183,9 @@
     color: var(--grey);
     font-weight: 500;
 }
+#page .create-account a {
+    cursor: pointer;
+}
 
 @media (max-width: 900px) {
     #page>* {
