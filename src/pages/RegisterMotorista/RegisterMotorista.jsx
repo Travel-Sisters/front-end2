@@ -26,7 +26,7 @@ export default function Register() {
         };
 
         try {
-            const idUsuario = sessionStorage.getItem('idUusario');
+            const idUsuario = sessionStorage.getItem('idUsuarioLogin');
 
             console.log('SESSION STORAGE USUARIO' + idUsuario)
 

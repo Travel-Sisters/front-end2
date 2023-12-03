@@ -4,9 +4,7 @@ import axios from 'axios';
 import './Chat.css';
 
 export default function Chat() {
-  // const [messages, setMessages] = useState([]);
-  // const [newMessage, setNewMessage] = useState('');
-  // const socket = io('http://localhost:3001');
+  const [messages, setMessages] = useState([]);
   const [socket, setSocket] = useState(null);
   const [message, setMessage] = useState('');
   const [chatId, setChatId] = useState();
@@ -18,59 +16,46 @@ export default function Chat() {
     return () => newSocket.close();
   }, []);
 
-  const getChatViagem = () => {
-    axios.get(`http://localhost:8080/`)
-  }
+  useEffect(() => {
+    const fetchChatId = async () => {
+      try {
+        // const idViagem = sessionStorage.getItem('idViagem');
+        //const response = await axios.get(`http://localhost:8080/chat/${idViagem}`);
+        const response = await axios.get(`http://localhost:8080/chat/2`);
+        console.log("DADOS RECEBIDOS >> ", response.data)
+        console.log("MOTORISTA >> ", response.data[0][1].id)
+        const parametro = response.data[0][1].id
+        setChatId(parametro);
+        console.log('MEU CHATID', parametro)
+      } catch (error) {
+        console.error('Erro ao obter o chatId do banco de dados:', error);
+      }
+    };
+    fetchChatId();
+  }, []);
 
   useEffect(() => {
-    socket.on('message', (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
-    });
-
-    
-
-    return () => {
-      socket.disconnect();
-    };
-  }, [socket]);
-
-  const sendMessage = () => {
-    socket.emit('message', newMessage);
-    const [currentDate, setCurrentDate] = useState(new Date());
-
-    axios.post('http://localhost:8080/chat/', {id: sessionStorage.getItem('idUsuarioLogin'),
-                                               mensagem: newMessage,
-                                               data: currentDate.getDate,
-                                               hora: currentDate.getTime,
-                                               //chat_viagem: ->preciso terminar
-
-    })
-      .then((response) => {
-        setMessages(response.data);
-      });
-    setNewMessage('');
-  }
- 
-  const handleChangeChat = (newChatId) => {
-    setChatId(newChatId); 
-  };
-
-  const handleJoinChat = () => {
-    socket.emit('join_chat', chatId);
-    console.log(chatId)
-  };
+    if (socket) {
+      socket.emit('join_chat', chatId);
+      console.log("ENTREI NO CHAT ", chatId)
+    }
+  }, [chatId]);
 
   const handleMessageSend = () => {
     socket.emit('message', { message, chatId });
     setMessage('');
   };
+
   useEffect(() => {
     if (!socket) return;
 
     socket.on('new_message', (data) => {
       console.log(`Nova mensagem: ${data.message} - Usuário: ${data.user}`);
-    });
+      console.log(data)
+      setMessages(data)
 
+    });
+    
     return () => socket.off('new_message');
   }, [socket]);
 
@@ -80,44 +65,37 @@ export default function Chat() {
         <div id="messages">
           <div id="last-seen">hoje 11:30</div>
           <div className="messages">
-            {messages.map((message, index) => (
-              <div key={index} className={`message ${message.from === 'you' ? 'you' : ''}`}>
-                <div className="top">{message.sender} - {message.time}</div>
-                <div className="body">{message.body}</div>
+            {messages ? (
+            messages.map((message) => (
+              // <div key={index} className={`message ${message.from === 'you' ? 'you' : ''}`}>
+                <div key={index}>
+                {/* <div className="top">{message.user} - {message.time}</div> */}
+                <div className="top">{message.user}</div> 
+                <div className="body">{message.message}</div>
               </div>
-            ))}
+            ))):
+            (
+              <h1>NAO TEM NESSA BOSTA</h1>
+            )}
           </div>
         </div>
-        <form id="bottom" onSubmit={(e) => { e.preventDefault(); sendMessage(); }}>
+        <form id="bottom"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleMessageSend();
+          }}
+        >
           <input
             type="text"
             placeholder="digite sua mensagem"
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
           />
-          <button type="submit">
+          <button type="submit" onClick={handleMessageSend}>
             <i className="ph-paper-plane-right-fill"></i>
           </button>
         </form>
       </div>
     </div>
   );
-}
-
-// return (
-//   <div>
-//     <button onClick={() => handleChangeChat(1)}>Mudar para Chat 1</button>
-//     <br />
-//     <button onClick={() => handleChangeChat(2)}>Mudar para Chat 2</button>
-//     <br />
-//     <button onClick={handleJoinChat}>Entrar no Chat</button>
-//     <br />
-//     <button onClick={handleJoinChat}>Entrar em outro Chat</button>
-//     <input
-//       type="text"
-//       value={message}
-//       onChange={(e) => setMessage(e.target.value)}
-//     />
-//     <button onClick={handleMessageSend}>Enviar Mensagem</button>
-//   </div>
-// );
+};
