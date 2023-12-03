@@ -1,10 +1,10 @@
-/* #page-chat body {
+#page-chat body {
     background-color: #FAFAFA;
     font-size: .8rem;
 
     color: #202020;
     height: 100vh;
-    overflow: hidden; comentar esse depois
+    overflow: hidden; 
 }
 
 #page-chat #app {
@@ -142,7 +142,7 @@
 #page-chat button {
     background-color: transparent;
     border: 0;
-} */
+}
 
 /* index.css (ou ChatRoom.css, se preferir) */
 

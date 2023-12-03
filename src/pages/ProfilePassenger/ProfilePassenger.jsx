@@ -12,6 +12,8 @@ export default function ProfilePassenger() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
+    const idUsuario = sessionStorage.getItem('idUsuarioLogin') || {};
+
     const handleFormSubmit = async (evento) => {
         evento.preventDefault();
         const passageira = {
@@ -21,7 +23,7 @@ export default function ProfilePassenger() {
         };
 
         try {
-            const response = await axios.put(`http://localhost:8080/passsageiras/alterar/${idPassageira}`, passageira);
+            const response = await axios.put(`http://localhost:8080/usuarios/alterar/${idUsuario}`, passageira);
             console.log('Resposta do servidor:', response.data);
             alert('passageira foi alterado com sucesso!');
 

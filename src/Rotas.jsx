@@ -16,7 +16,9 @@ import LoginValidacao from './pages/LoginValidacao/LoginValidacao'
 import RegisterUsuarioEMotorista from './pages/RegisterUsuarioEMotorista/RegisterUsuarioEMotorista'
 import Profile from './pages/Profile/Profile'
 import ProfilePassenger from './pages/ProfilePassenger/ProfilePassenger'
-
+import Teste from './pages/Teste/Teste'
+import Report from './pages/Report/Report'
+import Validation from './pages/Validation/Validation'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -26,6 +28,7 @@ function Rota() {
             <Router>
                 <Routes>
                     <Route path="/motorista" element={<HomeDriver />} />
+                    <Route path='/teste' element={<Teste />} />
                     <Route path="/passageira" element={<HomePassenger />} />
                     <Route path={"/"} element={<SplashScreen />} />
                     <Route path="/direcionador" element={<Redirection />} />
@@ -41,6 +44,8 @@ function Rota() {
                     <Route path="/sair" element={<Sair />} />
                     <Route path="/perfil-motorista" element={<Profile />} />
                     <Route path="/perfil-passageira" element={<ProfilePassenger />} />
+                    <Route path="/relatorio" element={<Report />} />
+                    <Route path="/validacao" element={<Validation />} />
                 </Routes>
 
             </Router>

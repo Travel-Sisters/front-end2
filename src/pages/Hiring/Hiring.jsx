@@ -81,7 +81,7 @@ function Hiring() {
 
     return (
         <>
-            <section className="profile" id="page-profile">
+            {/* <section className="profile" id="page-profile">
                 <div className="profile-container container grid">
                     <Menu />
 
@@ -125,7 +125,7 @@ function Hiring() {
 
                                 <input id="valor" name="valor"
                                     value={
-                                        valor.valor
+                                        valor.valor //mudar
                                     }
                                     onChange={
                                         (e) => setValor(e.target.value)
@@ -136,7 +136,7 @@ function Hiring() {
 
                             </div>
                             <div class="lado2">
-                                <label htmlFor="text">ponto de encontro</label>
+                                <label htmlFor="text">Valor da V</label>
 
                                 <select id="pontoEmbarque" name="pontoEmbarque"
                                     value={
@@ -208,14 +208,141 @@ function Hiring() {
                     <br />
                     <div class="butt">
                         <button id="cad" type="submit"
-                            onClick={handleFormSubmit}>cadastrar e ir para o chat</button> 
-                            //confirmar com minha vida
-                            
+                            onClick={handleFormSubmit}>cadastrar viagem</button>
                         <button id="limp" onclick="limpar()">X limpar tudo</button>
                     </div>
 
                 </div>
-            </section>
+            </section> */}
+
+
+            <div id="container">
+                <div class="titulo">
+                    <p>
+                        <b>cadastre sua viagem</b>
+                    </p>
+                </div>
+                <div class="sub">
+                    <p>endereços e horários</p>
+                </div>
+                <div class="inputs">
+                    <div class="lado">
+
+
+                        <label htmlFor="text">descrição</label>
+
+                        <input id="descricao" name="descricao"
+                            value={
+                                descricao.descricao
+                            }
+                            onChange={
+                                (e) => setDescricao(e.target.value)
+                            }
+                            required
+                            placeholder="insira aqui informações relevantes sobre a viagem"/>
+
+                        <label htmlFor="text">data da viagem</label>
+
+                        <input id="data" name="data"
+                            value={
+                                data.data
+                            }
+                            onChange={
+                                (e) => setData(e.target.value)
+                            }
+                            required
+                            placeholder="2025-05-12"/>
+
+                        <label htmlFor="text">preço</label>
+
+                        <input id="valor" name="valor"
+                            value={
+                                valor.valor
+                            }
+                            onChange={
+                                (e) => setValor(e.target.value)
+                            }
+                            required
+                            placeholder="R$00.00"/>
+
+
+                    </div>
+                    <div class="lado2">
+                        <label htmlFor="text">ponto de encontro</label>
+
+                        <select id="pontoEmbarque" name="pontoEmbarque"
+                            value={
+                                pontoEmbarque ? pontoEmbarque.nome : ''
+                            }
+                            onChange={
+                                (e) => handleChange(e, 'embarque')
+                        }>
+                            <option value="">escolha os lugares disponíveis</option>
+                            {
+                            enderecos.map((endereco) => (
+                                <option key={
+                                        endereco.id
+                                    }
+                                    value={
+                                        endereco.nome
+                                }>
+                                    {
+                                    endereco.nome
+                                } </option>
+                            ))
+                        } </select>
+
+                        <br/>
+                        <br/>
+
+                        <label htmlFor="text">ponto de encontro</label>
+
+                        <select id="pontoDesembarque" name="pontoDesembarque"
+                            value={
+                                pontoDesembarque ? pontoDesembarque.nome : ''
+                            }
+                            onChange={
+                                (e) => handleChange(e, 'desembarque')
+                        }>
+                            <option value="">escolha os lugares disponíveis</option>
+                            {
+                            enderecos.map((endereco) => (
+                                <option key={
+                                        endereco.id
+                                    }
+                                    value={
+                                        endereco.nome
+                                }>
+                                    {
+                                    endereco.nome
+                                } </option>
+                            ))
+                        } </select>
+
+                        <br/>
+
+                        <label htmlFor="text">horário</label>
+
+                        <input type="time" id="horario" name="horario"
+                            value={
+                                horario.horario
+                            }
+                            onChange={
+                                (e) => setHorario(e.target.value)
+                            }
+                            required
+                            placeholder="horário"/>
+
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <div class="butt">
+                <button id="cad" type="submit"
+                    onClick={handleFormSubmit}>cadastrar viagem</button>
+                <button id="limp" onclick="limpar()">X limpar tudo</button>
+            </div> 
 
         </>
     )

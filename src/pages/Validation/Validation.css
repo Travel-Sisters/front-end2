@@ -1,0 +1,108 @@
+
+#container2 {
+    /* border: 2px solid black; */
+    display: flex;
+    margin: 5% 10%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-vi {
+    /* border: 2px solid black; */
+    background-color:rgba(128, 128, 128, 0.205);
+    height: 65vh;
+    width: 70vw;
+    border-radius: 10px;
+}
+
+.titulo {
+    font-size: 30px;
+}
+
+.contratacao {
+    /* border: 2px solid red; */
+    margin-left: 5%;
+}
+
+.icon {
+    display: flex;
+    margin-right: 20px; 
+    margin-top: 2%;
+    align-items: baseline;
+}
+
+.icon i {
+    font-size: 15px;
+    margin-right: 5px; 
+}
+
+.icon p {
+    margin-right: 10px; 
+    font-size: 15px;
+}
+
+.preco {
+    margin-top: 2%;
+    font-size: 25x;
+}
+
+.fav {
+    margin-top: 2%;
+    display: flex;
+    font-size: 15px;
+    align-items: baseline;
+}
+.fav p {
+    margin-left: 10px;
+}
+
+.text {
+    margin-top: 2%;
+    font-size: 15px;
+}
+
+.lugares {
+    /* border: 2px solid blue; */
+    margin-top: 2%;
+    font-size: 15px;
+}
+
+.aum {
+    margin-top: 2%;
+    display: flex;
+}
+
+.aum button {
+    width: 2vw;
+    height: 4vh;
+    font-size: 13px;
+    border-radius: 10px;
+    background-color:rgba(128, 128, 128, 0.205);
+    border: none;
+    text-align: center; 
+    cursor: pointer; 
+    padding: 5px;
+}
+
+
+#msg {
+    margin: 0 2%;
+}
+
+#contratar {
+    margin-top: 3%;
+    background-color: rgba(0, 0, 0, 0.932);
+    border-radius: 7px;
+    padding: 5px;
+    color: white; 
+    text-align: center; 
+    cursor: pointer; 
+    height: 5vh;
+    width: 30vw;
+}
+
+#contratar p{
+    letter-spacing: 1.5px;
+    font-size: 13px;
+}
