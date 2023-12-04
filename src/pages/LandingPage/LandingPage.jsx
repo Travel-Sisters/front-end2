@@ -9,13 +9,25 @@ import bgBlue from '@/assets/img/bg-blue.png';
 
 export default function LandingPage() {
     useEffect(() => {
-        const accordionItems = document.querySelectorAll('.faq-item');
+        const faqItems = document.querySelectorAll('.faq-item');
 
-        accordionItems.forEach((item) => {
-            const accordionHeader = item.querySelector('.faq-header');
+        const toggleItem = (item) => {
+            const faqContent = item.querySelector('.faq-content');
 
-            accordionHeader.addEventListener('click', () => {
-                const openItem = document.querySelector('.accordion-open');
+            if (item.classList.contains('faq-open')) {
+                faqContent.style.height = '0px';
+                item.classList.remove('faq-open');
+            } else {
+                faqContent.style.height = faqContent.scrollHeight + 'px';
+                item.classList.add('faq-open');
+            }
+        };
+
+        faqItems.forEach((item) => {
+            const faqHeader = item.querySelector('.faq-header');
+
+            faqHeader.addEventListener('click', () => {
+                const openItem = document.querySelector('.faq-open');
 
                 toggleItem(item);
 
@@ -24,20 +36,16 @@ export default function LandingPage() {
                 }
             });
         });
+
+        return () => {
+            // Limpar event listeners, se necessário
+            faqItems.forEach((item) => {
+                const faqHeader = item.querySelector('.faq-header');
+                faqHeader.removeEventListener('click', () => { });
+            });
+        };
     }, []);
 
-    const toggleItem = (item) => {
-        const accordionContent = item.querySelector('.faq-content');
-    
-        if (item.classList.contains('accordion-open')) {
-            accordionContent.style.maxHeight = '0';
-            item.classList.remove('accordion-open');
-        } else {
-            accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-            item.classList.add('accordion-open');
-        }
-    };
-    
 
     return (
         <>
@@ -62,11 +70,11 @@ export default function LandingPage() {
                                 <li className="nav-item">
                                     <a href="#faqs" className="nav-link">FAQs</a>
                                 </li>
-                                <Link to="/direcionador" target="_blank" className="nav-item" style={{ color: '#202020', fontWeight: '500'}}>
+                                <Link to="/direcionador" target="_blank" className="nav-item" style={{ color: '#202020', fontWeight: '500' }}>
                                     cadastrar
                                 </Link>
 
-                                <Link to="/login" target="_blank" className="nav-item" style={{ color: '#202020', fontWeight: '500', textDecoration: 'none'}} hover={{ color: 'red' }}>
+                                <Link to="/login" target="_blank" className="nav-item" style={{ color: '#202020', fontWeight: '500', textDecoration: 'none' }} hover={{ color: 'red' }}>
                                     entrar
                                 </Link>
                             </ul>
@@ -173,8 +181,8 @@ export default function LandingPage() {
 
                                     <div className="faq-content">
                                         <p className="faq-description">
-    
-                                            </p>
+
+                                        </p>
                                     </div>
                                 </div>
 
