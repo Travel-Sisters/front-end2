@@ -28,6 +28,8 @@ export default function Chat() {
     };
     fetchChatId();
   }, []);
+ 
+
 
   useEffect(() => {
     if (socket) {
