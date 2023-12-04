@@ -5,7 +5,7 @@
   --first-color: #CF3460;
   --first-color-alt: #CF3460;
   --first-color-light: #34cf9e;
-  /* --first-color-lighten: #e8e2f4; */
+  --first-color-lighten: #e8e2f4;
   --title-color: #202020;
   --text-color: #868686;
   --text-color-light: #868686;
@@ -639,7 +639,6 @@
 .dropdown {
   position: relative;
   width: max-content;
-  /* transform: translateY(-5rem); */
 }
 
 .dropdown-button,
@@ -677,7 +676,6 @@
 
 .dropdown-icons {
   width: 24px;
-  /* height: 24px; */
   display: grid;
   place-items: center;
 }

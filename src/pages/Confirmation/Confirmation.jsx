@@ -58,25 +58,12 @@ function Confirmation() {
 
     return (
         <>
-            <section className="confirmation id=" confirmation>
-                <div className="confirmation-container container grid">
-                    <Menu/>
-                    <div className="confirmation-data">
-                        <h2 className="confirmation-title">confirme o destino</h2>
-                        <p className="confirmation-description">
-                            revise os detalhes da sua viagem e junte-se ao seu grupo de viagem!
-                        </p>
-                    </div>
 
 
-                </div>
-            </section>
-
-
-            {/* <div id="page-confirmation">
-                <div id="container">
+            <div id="page-confirmation">
+                <div className="container">
                     <div className="elementos">
-                        <div id="textos">
+                        <div className="textos">
                             <div className="titulo">
                                 <p>
                                     <b>
@@ -85,33 +72,36 @@ function Confirmation() {
                                 </p>
                             </div>
                             <div className="resumo">
-                                <p>revise
-                                                                                                            todos os detalhes cuidadosamente!
+                                <p>revise todos os detalhes cuidadosamente!
                                 </p>
                             </div>
                         </div>
 
-                        <br/>
+                        <br />
 
                         <div className="select-box">
                             <label htmlFor="text">ponto de encontro</label>
 
                             <input type="text"
                                 placeholder={embarque}
-                                disabled/>
-                            <br/>
+                                disabled />
+                            <br />
 
                             <label htmlFor="text">ponto de desembarque</label>
                             <input type="text"
                                 placeholder={desembarque}
-                                disabled/>
-                            <br/>
-                            <button id="button"
-                            onClick={navegarChat}>
+                                disabled />
+                            <br />
+                            <button className="button button-flex" type="submit"
+                                onClick={navegarChat}>
                                 confirmar
                             </button>
 
-                            <button id="button"
+                            <button className="button button-flex" type="submit" style={{ border: 'none', marginRight: '10px' }}>
+                                gerar TXT
+                            </button>
+
+                            <button className="button button-flex" type="submit"
                                 onClick={handleFormSubmit}>
                                 cancelar
                             </button>
@@ -132,7 +122,7 @@ function Confirmation() {
                     </div>
 
                 </div>
-            </div> */}
+            </div>
         </>
     )
 }

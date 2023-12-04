@@ -62,10 +62,11 @@ export default function LandingPage() {
                                 <li className="nav-item">
                                     <a href="#faqs" className="nav-link">FAQs</a>
                                 </li>
-                                <Link to="/direcionador" target="_blank" className="nav-item">
+                                <Link to="/direcionador" target="_blank" className="nav-item" style={{ color: '#202020', fontWeight: '500'}}>
                                     cadastrar
                                 </Link>
-                                <Link to="/login" target="_blank" className="nav-item">
+
+                                <Link to="/login" target="_blank" className="nav-item" style={{ color: '#202020', fontWeight: '500', textDecoration: 'none'}} hover={{ color: 'red' }}>
                                     entrar
                                 </Link>
                             </ul>

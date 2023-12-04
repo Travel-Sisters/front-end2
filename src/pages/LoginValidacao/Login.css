@@ -1,4 +1,4 @@
-#page-moto button {
+/* #page-moto button {
     all: unset;
     box-sizing: border-box;
     font-size: 1.3rem;
@@ -64,14 +64,12 @@
 }
 
 #page-moto .headline {
-    /* max-width: 35rem; */
     margin-bottom: 3rem;
     font-weight: 500;
 }
 
 #page-moto h1 {
     font-size: 3rem;
-    /* line-height: 5.5rem; */
     color: var(--text);
 }
 
@@ -205,4 +203,4 @@
     #page-moto>div {
         padding: 4rem;
     }
-}
+} */

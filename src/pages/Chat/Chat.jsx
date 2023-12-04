@@ -27,8 +27,6 @@ export default function Chat() {
       setMessages((prevMessages) => [...prevMessages, message]);
     });
 
-    
-
     return () => {
       socket.disconnect();
     };
@@ -38,11 +36,12 @@ export default function Chat() {
     socket.emit('message', newMessage);
     const [currentDate, setCurrentDate] = useState(new Date());
 
-    axios.post('http://localhost:8080/chat/', {id: sessionStorage.getItem('idUsuarioLogin'),
-                                               mensagem: newMessage,
-                                               data: currentDate.getDate,
-                                               hora: currentDate.getTime,
-                                               //chat_viagem: ->preciso terminar
+    axios.post('http://localhost:8080/chat/', {
+      id: sessionStorage.getItem('idUsuarioLogin'),
+      mensagem: newMessage,
+      data: currentDate.getDate,
+      hora: currentDate.getTime,
+      //chat_viagem: ->preciso terminar
 
     })
       .then((response) => {
@@ -50,9 +49,9 @@ export default function Chat() {
       });
     setNewMessage('');
   }
- 
+
   const handleChangeChat = (newChatId) => {
-    setChatId(newChatId); 
+    setChatId(newChatId);
   };
 
   const handleJoinChat = () => {

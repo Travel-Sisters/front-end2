@@ -49,9 +49,9 @@
     padding: 2em;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+#page-profile input[type="text"],
+#page-profile input[type="email"],
+#page-profile input[type="password"] {
     width: 100%;
     background: var(--background);
     border: 0.1rem solid #e2e8f0;
@@ -63,9 +63,9 @@ input[type="password"] {
 
 #page-profile input[type="text"]:focus,
 #page-profile input[type="email"]:focus,
-#page-profileinput [type="password"]:focus,
+#page-profile input [type="password"]:focus,
 #page-profile input[type="password"]:hover,
-#page-profileinput [type="email"]:hover,
+#page-profile input [type="email"]:hover,
 #page-profile input[type="text"]:hover {
     border: 0.1rem solid var(--purple);
     outline: 0;

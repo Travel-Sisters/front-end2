@@ -320,9 +320,6 @@
   transform: translateY(-.25rem);
 }
 
-#page-all-users .questions {
-  background-color: var(--first-color-lighten);
-}
 
 #page-all-users .questions-container {
   gap: 1.5rem;
