@@ -311,10 +311,10 @@ function Hiring() {
                                         endereco.id
                                     }
                                     value={
-                                        endereco.nome
+                                        endereco.rua
                                 }>
                                     {
-                                    endereco.nome
+                                    endereco.rua
                                 } </option>
                             ))
                         } </select>
