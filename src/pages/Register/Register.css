@@ -184,6 +184,10 @@
     font-weight: 500;
 }
 
+#page-register .create-account a{
+    cursor: pointer;
+}
+
 @media (max-width: 900px) {
     #page-register>* {
         width: 100%;

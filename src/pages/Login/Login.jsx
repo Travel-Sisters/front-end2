@@ -165,7 +165,7 @@ export default function Login() {
 
                             <div className="create-account">
                                 {/* <p>não possui uma conta?</p><a href="#"> cadastrar-se</a> */}
-                                <p>não possui uma conta?</p><a><span onClick={() => navigate('/cadastro')}> cadastrar-se</span></a>
+                                <p>não possui uma conta?</p><a><span onClick={() => navigate('/cadastro')}> cadastre-se</span></a>
                             </div>
                         </form>
 

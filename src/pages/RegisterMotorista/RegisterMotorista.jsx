@@ -32,11 +32,19 @@ export default function Register() {
 
             const response = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
             console.log('Resposta do servidor:', response.data);
-            alert('Motorista foi cadastrado com sucesso!');
+            Swal.fire({
+                title: 'Cadastro efetuado com sucesso!!',
+                icon: 'ok',
+                confirmButtonText: 'OK'
+            });
             navigate("/login")
         } catch (error) {
             console.error('Erro ao cadastrar o motorista:', error);
-            alert('OPS! Alguma coisa deu errado!');
+            Swal.fire({
+                title: 'Erro ao cadastrar usuário, verifique os dados e tente novamente.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
 
