@@ -199,8 +199,8 @@ export default function HomePassenger() {
                                                         } - Para:  ${viagem.pontoDesembarque.nome
                                                         }`
                                                     } </option>
-                                            ))
-                                        } </select>
+                                            ))}
+                                    </select>
 
 
                                     <i className="ph-caret-down-light"></i>

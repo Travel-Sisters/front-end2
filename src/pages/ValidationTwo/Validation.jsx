@@ -56,56 +56,54 @@ export default function Validation() {
                             <fieldset>
                                 <div className="field">
                                     <label htmlFor="name">ponto de embarque</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder={embarque}
-                                        disabled
-                                    />
+                                    <select name="city" id="city">
+                                        <option value="0" disabled selected>escolha destino e ponto de encontro</option>
+                                        <option value="sao-paulo">Guarulhos - Metrô Barra Funda</option>
+                                        <option value="sao-paulo">Praia Grande - Metrô Barra Funda</option>
+                                        <option value="sao-paulo">Monguagá - Metrô Luz</option>
+                                    </select>
                                 </div>
                                 <div className="field">
                                     <label htmlFor="name">ponto de desembarque</label>
+                                    <select name="city" id="city">
+                                        <option value="0" disabled selected>escolha destino e ponto de encontro</option>
+                                        <option value="sao-paulo">Guarulhos - Metrô Barra Funda</option>
+                                        <option value="sao-paulo">Praia Grande - Metrô Barra Funda</option>
+                                        <option value="sao-paulo">Monguagá - Metrô Luz</option>
+                                    </select>
+                                </div>
+
+                                <hr style={{ borderColor: '#F8F8FC' }} />
+                            </fieldset>
+                            <fieldset>
+                                <div className="field">
+                                    <label htmlFor="name">data</label>
                                     <input
                                         type="text"
                                         name="name"
-                                        placeholder={desembarque}
-                                        disabled
-                                    />
-                                </div>
-
-                                <hr />
-                            </fieldset>
-
-                            <fieldset>
-                                <div className="field">
-                                    <label htmlFor="name">data da viagem</label>
-                                    <input
-                                        type="date"
-                                        name="name"
                                     />
                                 </div>
                                 <div className="field">
-                                    <label htmlFor="name">horário da viagem</label>
+                                    <label htmlFor="name">horário</label>
                                     <input
                                         type="time"
                                         name="name"
                                     />
                                 </div>
                                 <div className="field">
-                                    <label htmlFor="name">valor da viagem</label>
+                                    <label htmlFor="name">valor</label>
                                     <input
-                                        type="price"
+                                        type="number"
                                         name="name"
                                     />
                                 </div>
-                                <hr />
-                                <textarea
-                                    name="bio"
-                                    label="Biografia"
-                                />
+                                <div className="field">
+                                    <label htmlFor="name">descrição da viagem</label>
+                                    <textarea />
+                                </div>
                             </fieldset>
                             <button type="submit" onClick={handleFormSubmit}>
-                                confirmar viagem
+                                cadastrar viagem
                             </button>
                         </form>
                     </div>
