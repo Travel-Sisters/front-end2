@@ -1,52 +1,67 @@
-import React from 'react'
+
+import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 import './Validation.css'
 
+import MenuConfirmation from '../../components/MenuConfirmation/Menu'
+
+
 export default function Validation() {
+    const navigate = useNavigate();
+
+    const navegarChat = () => {
+        navigate('/chat');
+    };
+
     return (
-        <>
-            <div id="container2">
-                <div class="imagem-vi">
-
-                </div>
-                <div class="contratacao">
-                    <div class="titulo">
-                        <p><b>Praia da Enseada</b></p>
-                    </div>
-                    <div class="info">
-                        <div class="icon">
-                            <i class="fa-regular fa-calendar"></i>
-                            <p>udhsdaudassuadhak</p>
-
-                            <i class="fa-regular fa-clock"></i>
-                            <p>udhsdaudassuadhak</p>
-
-                            <i class="fa-regular fa-map"></i>
-                            <p>udhsdaudassuadhak</p>
-                        </div>
-
-                        <div class="preco">
-                            <p><b> R$200.00 </b></p>
-                        </div>
-                        <div class="text">
-                            <p>quer relaxar e aproveitar o momento? a Enseada é a melhor opção para você. encontre suas companheiras no Terminal Barra Funda e desfrute uma incrível experiência.
-                            </p>
-                        </div>
-                        <div class="fav">
+        <section className="point" id="page-create-validation">
+            <div className="point-container container grid">
+                <div id="page-create-point">
+                    <header>
+                        <MenuConfirmation />
+                    </header>
+                    <div id="container">
+                        <div class="img"></div>
+                        <div class="star">
                             <i class="fa-solid fa-star"></i>
-                            <p><b>4,8</b> (1,873)</p>
+
                         </div>
-                        <div class="lugares">
-                            <p><b>quantidade de lugares (3/8 ocupados)</b></p>
-                            <div class="aum">
-                                <button onclick="diminuir()"><b>-</b></button>
-                                <div id="msg"> <b>0</b></div>
-                                <button onclick="aumentar()"><b>+</b></button>
+                        <div class="box">
+                            <div class="info">
+                                <div class="titulo">
+                                    <p id="title">
+                                        <b>Praia da Enseada</b>
+                                    </p>
+                                    {/* <i id="teste" class="fa-regular fa-map" style={{height: '1%'}}></i> */}
+                                    <p id="teste2">10,6 km</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa-regular fa-calendar"></i>
+                                    <p>29 de agosto, 2023</p>
+
+                                    <i id="teste" class="fa-regular fa-clock" style={{ marginLeft: '10px' }}></i>
+                                    <p id="teste2">12:00 PM</p>
+
+                                    <i class="fa-solid fa-location-dot" style={{ marginLeft: '10px' }}></i>
+                                    <p>Terminal Barra Funda</p>
+                                </div>
+                                <p id="title">
+                                    <b>R$200.00</b>
+                                </p>
+                                <p className='title' style={{ marginTop: '10px' }}>quer relaxar e aproveitar o momento? a Enseada é a melhor opção para você. encontre suas companheiras no Terminal Barra Funda e desfrute uma incrível experiência.</p>
+                                <br />
+                                <br />
+                                <div class="botao" style={{marginBottom: '40px'}}>
+                                    <button id="butt" >entrar no chat </button>
+                                </div>
                             </div>
+
                         </div>
-                        <button id="contratar"><p><b>contratar</b></p></button>
                     </div>
                 </div>
             </div>
-        </>
+        </section>
     )
 }

@@ -1,108 +1,135 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-#container2 {
+#page-create-validation #container {
     /* border: 2px solid black; */
-    display: flex;
-    margin: 5% 10%;
+    /* margin: 3% 10%; */
     height: auto;
-    justify-content: center;
+    background-color: var(--pink);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+
+#page-create-validation .star {
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: baseline;
+    flex-direction: row-reverse;
+    font-size: 13px;
+    padding: 15px;
+    color: yellow;
+}
+
+#page-create-validation .titulo {
+    display: flex;
+    align-items: baseline;
+}
+
+#page-create-validation #title b {
+    font-size: 1.4rem;
+    color: var(--text);
+}
+
+
+#page-create-validation .titulo .fa-map i {
+    font-size: 1px;
+}
+
+#page-create-validation #teste {
+    margin-left: 1%;
+}
+
+#page-create-validation #teste2 {
+    margin-left: 0.5%;
+    font-size: 12px;
+}
+
+#page-create-validation .info {
+    /* border: 2px solid red; */
+    margin: 5%;
+}
+
+#page-create-validation .icon {
+    display: flex;
+    align-items: baseline;
+    font-size: 13px;
+    margin: 1em 0;
+}
+
+#page-create-validation .icon p {
+    margin-left: 1%;
+}
+
+#page-create-validation .box {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: #FAFAFA;
+    height: 60vh;
+}
+
+#page-create-validation .qtd {
+    display: flex;
+}
+
+#page-create-validation .qtd p {
+    margin-left: 1%;
+    font-size: 13px;
+}
+
+
+#page-create-validation .box button {
+    width: 20%;
+    padding: 1rem 1rem;
+    background: var(--pink);
+    border-radius: 8px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: .8rem;
+    border: 0;
+    align-self: flex-end;
+    margin-top: 40px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    margin-top: -20px;
+    margin-right: -2%;
+}
+
+#page-create-validation .box button:hover {
+    background: #d32455;
+}
+
+#page-create-validation .botao {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#page-create-validation body {
+    background: #f7f6f6;
+    -webkit-font-smoothing: antialiased;
+}
+
+#page-create-validation {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#page-create-validation header {
+    margin-bottom: -30px;
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
 }
 
-.imagem-vi {
-    /* border: 2px solid black; */
-    background-color:rgba(128, 128, 128, 0.205);
-    height: 65vh;
-    width: 70vw;
-    border-radius: 10px;
-}
-
-.titulo {
-    font-size: 30px;
-}
-
-.contratacao {
-    /* border: 2px solid red; */
-    margin-left: 5%;
-}
-
-.icon {
+#page-create-validation header a {
+    color: var(--pink);
+    font-weight: bold;
+    text-decoration: none;
     display: flex;
-    margin-right: 20px; 
-    margin-top: 2%;
-    align-items: baseline;
-}
-
-.icon i {
-    font-size: 15px;
-    margin-right: 5px; 
-}
-
-.icon p {
-    margin-right: 10px; 
-    font-size: 15px;
-}
-
-.preco {
-    margin-top: 2%;
-    font-size: 25x;
-}
-
-.fav {
-    margin-top: 2%;
-    display: flex;
-    font-size: 15px;
-    align-items: baseline;
-}
-.fav p {
-    margin-left: 10px;
-}
-
-.text {
-    margin-top: 2%;
-    font-size: 15px;
-}
-
-.lugares {
-    /* border: 2px solid blue; */
-    margin-top: 2%;
-    font-size: 15px;
-}
-
-.aum {
-    margin-top: 2%;
-    display: flex;
-}
-
-.aum button {
-    width: 2vw;
-    height: 4vh;
-    font-size: 13px;
-    border-radius: 10px;
-    background-color:rgba(128, 128, 128, 0.205);
-    border: none;
-    text-align: center; 
-    cursor: pointer; 
-    padding: 5px;
-}
-
-
-#msg {
-    margin: 0 2%;
-}
-
-#contratar {
-    margin-top: 3%;
-    background-color: rgba(0, 0, 0, 0.932);
-    border-radius: 7px;
-    padding: 5px;
-    color: white; 
-    text-align: center; 
-    cursor: pointer; 
-    height: 5vh;
-    width: 30vw;
-}
-
-#contratar p{
-    letter-spacing: 1.5px;
-    font-size: 13px;
+    align-items: center;
 }

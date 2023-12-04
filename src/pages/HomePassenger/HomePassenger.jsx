@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './HomePassenger.css';
 import Footer from '../../components/Footer/Footer';
@@ -23,15 +23,19 @@ export default function HomePassenger() {
     const [data, setData] = useState('');
     const [viagens, setViagens] = useState([]);
     const [viagem, setViagem] = useState(null);
+    const [fila, setFila] = useState([1, 2, 3, 4, 5])
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
+
+
     const handleChange = (event, type) => {
         const selectedAddress = viagens.find((viagem) => viagem.pontoEmbarque === event.target.value);
         setViagem(selectedAddress);
     };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -48,6 +52,10 @@ export default function HomePassenger() {
 
         fetchData();
     }, []);
+
+    const navegarConfirmacao = () => {
+        navigate('/validacao');
+    };
 
     return (
         <>
@@ -74,10 +82,9 @@ export default function HomePassenger() {
                                 </li>
                                 <li>
                                     <div className={
-                                            `dropdown ${
-                                                isDropdownOpen ? 'show-dropdown' : ''
-                                            }`
-                                        }
+                                        `dropdown ${isDropdownOpen ? 'show-dropdown' : ''
+                                        }`
+                                    }
                                         id="dropdown-content">
                                         <button className="dropdown-button" id="dropdown-button"
                                             onClick={toggleDropdown}>
@@ -110,17 +117,17 @@ export default function HomePassenger() {
                         <div className="home-container container grid">
                             <img src={passageiraAmarelo}
                                 alt=""
-                                className="home-img"/>
+                                className="home-img" />
 
                             <div className="home-data">
                                 <h1 className="home-title">
                                     passageira,
-                                    <br/>
+                                    <br />
                                     é com você!
                                 </h1>
                                 <p className="home-description">
                                     somos uma comunidade exclusiva para
-                                                                                                                                                mulheres que desejam explorar juntas.</p>
+                                    mulheres que desejam explorar juntas.</p>
                             </div>
                         </div>
                     </section>
@@ -129,7 +136,7 @@ export default function HomePassenger() {
                         <div className="about-container grid">
                             <img src={passageira}
                                 alt=""
-                                className="about-img"/>
+                                className="about-img" />
 
                             <div className="about-data">
                                 <h2 className="section-title about-title">
@@ -156,7 +163,7 @@ export default function HomePassenger() {
 
                     <section className="search" id="search">
                         <div className="search-container container grid">
-                            <br/>
+                            <br />
                             <form className="search">
                                 {/* <div className="search-field select">
                                     <label className="sr-only" htmlFor="city">localização</label>
@@ -175,34 +182,30 @@ export default function HomePassenger() {
                                         }
                                         onChange={
                                             (e) => handleChange(e, 'viagem')
-                                    }>
+                                        }>
                                         <option value="" disabled>escolha os lugares disponíveis</option>
                                         {
-                                        viagens.map((viagem) => (
-                                            <option key={
+                                            viagens.map((viagem) => (
+                                                <option key={
                                                     viagem.id
                                                 }
-                                                value={
-                                                    `${
-                                                        viagem.pontoEmbarque.nome
-                                                    }${
-                                                        viagem.pontoDesembarque.nome
-                                                    }`
-                                            }>
-                                                {
-                                                `De:  ${
-                                                    viagem.pontoEmbarque.nome
-                                                } - Para:  ${
-                                                    viagem.pontoDesembarque.nome
-                                                }`
-                                            } </option>
-                                        ))
-                                    } </select>
+                                                    value={
+                                                        `${viagem.pontoEmbarque.nome
+                                                        }${viagem.pontoDesembarque.nome
+                                                        }`
+                                                    }>
+                                                    {
+                                                        `De:  ${viagem.pontoEmbarque.nome
+                                                        } - Para:  ${viagem.pontoDesembarque.nome
+                                                        }`
+                                                    } </option>
+                                            ))}
+                                    </select>
 
 
                                     <i className="ph-caret-down-light"></i>
                                 </div>
-                                <button className="button button-flex">contratar</button>
+                                <button onClick={navegarConfirmacao} className="button button-flex">contratar</button>
                             </form>
                         </div>
                     </section>
@@ -262,6 +265,19 @@ export default function HomePassenger() {
                         </div>
                     </section> */}
 
+                    <section className="visited section container">
+                        {fila ? (
+                            fila.map((message, index) => (
+                                <div key={index}>
+                                    {/* <div className="body">{fila[index].nome}</div> */}
+                                    <div className="body">{fila[index]} - {++index}</div>
+                                </div>
+                            ))) :
+                            (
+                                <h1>NAO TEM NESSA BOSTA</h1>
+                            )}
+                    </section>
+
                     <section className="visited section container" id="visited">
                         <div className="visited-container grid">
                             <div className="visited-data">
@@ -271,35 +287,35 @@ export default function HomePassenger() {
                                 <div id="container-visitados">
                                     <div class="div1">
                                         <img src={zoologico}
-                                            alt=""/>
+                                            alt="" />
                                     </div>
                                     <div class="div2">
                                         <img src={parque}
-                                            alt=""/>
+                                            alt="" />
                                     </div>
                                     <div class="div3">
                                         <img src={mis}
-                                            alt=""/>
+                                            alt="" />
                                     </div>
                                     <div class="div4">
                                         <img src={sebastiao}
-                                            alt=""/>
+                                            alt="" />
                                     </div>
                                     <div class="div5">
                                         <img src={brotas}
-                                            alt=""/>
+                                            alt="" />
 
                                     </div>
                                     <div class="div6">
                                         <img src={holambra}
-                                            alt=""/>
+                                            alt="" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
                 </main>
-                <Footer/>
+                <Footer />
             </div>
         </>
     )

@@ -1,73 +1,88 @@
-#page-confirmation #container {
-    /* border: 2px solid black; */
-    display: flex;
-    margin: 0% 10%;
-    height: auto;
-    justify-content: space-between;
-    align-items: center;
+#page-confirmation .container {
+  /* border: 2px solid black; */
+  display: flex;
+  margin: 0% 10%;
+  height: auto;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #page-confirmation .elementos {
-    /* border: 2px solid black; */
-    margin-top: 10%;
-    height: 65%;
-    width: 35%;
-    padding: 5px;
+  /* border: 2px solid black; */
+  margin-top: 10%;
+  height: 65%;
+  width: 35%;
+  padding: 5px;
 }
 
 #page-confirmation .select-box  {
-    width: 29vw; 
-    display: flex;
-    flex-direction: column;
+  width: 29vw; 
+  display: flex;
+  flex-direction: column;
 }
 
 #page-confirmation .select-box select  {
-    margin-bottom: 10px;
-    border-radius: 9px;
-    height: 6vh;
-    background-color: rgba(128, 128, 128, 0.205);
-    border: none;
-    padding-left: 10px;
+  width: 100%;
+  background: var(--background);
+  border: 0.1rem solid #e2e8f0;
+  border-radius: 0.4rem;
+  padding: 1rem 1rem;
+  color: var(--text);
+  font: var(--body-font);
 }
 
 #page-confirmation .select-box #select1{
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 #page-confirmation #select1, #select2{
-    font-size: 15px;
+  font-size: 15px;
 }
 
-#page-confirmation #button {
-    background-color: rgba(0, 0, 0, 0.932);
-    border-radius: 9px;
-    padding: 5px;
-    color: white; 
-    text-align: center; 
-    cursor: pointer; 
-    height: 6vh;
-    margin-top: 15px;
+#page-confirmation utton[type="submit"] {
+  width: 15%;
+  margin: 2em 0;
+  padding: 1rem 1rem;
+  outline: none;
+  display: inline-block;
+  background-color: var(--purple);
+  color: #FFF;
+  border-radius: .5rem;
+  font-weight: var(--font-medium);
+  font-family: var(--body-font);
+  transition: .5s;
+  cursor: pointer;
 }
+
+#page-confirmation .button-flex:focus {
+  outline: 0.2rem solid var(--purple);
+  border-radius: 0.2rem;
+}
+
+#page-confirmation .button-flex:hover {
+  background-color: #884dff;
+}
+
 
 #page-confirmation #button p {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 #page-confirmation .titulo{
-    margin-top: 25px;
-    font-size: 30px;
+  margin-top: 25px;
+  font-size: 30px;
 }
 
 #page-confirmation .resumo {
-    margin-top: 15px;
-    margin-bottom: 20px;
-    font-size: 18px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  font-size: 18px;
 }
 
 #page-confirmation .chat-container {
-    /* Adicione estilos específicos para o chat aqui */
-    /* Por exemplo: */
-    border: 2px solid blue;
-    height: 200px;
-    overflow: auto; /* Para permitir rolar o chat se necessário */
+  /* Adicione estilos específicos para o chat aqui */
+  /* Por exemplo: */
+  border: 2px solid blue;
+  height: 200px;
+  overflow: auto; /* Para permitir rolar o chat se necessário */
 }
