@@ -26,9 +26,9 @@ export default function Register() {
         };
 
         try {
-            const idUsuario = sessionStorage.getItem('idUusario');
+            const idUsuario = sessionStorage.getItem('idUsuario');
 
-            console.log('SESSION STORAGE USUARIO' + idUsuario)
+            console.log('SESSION STORAGE USUARIO ' + idUsuario)
 
             const response = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
             console.log('Resposta do servidor:', response.data);

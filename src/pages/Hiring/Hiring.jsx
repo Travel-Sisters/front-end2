@@ -277,7 +277,7 @@ function Hiring() {
                             onChange={
                                 (e) => handleChange(e, 'embarque')
                         }>
-                            <option value="">escolha os lugares disponíveis</option>
+                            <option selected disabled value="">escolha os lugares disponíveis</option>
                             {
                             enderecos.map((endereco) => (
                                 <option key={

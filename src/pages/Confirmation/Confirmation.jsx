@@ -58,10 +58,23 @@ function Confirmation() {
 
     return (
         <>
+            <section className="confirmation id=" confirmation>
+                <div className="confirmation-container container grid">
+                    <Menu/>
+                    <div className="confirmation-data">
+                        <h2 className="confirmation-title">confirme o destino</h2>
+                        <p className="confirmation-description">
+                            revise os detalhes da sua viagem e junte-se ao seu grupo de viagem!
+                        </p>
+                    </div>
+
+
+                </div>
+            </section>
 
 
             <div id="page-confirmation">
-                <div className="container">
+                <div id="container">
                     <div className="elementos">
                         <div className="textos">
                             <div className="titulo">

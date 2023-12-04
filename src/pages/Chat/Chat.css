@@ -4,7 +4,7 @@
 
     color: #202020;
     height: 100vh;
-    overflow: hidden; 
+    /* overflow: hidden;  */
 }
 
 #page-chat #app {

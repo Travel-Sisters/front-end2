@@ -1,8 +1,17 @@
-import React from 'react'
-
 import './Report.css'
 
+import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+
 export default function Report() {
+    const navigate = useNavigate();
+
+    const navegarChat = () => {
+        navigate('/chat');
+    };
+
     return (
         <div id="container">
             <div class="img"></div>
@@ -45,7 +54,7 @@ export default function Report() {
                         </div>
                     </div>
                     <div class="botao">
-                        <button id="butt">entrar no chat </button>
+                        <button onClick={navegarChat} id="butt">entrar no chat </button>
                         <button id="butt">baixar informações</button>
                     </div>
                 </div>
