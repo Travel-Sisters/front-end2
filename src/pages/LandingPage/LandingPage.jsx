@@ -9,10 +9,10 @@ import bgBlue from '@/assets/img/bg-blue.png';
 
 export default function LandingPage() {
     useEffect(() => {
-        const accordionItems = document.querySelectorAll('.questions-item');
+        const accordionItems = document.querySelectorAll('.faq-item');
 
         accordionItems.forEach((item) => {
-            const accordionHeader = item.querySelector('.questions-header');
+            const accordionHeader = item.querySelector('.faq-header');
 
             accordionHeader.addEventListener('click', () => {
                 const openItem = document.querySelector('.accordion-open');
@@ -27,17 +27,17 @@ export default function LandingPage() {
     }, []);
 
     const toggleItem = (item) => {
-        const accordionContent = item.querySelector('.questions-content');
-
+        const accordionContent = item.querySelector('.faq-content');
+    
         if (item.classList.contains('accordion-open')) {
-            accordionContent.removeAttribute('style');
+            accordionContent.style.maxHeight = '0';
             item.classList.remove('accordion-open');
         } else {
-            accordionContent.style.height = accordionContent.scrollHeight + 'px';
+            accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
             item.classList.add('accordion-open');
         }
     };
-
+    
 
     return (
         <>
@@ -156,100 +156,100 @@ export default function LandingPage() {
                             </div>
                         </div>
                     </section>
-                    <section className="questions section" id="faqs">
-                        <h2 className="section-title-center questions-title container">
+                    <section className="faq section" id="faqs">
+                        <h2 className="section-title-center faq-title container">
                             perguntas frequentes
                         </h2>
 
-                        <div className="questions-container container grid">
-                            <div className="questions-group">
-                                <div className="questions-item">
-                                    <header className="questions-header">
-                                        <i className="ri-add-line questions-icon"></i>
-                                        <h3 className="questions-item-title">
+                        <div className="faq-container container grid">
+                            <div className="faq-group">
+                                <div className="faq-item">
+                                    <header className="faq-header">
+                                        <i className="ri-add-line faq-icon"></i>
+                                        <h3 className="faq-item-title">
                                             como eu contrato uma viagem?
                                         </h3>
                                     </header>
 
-                                    <div className="questions-content">
-                                        <p className="questions-description">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquid quidem dolor alias doloremque necessitatibus! Reprehenderit, dolor maiores porro minus asperiores excepturi corrupti totam tenetur quaerat architecto, hic enim. Consectetur!
-                                        </p>
+                                    <div className="faq-content">
+                                        <p className="faq-description">
+    
+                                            </p>
                                     </div>
                                 </div>
 
-                                <div className="questions-item">
-                                    <header className="questions-header">
-                                        <i className="ri-add-line questions-icon"></i>
-                                        <h3 className="questions-item-title">
+                                <div className="faq-item">
+                                    <header className="faq-header">
+                                        <i className="ri-add-line faq-icon"></i>
+                                        <h3 className="faq-item-title">
                                             como saberei aonde encontrar a motorista?
                                         </h3>
                                     </header>
 
-                                    <div className="questions-content">
-                                        <p className="questions-description">
+                                    <div className="faq-content">
+                                        <p className="faq-description">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquid quidem dolor alias doloremque necessitatibus! Reprehenderit, dolor maiores porro minus asperiores excepturi corrupti totam tenetur quaerat architecto, hic enim. Consectetur!
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="questions-item">
-                                    <header className="questions-header">
-                                        <i className="ri-add-line questions-icon"></i>
-                                        <h3 className="questions-item-title">
+                                <div className="faq-item">
+                                    <header className="faq-header">
+                                        <i className="ri-add-line faq-icon"></i>
+                                        <h3 className="faq-item-title">
                                             como é feito o pagamento da viagem?
                                         </h3>
                                     </header>
 
-                                    <div className="questions-content">
-                                        <p className="questions-description">
+                                    <div className="faq-content">
+                                        <p className="faq-description">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquid quidem dolor alias doloremque necessitatibus! Reprehenderit, dolor maiores porro minus asperiores excepturi corrupti totam tenetur quaerat architecto, hic enim. Consectetur!
                                         </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="questions-group">
-                                <div className="questions-item">
-                                    <header className="questions-header">
-                                        <i className="ri-add-line questions-icon"></i>
-                                        <h3 className="questions-item-title">
+                            <div className="faq-group">
+                                <div className="faq-item">
+                                    <header className="faq-header">
+                                        <i className="ri-add-line faq-icon"></i>
+                                        <h3 className="faq-item-title">
                                             como posso me tornar motorista?
                                         </h3>
                                     </header>
 
-                                    <div className="questions-content">
-                                        <p className="questions-description">
+                                    <div className="faq-content">
+                                        <p className="faq-description">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquid quidem dolor alias doloremque necessitatibus! Reprehenderit, dolor maiores porro minus asperiores excepturi corrupti totam tenetur quaerat architecto, hic enim. Consectetur!
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="questions-item">
-                                    <header className="questions-header">
-                                        <i className="ri-add-line questions-icon"></i>
-                                        <h3 className="questions-item-title">
+                                <div className="faq-item">
+                                    <header className="faq-header">
+                                        <i className="ri-add-line faq-icon"></i>
+                                        <h3 className="faq-item-title">
                                             posso cadastrar mais de duas viagens?
                                         </h3>
                                     </header>
 
-                                    <div className="questions-content">
-                                        <p className="questions-description">
+                                    <div className="faq-content">
+                                        <p className="faq-description">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquid quidem dolor alias doloremque necessitatibus! Reprehenderit, dolor maiores porro minus asperiores excepturi corrupti totam tenetur quaerat architecto, hic enim. Consectetur!
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="questions-item">
-                                    <header className="questions-header">
-                                        <i className="ri-add-line questions-icon"></i>
-                                        <h3 className="questions-item-title">
+                                <div className="faq-item">
+                                    <header className="faq-header">
+                                        <i className="ri-add-line faq-icon"></i>
+                                        <h3 className="faq-item-title">
                                             posso ser motorista e passageira?
                                         </h3>
                                     </header>
 
-                                    <div className="questions-content">
-                                        <p className="questions-description">
+                                    <div className="faq-content">
+                                        <p className="faq-description">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquid quidem dolor alias doloremque necessitatibus! Reprehenderit, dolor maiores porro minus asperiores excepturi corrupti totam tenetur quaerat architecto, hic enim. Consectetur!
                                         </p>
                                     </div>

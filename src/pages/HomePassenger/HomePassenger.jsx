@@ -175,7 +175,6 @@ export default function HomePassenger() {
                                     <i className="ph-caret-down-light"></i>
                                 </div> */}
                                 <div className="search-field select">
-
                                     <select id="viagem" name="viagem"
                                         value={
                                             viagem ? viagem.pontoEmbarque : ''
@@ -184,6 +183,8 @@ export default function HomePassenger() {
                                             (e) => handleChange(e, 'viagem')
                                         }>
                                         <option value="" disabled>escolha os lugares disponíveis</option>
+                                        <option >escolha </option>
+
                                         {
                                             viagens.map((viagem) => (
                                                 <option key={
@@ -201,7 +202,6 @@ export default function HomePassenger() {
                                                     } </option>
                                             ))}
                                     </select>
-
 
                                     <i className="ph-caret-down-light"></i>
                                 </div>
