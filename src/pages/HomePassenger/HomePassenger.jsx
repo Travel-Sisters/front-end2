@@ -29,13 +29,12 @@ export default function HomePassenger() {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
-
-
     const handleChange = (event, type) => {
-        const selectedAddress = viagens.find((viagem) => viagem.pontoEmbarque === event.target.value);
-        setViagem(selectedAddress);
+        const selectedId = event.target.value;
+        const selectedViagem = viagens.find((viagem) => `${viagem.pontoEmbarque.nome}${viagem.pontoDesembarque.nome}` === selectedId);
+        setViagem(selectedViagem);
     };
-
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -175,33 +174,15 @@ export default function HomePassenger() {
                                     <i className="ph-caret-down-light"></i>
                                 </div> */}
                                 <div className="search-field select">
-                                    <select id="viagem" name="viagem"
-                                        value={
-                                            viagem ? viagem.pontoEmbarque : ''
-                                        }
-                                        onChange={
-                                            (e) => handleChange(e, 'viagem')
-                                        }>
-                                        <option value="" disabled>escolha os lugares disponíveis</option>
-                                        <option >escolha </option>
 
-                                        {
+                                    <select id="viagem" name="viagem" value={viagem ? viagem.pontoEmbarque : ''} onChange={(e) => handleChange(e, 'viagem')}>
+                                        <option value="" disabled>escolha os lugares disponíveis</option> {
                                             viagens.map((viagem) => (
-                                                <option key={
-                                                    viagem.id
-                                                }
-                                                    value={
-                                                        `${viagem.pontoEmbarque.nome
-                                                        }${viagem.pontoDesembarque.nome
-                                                        }`
-                                                    }>
-                                                    {
-                                                        `De:  ${viagem.pontoEmbarque.nome
-                                                        } - Para:  ${viagem.pontoDesembarque.nome
-                                                        }`
-                                                    } </option>
+                                                <option
+                                                    key={viagem.id} value={`${viagem.pontoEmbarque.nome}${viagem.pontoDesembarque.nome}`}>{`de:  ${viagem.pontoEmbarque.nome} - para:  ${viagem.pontoDesembarque.nome}`} </option>
                                             ))}
                                     </select>
+
 
                                     <i className="ph-caret-down-light"></i>
                                 </div>
