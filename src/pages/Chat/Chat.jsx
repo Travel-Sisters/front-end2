@@ -19,14 +19,9 @@ export default function Chat() {
   useEffect(() => {
     const fetchChatId = async () => {
       try {
-        // const idViagem = sessionStorage.getItem('idViagem');
-        //const response = await axios.get(`http://localhost:8080/chat/${idViagem}`);
         const response = await axios.get(`http://localhost:8080/chat/2`);
-        console.log("DADOS RECEBIDOS >> ", response.data)
-        console.log("MOTORISTA >> ", response.data[0][1].id)
         const parametro = response.data[0][1].id
         setChatId(parametro);
-        console.log('MEU CHATID', parametro)
       } catch (error) {
         console.error('Erro ao obter o chatId do banco de dados:', error);
       }
@@ -37,12 +32,17 @@ export default function Chat() {
   useEffect(() => {
     if (socket) {
       socket.emit('join_chat', chatId);
-      console.log("ENTREI NO CHAT ", chatId)
     }
   }, [chatId]);
 
   const handleMessageSend = () => {
-    socket.emit('message', { message, chatId });
+    // Verificar se o usuário está enviando a mensagem
+    const isCurrentUser = messages.some((msg) => msg.user === 'eu'); // Substitua 'eu' pelo usuário atual
+
+    if (!isCurrentUser) {
+      socket.emit('message', { message, chatId });
+    }
+
     setMessage('');
   };
 
@@ -50,12 +50,16 @@ export default function Chat() {
     if (!socket) return;
 
     socket.on('new_message', (data) => {
-      console.log(`Nova mensagem: ${data.message} - Usuário: ${data.user}`);
-      console.log(data)
-      setMessages(data)
-
+      setMessages((prevMessages) => {
+        // Verifica se a mensagem já está no estado
+        if (!prevMessages.some((msg) => msg.message === data.message && msg.user === data.user)) {
+          data.user = sessionStorage.getItem('usuario')
+          return [...prevMessages, data];
+        }
+        return prevMessages;
+      });
     });
-    
+
     return () => socket.off('new_message');
   }, [socket]);
 
@@ -66,17 +70,15 @@ export default function Chat() {
           <div id="last-seen">hoje 11:30</div>
           <div className="messages">
             {messages ? (
-            messages.map((message) => (
-              // <div key={index} className={`message ${message.from === 'you' ? 'you' : ''}`}>
+              messages.map((message, index) => (
                 <div key={index}>
-                {/* <div className="top">{message.user} - {message.time}</div> */}
-                <div className="top">{message.user}</div> 
-                <div className="body">{message.message}</div>
-              </div>
-            ))):
-            (
-              <h1>NAO TEM NESSA BOSTA</h1>
-            )}
+                  <div className="top">{message.user}</div>
+                  <div className="body">{message.message}</div>
+                </div>
+              ))) :
+              (
+                <h1>NAO TEM NESSA BOSTA</h1>
+              )}
           </div>
         </div>
         <form id="bottom"

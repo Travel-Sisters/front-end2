@@ -49,6 +49,10 @@ export default function HomePassenger() {
         fetchData();
     }, []);
 
+    const navegarConfirmacao = () => {
+        navigate('/validacao');
+    };
+
     return (
         <>
             <div id="page-passenger">
@@ -202,7 +206,7 @@ export default function HomePassenger() {
 
                                     <i className="ph-caret-down-light"></i>
                                 </div>
-                                <button className="button button-flex">contratar</button>
+                                <button onClick={navegarConfirmacao} className="button button-flex">contratar</button>
                             </form>
                         </div>
                     </section>

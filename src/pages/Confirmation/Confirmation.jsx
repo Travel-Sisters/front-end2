@@ -73,7 +73,7 @@ function Confirmation() {
             </section>
 
 
-            {/* <div id="page-confirmation">
+            <div id="page-confirmation">
                 <div id="container">
                     <div className="elementos">
                         <div id="textos">
@@ -132,7 +132,7 @@ function Confirmation() {
                     </div>
 
                 </div>
-            </div> */}
+            </div>
         </>
     )
 }
