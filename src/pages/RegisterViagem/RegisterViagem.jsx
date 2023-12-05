@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import MenuConfirmation from '../../components/MenuConfirmation/Menu'
-import './Validation.css'
+import './RegisterViagem.css'
 
 export default function Validation() {
 
