@@ -20,7 +20,7 @@ export default function HomeDriver() {
     const navigate = useNavigate();
 
     const navegarViagem = () => {
-        navigate('/contratacao');
+        navigate('/cadastro-viagem');
     };
 
     const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};

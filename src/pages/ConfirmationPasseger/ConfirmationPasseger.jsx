@@ -6,13 +6,15 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 import MenuConfirmation from '../../components/MenuConfirmation/Menu'
-import './Confirmation.css'
+import './ConfirmationPasseger.css'
 
 function Confirmation() {
     const navigate = useNavigate();
 
-    const embarque = sessionStorage.getItem('embarque') || {};
-    const desembarque = sessionStorage.getItem('desembarque') || {};
+    const storedViagem = JSON.parse(sessionStorage.getItem('viagem'));
+    if (storedViagem) {
+        console.log('Detalhes da Viagem:', storedViagem);
+    }
     const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
 
     const navegarChat = () => {
@@ -20,20 +22,9 @@ function Confirmation() {
         navigate('/chat');
     };
 
-    const handleFormSubmit = async (evento) => {
-        try {
-            console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
-
-            const response = await axios.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
-            console.log('Resposta do servidor:', response.data);
-
-            alert('Viagem desfeita com sucesso!');
-            navigate('/chat');
-
-        } catch (error) {
-            console.error('Erro ao cancelar:', error);
-            alert('OPS! Alguma coisa deu errado!');
-        }
+    const navegarHome = () => {
+        alert('Ok!')
+        navigate('/passageira');
     };
 
     const [selectedPosition, setSelectedPosition] = useState(null);
@@ -69,13 +60,13 @@ function Confirmation() {
                                 <div className="field">
                                     <label htmlFor="name">ponto de embarque</label>
                                     <input type="text" name="name"
-                                        placeholder={embarque}
+                                        placeholder={storedViagem.pontoEmbarque.nome}
                                         disabled/>
                                 </div>
                                 <div className="field">
                                     <label htmlFor="name">ponto de desembarque</label>
                                     <input type="text" name="name"
-                                        placeholder={desembarque}
+                                        placeholder={storedViagem.pontoDesembarque.nome}
                                         disabled/>
                                 </div>
                             </fieldset>
@@ -95,7 +86,7 @@ function Confirmation() {
 
 
                             <button type="submit"
-                                onClick={handleFormSubmit}>
+                                onClick={navegarHome}>
                                 cancelar
                             </button>
 
