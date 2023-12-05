@@ -79,7 +79,7 @@
 #page-profile button[type="submit"] {
     width: 15%;
     margin: 2em 0;
-    padding: 1rem 1rem;
+    padding: .9rem .3rem;
     outline: none;
     display: inline-block;
     background-color: var(--purple);

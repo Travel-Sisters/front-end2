@@ -10,42 +10,52 @@ import bgBlue from '@/assets/img/bg-blue.png';
 export default function LandingPage() {
     useEffect(() => {
         const faqItems = document.querySelectorAll('.faq-item');
-
+    
         const toggleItem = (item) => {
-            const faqContent = item.querySelector('.faq-content');
-
-            if (item.classList.contains('faq-open')) {
-                faqContent.style.height = '0px';
-                item.classList.remove('faq-open');
-            } else {
-                faqContent.style.height = faqContent.scrollHeight + 'px';
-                item.classList.add('faq-open');
-            }
+          const faqContent = item.querySelector('.faq-content');
+    
+          if (item.classList.contains('faq-open')) {
+            faqContent.style.height = '0px';
+            item.classList.remove('faq-open');
+          } else {
+            faqContent.style.height = faqContent.scrollHeight + 'px';
+            item.classList.add('faq-open');
+          }
         };
-
+    
         faqItems.forEach((item) => {
-            const faqHeader = item.querySelector('.faq-header');
-
-            faqHeader.addEventListener('click', () => {
-                const openItem = document.querySelector('.faq-open');
-
-                toggleItem(item);
-
-                if (openItem && openItem !== item) {
-                    toggleItem(openItem);
-                }
-            });
+          const faqHeader = item.querySelector('.faq-header');
+    
+          faqHeader.addEventListener('click', () => {
+            const openItem = document.querySelector('.faq-open');
+    
+            toggleItem(item);
+    
+            if (openItem && openItem !== item) {
+              toggleItem(openItem);
+            }
+    
+            // Armazenar o estado no localStorage
+            localStorage.setItem('faqState', JSON.stringify(Array.from(faqItems).map((item) => item.classList.contains('faq-open'))));
+          });
         });
-
+    
+        // Recuperar o estado do localStorage
+        const faqState = JSON.parse(localStorage.getItem('faqState')) || [];
+        faqItems.forEach((item, index) => {
+          if (faqState[index]) {
+            toggleItem(item);
+          }
+        });
+    
         return () => {
-            // Limpar event listeners, se necessário
-            faqItems.forEach((item) => {
-                const faqHeader = item.querySelector('.faq-header');
-                faqHeader.removeEventListener('click', () => { });
-            });
+          // Limpar event listeners, se necessário
+          faqItems.forEach((item) => {
+            const faqHeader = item.querySelector('.faq-header');
+            faqHeader.removeEventListener('click', () => {});
+          });
         };
-    }, []);
-
+      }, []);
 
     return (
         <>

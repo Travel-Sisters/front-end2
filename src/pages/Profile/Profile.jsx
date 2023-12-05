@@ -60,7 +60,7 @@ export default function Profile() {
                         <br />
                         <div className="agileits-top">
                             <h3 className="section-title about-title"
-                                style={{ fontSize: '1.7rem' }}>
+                                style={{ fontSize: '1.6rem' }}>
                                 edite suas informações de cadastro
                             </h3>
                             <p>fique à vontade para alterar suas informações</p>
@@ -78,7 +78,6 @@ export default function Profile() {
                             />
 
                             <input
-
                                 id="email"
                                 type="email"
                                 name="email"
@@ -99,14 +98,16 @@ export default function Profile() {
                                 placeholder="altere sua senha"
                             />
 
-                            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', width: '100%' }}>
+                            <div style={{ gap: '0.5rem', width: '100%' }}>
                                 <button onClick={handleFormSubmit} className="button button-flex" type="submit" style={{ border: 'none', marginRight: '10px' }}>confirmar</button>
                                 <button className="button button-flex" type="submit" style={{ border: 'none' }}>excluir conta</button>
                             </div>
-                            <h2 className="section-title about-title" style={{ fontSize: '1.8rem' }}>
+                            <h2 className="section-title about-title" style={{ fontSize: '1.6rem' }}>
                                 confira suas viagens até agora
                             </h2>
-                            <p>gere relatório das suas viagens e tenha controle de tudo</p>
+                            <p>gere relatório das suas viagens e tenha controle de tudo.
+                                com essa visão você consegue ter um overview de todas as viagens que você durante sua jornada em nossa aplicação.
+                            </p>
                             <button className="button button-flex" type="submit" onClick={gerarCsv} style={{ border: 'none', marginRight: '10px' }}>
                                 gerar CSV
                             </button>
