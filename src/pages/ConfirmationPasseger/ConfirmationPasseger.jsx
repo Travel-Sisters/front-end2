@@ -12,6 +12,8 @@ function Confirmation() {
     const navigate = useNavigate();
 
     const storedViagem = JSON.parse(sessionStorage.getItem('viagem'));
+    sessionStorage.setItem('viagemId',storedViagem.id)
+
     if (storedViagem) {
         console.log('Detalhes da Viagem:', storedViagem);
     }

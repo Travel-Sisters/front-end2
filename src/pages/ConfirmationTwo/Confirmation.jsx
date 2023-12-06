@@ -26,7 +26,7 @@ function Confirmation() {
 
             const response = await axios.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
             console.log('Resposta do servidor:', response.data);
-
+            
             alert('Viagem desfeita com sucesso!');
             navigate('/chat');
 

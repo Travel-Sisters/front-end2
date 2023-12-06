@@ -19,10 +19,11 @@ export default function Chat() {
   useEffect(() => {
     const fetchChatId = async () => {
       try {
-        const viagem = sessionStorage.getItem('viagem')
+        const viagem = sessionStorage.getItem('viagemId')
         const response = await axios.get(`http://localhost:8080/chat/${viagem}`);
-        const parametro = response.data[0][1].id
-        setChatId(parametro);
+        console.log(response)
+        //const parametro = response.data[0][1].id
+        //setChatId(parametro);
       } catch (error) {
         console.error('Erro ao obter o chatId do banco de dados:', error);
       }

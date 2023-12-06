@@ -31,7 +31,6 @@ export default function Report() {
                         <div class="img"></div>
                         <div class="star">
                             <i class="fa-solid fa-star"></i>
-
                         </div>
                         <div class="box">
                             <div class="info">

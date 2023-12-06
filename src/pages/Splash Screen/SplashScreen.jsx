@@ -1,5 +1,5 @@
 import React from 'react'
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import './SplashScreen.css'
 import bgRosa from '@/assets/img/bg-pink.png';
@@ -21,11 +21,11 @@ function SplashScreen() {
                             </span>
                             <h1 className="home-title">
                                 trilhe seu próprio
-                                                                caminho</h1>
+                                caminho</h1>
                             <p className="home-description">
                                 bem-vinda ao mundo das viagens que transcendem destinos.
-                                                                aqui, mulheres se unem para explorar,  aprender e rir juntas,
-                                                                formando laços que durarão uma vida inteira.
+                                aqui, mulheres se unem para explorar,  aprender e rir juntas,
+                                formando laços que durarão uma vida inteira.
                             </p>
                             <button onClick={navegarHome}
                                 className="home-button">
@@ -35,7 +35,7 @@ function SplashScreen() {
 
                         <div className="home-img">
                             <img src={bgRosa}
-                                alt=""/>
+                                alt="" />
                         </div>
                     </div>
 
