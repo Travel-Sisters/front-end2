@@ -72,7 +72,8 @@ export default function Validation() {
             alert('Viagem cadastrada com sucesso!');
             sessionStorage.setItem('embarque', response.data.pontoEmbarque.nome);
             sessionStorage.setItem('desembarque', response.data.pontoDesembarque.nome);
-            sessionStorage.setItem('viagem', response.data.id)
+            sessionStorage.setItem('viagemId', response.data.id)
+            
             navigate('/confirmacao');
 
         } catch (error) {

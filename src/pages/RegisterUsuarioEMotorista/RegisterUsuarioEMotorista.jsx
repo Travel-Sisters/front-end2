@@ -51,14 +51,13 @@ export default function Register() {
 
             if (responseUsuario.data.id != null) {
                 console.log('Id usuário: ', responseUsuario.data.id);
-                alert('Usuário foi cadastrado com sucesso!');
 
                 const idUsuario = responseUsuario.data.id;
                 const responseMotorista = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
                 console.log('Resposta do servidor (Motorista):', responseMotorista.data.id);
 
                 Swal.fire({
-                    title: 'Cadastro efetuado com sucesso!!',
+                    title: 'Cadastro efetuado com sucesso!',
                     icon: 'ok',
                     confirmButtonText: 'OK'
                 });

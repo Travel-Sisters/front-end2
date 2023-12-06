@@ -22,6 +22,7 @@ export default function Chat() {
         const viagem = sessionStorage.getItem('viagemId')
         const response = await axios.get(`http://localhost:8080/chat/${viagem}`);
         console.log(response)
+        setChatId(1)
         //const parametro = response.data[0][1].id
         //setChatId(parametro);
       } catch (error) {
@@ -71,7 +72,7 @@ export default function Chat() {
     <div id="page-chat">
       <div id="app">
         <div id="messages">
-          <div id="last-seen">hoje 11:30</div>
+          {/* <div id="last-seen">hoje 11:30</div> */}
           <div className="messages">
             {messages ? (
               messages.map((message, index) => (

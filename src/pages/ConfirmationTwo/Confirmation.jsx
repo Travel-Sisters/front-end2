@@ -10,6 +10,8 @@ import './Confirmation.css'
 
 function Confirmation() {
     const navigate = useNavigate();
+    const [dt_chegada, setDt_chegada] = useState(null)
+    const [viagem, setViagem] = useState()
 
     const embarque = sessionStorage.getItem('embarque') || {};
     const desembarque = sessionStorage.getItem('desembarque') || {};
@@ -21,15 +23,36 @@ function Confirmation() {
     };
 
     const handleFormSubmit = async (evento) => {
+
         try {
             console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
 
             const response = await axios.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
             console.log('Resposta do servidor:', response.data);
-            
             alert('Viagem desfeita com sucesso!');
+            registerChat()
             navigate('/chat');
 
+        } catch (error) {
+            console.error('Erro ao cancelar:', error);
+            alert('OPS! Alguma coisa deu errado!');
+        }
+    };
+
+    const registerChat = async (evento) => {
+        setViagem(sessionStorage.getItem('viagemId'))
+        const bodyChat = {
+            dt_chegada,
+            viagem
+        }
+        try {
+            // const responseChat = await axios.post(`http://localhost:8080/chat/publicar`, bodyChat);
+            // console.log('Resposta do servidor:', responseChat.data);
+            // console.log('')
+            // console.log('CHAT REGISTRADO NO BANCO, ID: ', respondeChat.data.viagem)
+            
+
+            navigate('/chat');
         } catch (error) {
             console.error('Erro ao cancelar:', error);
             alert('OPS! Alguma coisa deu errado!');
@@ -100,7 +123,7 @@ function Confirmation() {
                             </button>
 
                             <button type="submit"
-                                onClick={navegarChat}>
+                                onClick={registerChat}>
                                 confirmar viagem
                             </button>
                         </form>
