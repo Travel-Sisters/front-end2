@@ -72,6 +72,7 @@ export default function Validation() {
             alert('Viagem cadastrada com sucesso!');
             sessionStorage.setItem('embarque', response.data.pontoEmbarque.nome);
             sessionStorage.setItem('desembarque', response.data.pontoDesembarque.nome);
+            sessionStorage.setItem('viagem', response.data.id)
             navigate('/confirmacao');
 
         } catch (error) {
@@ -79,9 +80,6 @@ export default function Validation() {
             alert('OPS! Alguma coisa deu errado!');
         }
     };
-
-
-
 
     // const navegarChat = () => {
     //     alert('Viagem confirmada!')

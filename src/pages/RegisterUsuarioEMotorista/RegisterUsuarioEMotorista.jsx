@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Register.css';
 
+import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import roxo from '../../assets/img/logo-roxo.png';
@@ -54,7 +55,7 @@ export default function Register() {
 
                 const idUsuario = responseUsuario.data.id;
                 const responseMotorista = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
-                console.log('Resposta do servidor (Motorista):', responseMotorista.data);
+                console.log('Resposta do servidor (Motorista):', responseMotorista.data.id);
 
                 Swal.fire({
                     title: 'Cadastro efetuado com sucesso!!',
@@ -70,7 +71,7 @@ export default function Register() {
                 });
             }
         } catch (error) {
-            console.error('Erro ao cadastrar o usuário:', error);
+            console.error('Erro ao cadastrar o usuário: ', error);
             alert('OPS! Alguma coisa deu errado!');
         }
     };

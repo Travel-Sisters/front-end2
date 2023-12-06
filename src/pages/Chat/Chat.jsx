@@ -19,7 +19,8 @@ export default function Chat() {
   useEffect(() => {
     const fetchChatId = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/chat/2`);
+        const viagem = sessionStorage.getItem('viagem')
+        const response = await axios.get(`http://localhost:8080/chat/${viagem}`);
         const parametro = response.data[0][1].id
         setChatId(parametro);
       } catch (error) {
