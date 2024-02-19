@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import './Profile.css'
 import Menu from '../../components/Menu/Menu'
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default function ProfilePassenger() {
     const navigate = useNavigate();
@@ -25,12 +27,22 @@ export default function ProfilePassenger() {
         try {
             const response = await axios.put(`http://localhost:8080/usuarios/alterar/${idUsuario}`, passageira);
             console.log('Resposta do servidor:', response.data);
-            alert('passageira foi alterado com sucesso!');
+            //alert('passageira foi alterado com sucesso!');
+            Swal.fire({
+                title: 'Passageira foi alterado com sucesso!',
+                icon: 'ok',
+                confirmButtonText: 'OK'
+            });
 
             navigate('/passageira');
         } catch (error) {
             console.error('Erro ao atualizar a passageira:', error);
-            alert('OPS! Alguma coisa deu errado!');
+            //alert('OPS! Alguma coisa deu errado!');
+            Swal.fire({
+                title: 'OPS! Alguma coisa deu errado!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
 

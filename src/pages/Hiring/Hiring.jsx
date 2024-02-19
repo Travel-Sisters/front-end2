@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import './Hiring.css';
 import Menu from '../../components/Menu/Menu'
-
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 function Hiring() {
 
@@ -67,14 +68,24 @@ function Hiring() {
             const response = await axios.post(`http://localhost:8080/viagens/cadastrar/${idMotorista}`, viagem);
             console.log('Resposta do servidor:', response.data);
 
-            alert('Viagem cadastrada com sucesso!');
+            //alert('Viagem cadastrada com sucesso!');
+            Swal.fire({
+                title: 'Viagem cadastrada com sucesso!',
+                icon: 'ok',
+                confirmButtonText: 'OK'
+            });
             sessionStorage.setItem('embarque', response.data.pontoEmbarque.nome);
             sessionStorage.setItem('desembarque', response.data.pontoDesembarque.nome);
             navigate('/confirmacao');
 
         } catch (error) {
             console.error('Erro ao cadastrar o viagem:', error);
-            alert('OPS! Alguma coisa deu errado!');
+            //alert('OPS! Alguma coisa deu errado!');
+            Swal.fire({
+                title: 'OPS! Alguma coisa deu errado!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
 

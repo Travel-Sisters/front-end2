@@ -48,7 +48,7 @@ export default function Login() {
                 sessionStorage.setItem('idUsuarioLogin', response.data.userId);
 
                 console.log('Resposta do servidor:', response.data);
-                alert('Usuário entrou com sucesso!');
+                //alert('Usuário entrou com sucesso!');
                 setEmail('');
                 setSenha('');
 

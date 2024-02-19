@@ -47,7 +47,12 @@ export default function Login() {
                 sessionStorage.setItem('idUsuario', response.data.userId);
 
                 console.log('Resposta do servidor:', response.data);
-                alert('Usuário encontrado!');
+                //alert('Usuário encontrado!');
+                Swal.fire({
+                    title: 'Usuário encontrado!',
+                    icon: 'ok',
+                    confirmButtonText: 'OK'
+                });
                 setEmail('');
                 setSenha('');
 

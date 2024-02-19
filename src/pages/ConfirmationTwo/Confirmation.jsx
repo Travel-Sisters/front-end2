@@ -7,6 +7,8 @@ import axios from 'axios';
 
 import MenuConfirmation from '../../components/MenuConfirmation/Menu'
 import './Confirmation.css'
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 function Confirmation() {
     const navigate = useNavigate();
@@ -18,7 +20,12 @@ function Confirmation() {
     const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
 
     const navegarChat = () => {
-        alert('Viagem confirmada!')
+        //alert('Viagem confirmada!')
+        Swal.fire({
+            title: 'Viagem confirmada!',
+            icon: 'ok',
+            confirmButtonText: 'OK'
+        });
         navigate('/motorista');
     };
 
@@ -29,13 +36,23 @@ function Confirmation() {
 
             const response = await axios.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
             console.log('Resposta do servidor:', response.data);
-            alert('Viagem desfeita com sucesso!');
+            //alert('Viagem desfeita com sucesso!');
+            Swal.fire({
+                title: 'Viagem desfeita com sucesso!',
+                icon: 'ok',
+                confirmButtonText: 'OK'
+            });
             registerChat()
             navigate('/chat');
 
         } catch (error) {
             console.error('Erro ao cancelar:', error);
-            alert('OPS! Alguma coisa deu errado!');
+            //alert('OPS! Alguma coisa deu errado!');
+            Swal.fire({
+                title: 'OPS! Alguma coisa deu errado!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
 
@@ -55,7 +72,12 @@ function Confirmation() {
             navigate('/chat');
         } catch (error) {
             console.error('Erro ao cancelar:', error);
-            alert('OPS! Alguma coisa deu errado!');
+            //alert('OPS! Alguma coisa deu errado!');
+            Swal.fire({
+                title: 'OPS! Alguma coisa deu errado!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
 

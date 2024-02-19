@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 import './Profile.css'
 import Menu from '../../components/Menu/Menu'
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default function Profile() {
 
@@ -41,13 +43,23 @@ export default function Profile() {
         try {
             const response = await axios.put(`http://localhost:8080/motoristas/alterar/${idMotorista}`, motorista);
             console.log('Resposta do servidor:', response.data);
-            alert('Motorista foi alterado com sucesso!');
+            //alert('Motorista foi alterado com sucesso!');
+            Swal.fire({
+                title: 'Motorista foi alterado com sucesso!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
 
 
             navigate('/motorista');
         } catch (error) {
             console.error('Erro ao atualizar a motorista:', error);
-            alert('OPS! Alguma coisa deu errado!');
+            //alert('OPS! Alguma coisa deu errado!');
+            Swal.fire({
+                title: 'OPS! Alguma coisa deu errado!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
 

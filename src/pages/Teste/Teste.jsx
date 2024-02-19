@@ -19,9 +19,19 @@ export default function Teste() {
 
             console.log('Resposta do servidor:', response.data);
             if (response.status === 200) {
-                alert('viagem finalizada');
+                //alert('viagem finalizada');
+                Swal.fire({
+                    title: 'Viagem finalizada!',
+                    icon: 'ok',
+                    confirmButtonText: 'OK'
+                });
             } else if (response.status === 404) {
-                alert("viagem não finalizada")
+                //alert("viagem não finalizada")
+                Swal.fire({
+                    title: 'Viagem não finalizada!',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             }
         } catch (error) {
             console.error('Erro ao logar usuário:', error);

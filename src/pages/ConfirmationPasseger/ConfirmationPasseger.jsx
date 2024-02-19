@@ -7,6 +7,8 @@ import axios from 'axios';
 
 import MenuConfirmation from '../../components/MenuConfirmation/Menu'
 import './ConfirmationPasseger.css'
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 function Confirmation() {
     const navigate = useNavigate();
@@ -20,7 +22,12 @@ function Confirmation() {
     const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
 
     const navegarChat = () => {
-        alert('Viagem confirmada!')
+        //alert('Viagem confirmada!')
+        Swal.fire({
+            title: 'Viagem confirmada!',
+            icon: 'ok',
+            confirmButtonText: 'OK'
+        });
         navigate('/pagamento');
     };
 
