@@ -1,6 +1,6 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {MapContainer, TileLayer, Marker} from "react-leaflet";
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { useNavigate } from 'react-router-dom';
 // import * as map from './mapa.js';
 // import L from 'leaflet';
 import axios from 'axios';
@@ -12,7 +12,7 @@ function Confirmation() {
     const navigate = useNavigate();
 
     const storedViagem = JSON.parse(sessionStorage.getItem('viagem'));
-    sessionStorage.setItem('viagemId',storedViagem.id)
+    sessionStorage.setItem('viagemId', storedViagem.id)
 
     if (storedViagem) {
         console.log('Detalhes da Viagem:', storedViagem);
@@ -21,7 +21,7 @@ function Confirmation() {
 
     const navegarChat = () => {
         alert('Viagem confirmada!')
-        navigate('/chat');
+        navigate('/pagamento');
     };
 
     const navegarHome = () => {
@@ -41,7 +41,7 @@ function Confirmation() {
                 <div className="point-container container grid">
                     <div id="page-create-point">
                         <header>
-                            <MenuConfirmation/>
+                            <MenuConfirmation />
                         </header>
                         <form>
                             <h1 style={
@@ -63,13 +63,13 @@ function Confirmation() {
                                     <label htmlFor="name">ponto de embarque</label>
                                     <input type="text" name="name"
                                         placeholder={storedViagem.pontoEmbarque.nome}
-                                        disabled/>
+                                        disabled />
                                 </div>
                                 <div className="field">
                                     <label htmlFor="name">ponto de desembarque</label>
                                     <input type="text" name="name"
                                         placeholder={storedViagem.pontoDesembarque.nome}
-                                        disabled/>
+                                        disabled />
                                 </div>
                             </fieldset>
 
@@ -86,16 +86,17 @@ function Confirmation() {
                                 </div>
                             </div> */}
 
+                            <div className='button-wrapper'>
+                                <button type="submit"
+                                    onClick={navegarHome}>
+                                    cancelar
+                                </button>
+                                <button type="submit"
+                                    onClick={navegarChat}>
+                                    confirmar viagem
+                                </button>
+                            </div>
 
-                            <button type="submit"
-                                onClick={navegarHome}>
-                                cancelar
-                            </button>
-
-                            <button type="submit"
-                                onClick={navegarChat}>
-                                confirmar viagem
-                            </button>
                         </form>
                     </div>
                 </div>

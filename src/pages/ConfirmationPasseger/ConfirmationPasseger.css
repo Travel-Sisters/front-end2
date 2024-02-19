@@ -138,3 +138,10 @@ body {
 #page-create-point form button:hover {
   background: #d32455;
 }
+
+#page-create-point .button-wrapper{
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

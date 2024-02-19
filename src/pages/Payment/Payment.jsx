@@ -1,0 +1,91 @@
+import React from 'react'
+import MenuConfirmation from '../../components/MenuConfirmation/Menu'
+
+import warning from '../../assets/img/warning.svg'
+import question from '../../assets/img/question.svg'
+import shield from '../../assets/img/shield-check.svg'
+
+import './Payment.css'
+
+function Payment() {
+    return (
+        <>
+            <section className="point" id="page-create-point">
+                <div className="point-container container grid">
+                    <div id="page-create-point">
+                        <header>
+                            <MenuConfirmation />
+                        </header>
+
+                    </div>
+                    <form>
+                        <h1 style={
+                            {
+                                color: '#202020',
+                                fontSize: '1.7rem'
+                            }
+                        }>confirme os detalhes de pagamento</h1>
+                        <p style={
+                            {
+                                color: '#999999',
+                                fontSize: '1rem',
+                                fontWeight: '500'
+                            }
+                        }>revise e junte-se ao seu grupo de viagem!</p>
+                        <section class="inputs flex">
+                            <div class="input-wrapper">
+                                <label for="cc-number">número do cartão</label>
+                                <input id="cc-number" type="text" placeholder="**** **** **** ****" />
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="cc-holder">nome do titular</label>
+                                <input
+                                    id="cc-holder"
+                                    type="text"
+                                    placeholder="nome como está no cartão"
+                                    required
+                                />
+                                <div class="warning">
+                                    <img src={warning} alt="ícone de alerta" />
+                                    nome do titular é obrigatório
+                                </div>
+                            </div>
+
+                            <div class="col-2 flex">
+                                <div class="input-wrapper">
+                                    <label for="cc-validity">validade</label>
+                                    <input id="cc-validity" type="text" placeholder="mm/aa" />
+                                </div>
+
+                                <div class="input-wrapper">
+                                    <label class="flex help" for="cc-cvv"
+                                    >CVV
+                                        <img
+                                            src={question}
+                                            alt="ícone de ajuda"
+                                            title="esse número está, geralmente, nas costas do seu cartão"
+                                        />
+                                    </label>
+                                    <input id="cc-cvv" type="text" placeholder="***" />
+                                </div>
+                            </div>
+                        </section>
+                        <section class="info-security flex">
+                            <img src={shield} alt="ícone de segurança" />
+                            seus dados estão seguros
+                        </section>
+
+                        <div className='button-wrapper'>
+                            <button>
+                                confirmar pagamento
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+        </>
+    )
+}
+
+export default Payment

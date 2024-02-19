@@ -160,3 +160,10 @@ body {
   color: #363636;
   font: var(--body-font);
 }
+
+#page-create-point .button-wrapper{
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

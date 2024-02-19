@@ -85,7 +85,6 @@ export default function ProfilePassenger() {
                             <br />
                             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', width: '100%' }}>
                                 <button onClick={handleFormSubmit} className="button button-flex" type="submit" style={{ border: 'none', marginRight: '10px' }}>confirmar</button>
-                                <button className="button button-flex" type="submit" style={{ border: 'none' }}>excluir conta</button>
                             </div>
                         </div>
                     </div>

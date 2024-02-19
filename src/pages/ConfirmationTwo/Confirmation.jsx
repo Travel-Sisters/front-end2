@@ -1,6 +1,6 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {MapContainer, TileLayer, Marker} from "react-leaflet";
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { useNavigate } from 'react-router-dom';
 // import * as map from './mapa.js';
 // import L from 'leaflet';
 import axios from 'axios';
@@ -19,7 +19,7 @@ function Confirmation() {
 
     const navegarChat = () => {
         alert('Viagem confirmada!')
-        navigate('/chat');
+        navigate('/motorista');
     };
 
     const handleFormSubmit = async (evento) => {
@@ -50,7 +50,7 @@ function Confirmation() {
             // console.log('Resposta do servidor:', responseChat.data);
             // console.log('')
             // console.log('CHAT REGISTRADO NO BANCO, ID: ', respondeChat.data.viagem)
-            
+
 
             navigate('/chat');
         } catch (error) {
@@ -71,7 +71,7 @@ function Confirmation() {
                 <div className="point-container container grid">
                     <div id="page-create-point">
                         <header>
-                            <MenuConfirmation/>
+                            <MenuConfirmation />
                         </header>
                         <form>
                             <h1 style={
@@ -93,13 +93,13 @@ function Confirmation() {
                                     <label htmlFor="name">ponto de embarque</label>
                                     <input type="text" name="name"
                                         placeholder={embarque}
-                                        disabled/>
+                                        disabled />
                                 </div>
                                 <div className="field">
                                     <label htmlFor="name">ponto de desembarque</label>
                                     <input type="text" name="name"
                                         placeholder={desembarque}
-                                        disabled/>
+                                        disabled />
                                 </div>
                             </fieldset>
 
@@ -116,16 +116,17 @@ function Confirmation() {
                                 </div>
                             </div> */}
 
+                            <div className='button-wrapper'>
+                                <button type="submit"
+                                    onClick={registerChat}>
+                                    confirmar viagem
+                                </button>
+                                <button type="submit"
+                                    onClick={handleFormSubmit}>
+                                    cancelar
+                                </button>
+                            </div>
 
-                            <button type="submit"
-                                onClick={handleFormSubmit}>
-                                cancelar
-                            </button>
-
-                            <button type="submit"
-                                onClick={registerChat}>
-                                confirmar viagem
-                            </button>
                         </form>
                     </div>
                 </div>

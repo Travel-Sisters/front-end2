@@ -19,6 +19,7 @@ import ProfilePassenger from './pages/ProfilePassenger/ProfilePassenger'
 import Report from './pages/Report/Report'
 import Validation from './pages/Validation/Validation'
 import RegisterViagem from './pages/RegisterViagem/RegisterViagem'
+import Payment from './pages/Payment/Payment'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -46,6 +47,7 @@ function Rota() {
                     <Route path="/relatorio" element={<Report />} />
                     <Route path="/validacao" element={<Validation />} />
                     <Route path="/cadastro-viagem" element={<RegisterViagem />} />
+                    <Route path="/pagamento" element={<Payment/>} />
                 </Routes>
 
             </Router>

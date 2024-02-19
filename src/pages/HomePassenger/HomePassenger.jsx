@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './HomePassenger.css';
 import Footer from '../../components/Footer/Footer';
@@ -20,19 +20,16 @@ export default function HomePassenger() {
     const navigate = useNavigate();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+    const idUsuario = sessionStorage.getItem('idUsuarioLogin') || {};
     const [viagens, setViagens] = useState([]);
     const [viagem, setViagem] = useState(null);
-    const [fila, setFila] = useState([
-        1,
-        2,
-        3,
-    ])
+    const [fila, setFila] = useState([]);
 
     const navegarPerfil = () => {
         navigate('/perfil-passageira');
     };
 
-      const toggleDropdown = () => {
+    const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
@@ -45,11 +42,12 @@ export default function HomePassenger() {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                console.log('id usuário ' + idUsuario)
                 const response = await fetch('http://localhost:8080/viagens/listar');
                 const data = await response.json();
 
                 setViagens(data);
-                console.log(data)
+                console.log('Viagens ' + data);
 
             } catch (error) {
                 console.error('Erro ao buscar dados do banco de dados:', error);
@@ -59,8 +57,25 @@ export default function HomePassenger() {
         fetchData();
     }, []);
 
-    const navegarRelatorio = () => {        
-            navigate('/relatorio');
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response2 = await fetch('http://localhost:8080/viagens/fila');
+                const data2 = await response2.json();
+
+                setFila(data2);
+                console.log('Fila ' + data2);
+
+            } catch (error) {
+                console.error('Erro ao buscar dados do banco de dados:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const navegarRelatorio = () => {
+        navigate('/relatorio');
     }
 
     return (
@@ -88,10 +103,9 @@ export default function HomePassenger() {
                                 </li>
                                 <li>
                                     <div className={
-                                            `dropdown ${
-                                                isDropdownOpen ? 'show-dropdown' : ''
-                                            }`
-                                        }
+                                        `dropdown ${isDropdownOpen ? 'show-dropdown' : ''
+                                        }`
+                                    }
                                         id="dropdown-content">
                                         <button className="dropdown-button" id="dropdown-button"
                                             onClick={toggleDropdown}>
@@ -120,17 +134,17 @@ export default function HomePassenger() {
                         <div className="home-container container grid">
                             <img src={passageiraAmarelo}
                                 alt=""
-                                className="home-img"/>
+                                className="home-img" />
 
                             <div className="home-data">
                                 <h1 className="home-title">
                                     passageira,
-                                    <br/>
+                                    <br />
                                     é com você!
                                 </h1>
                                 <p className="home-description">
                                     somos uma comunidade exclusiva para
-                                                                                                                                                                                                                            mulheres que desejam explorar juntas.</p>
+                                    mulheres que desejam explorar juntas.</p>
                             </div>
                         </div>
                     </section>
@@ -139,7 +153,7 @@ export default function HomePassenger() {
                         <div className="about-container grid">
                             <img src={passageira}
                                 alt=""
-                                className="about-img"/>
+                                className="about-img" />
 
                             <div className="about-data">
                                 <h2 className="section-title about-title">
@@ -162,46 +176,36 @@ export default function HomePassenger() {
                                 </div>
                             </div>
                         </div>
+
                     </section>
 
                     <section className="search" id="search">
                         <div className="search-container container grid">
-                            <label htmlFor="">Viagens Disponíveis</label>
                             <form className="search">
-                                {/* <div className="search-field select">
-                                    <label className="sr-only" htmlFor="city">localização</label>
-                                    <i className="ph-map-pin-light"></i>
-                                    <select name="city" id="city">
-                                        <option value="0" selected>escolha a localização</option>
-                                        <option value="sao-paulo">São Paulo</option>
-                                    </select>
-                                    <i className="ph-caret-down-light"></i>
-                                </div> */}
                                 <div className="search-field select">
-
                                     <select id="viagem" name="viagem"
                                         value={
                                             viagem ? viagem.pontoDesembarque.nome : ''
                                         }
                                         onChange={
                                             (e) => handleChange(e, 'viagem')
-                                    }>
-                                        <option value="">escolha os lugares disponíveis</option>
+                                        }>
+                                        <option value="">escolha as viagens disponíveis</option>
                                         {
-                                        viagens.map((viagem) => (
-                                            <option key={
+                                            viagens.map((viagem) => (
+                                                <option key={
                                                     viagem.id
                                                 }
-                                                value={
+                                                    value={
 
-                                                    viagem.pontoDesembarque.nome
-                                            }>
-                                                {
+                                                        viagem.pontoDesembarque.nome
+                                                    }>
+                                                    {
 
-                                                viagem.pontoDesembarque.nome
-                                            } </option>
-                                        ))
-                                    } </select>
+                                                        viagem.pontoDesembarque.nome
+                                                    } </option>
+                                            ))
+                                        } </select>
 
 
                                     <i className="ph-caret-down-light"></i>
@@ -266,25 +270,7 @@ export default function HomePassenger() {
                             </section>
                         </div>
                     </section> */}
-
-                    <section className="visited section container">
-                        {
-                        fila ? (fila.map((message, index) => (
-                            <div key={index}>
-                                {/* <div className="body">{fila[index].nome}</div> */}
-                                <div className="body">
-                                    {
-                                    fila[index]
-                                }
-                                    - {
-                                    ++ index
-                                }</div>
-                            </div>
-                        ))) : (
-                            <h1>NAO TEM NESSA BOSTA</h1>
-                        )
-                    } </section>
-
+                                        
                     <section className="visited section container" id="visited">
                         <div className="visited-container grid">
                             <div className="visited-data">
@@ -294,35 +280,35 @@ export default function HomePassenger() {
                                 <div id="container-visitados">
                                     <div class="div1">
                                         <img src={zoologico}
-                                            alt=""/>
+                                            alt="" />
                                     </div>
                                     <div class="div2">
                                         <img src={parque}
-                                            alt=""/>
+                                            alt="" />
                                     </div>
                                     <div class="div3">
                                         <img src={mis}
-                                            alt=""/>
+                                            alt="" />
                                     </div>
                                     <div class="div4">
                                         <img src={sebastiao}
-                                            alt=""/>
+                                            alt="" />
                                     </div>
                                     <div class="div5">
                                         <img src={brotas}
-                                            alt=""/>
+                                            alt="" />
 
                                     </div>
                                     <div class="div6">
                                         <img src={holambra}
-                                            alt=""/>
+                                            alt="" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
                 </main>
-                <Footer/>
+                <Footer />
             </div>
         </>
     )

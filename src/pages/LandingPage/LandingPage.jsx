@@ -191,7 +191,7 @@ export default function LandingPage() {
 
                                     <div className="faq-content">
                                         <p className="faq-description">
-
+                                        para contratar uma viagem, é necessário realizar o cadastro, e após isso temos nossa home especialmente feita para as passageiras, onde você pode contratar sua viagem, e além disso temos também sugestões dos lugares mais visitados
                                         </p>
                                     </div>
                                 </div>
@@ -206,7 +206,7 @@ export default function LandingPage() {
 
                                     <div className="faq-content">
                                         <p className="faq-description">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquid quidem dolor alias doloremque necessitatibus! Reprehenderit, dolor maiores porro minus asperiores excepturi corrupti totam tenetur quaerat architecto, hic enim. Consectetur!
+                                        ao comprar uma passagem, você terá as opções para revisar os dados da viagem, além disso você entrará em um chat que está diretamente conectado com as outras passageiras e também com a motorista, sendo assim você pode tirar dúvidas da viagem direto com a motorista.
                                         </p>
                                     </div>
                                 </div>
@@ -221,7 +221,7 @@ export default function LandingPage() {
 
                                     <div className="faq-content">
                                         <p className="faq-description">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquid quidem dolor alias doloremque necessitatibus! Reprehenderit, dolor maiores porro minus asperiores excepturi corrupti totam tenetur quaerat architecto, hic enim. Consectetur!
+                                        o pagamento pode ser feito via pix, cartões de débito e crédito direto com a motorista da sua viagem.
                                         </p>
                                     </div>
                                 </div>
@@ -238,7 +238,7 @@ export default function LandingPage() {
 
                                     <div className="faq-content">
                                         <p className="faq-description">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquid quidem dolor alias doloremque necessitatibus! Reprehenderit, dolor maiores porro minus asperiores excepturi corrupti totam tenetur quaerat architecto, hic enim. Consectetur!
+                                        para se tornar motorista é muito fácil, faça seu cadastro pela nossa plataforma, preechendo alguns dados e logo logo se tornará uma Sister
                                         </p>
                                     </div>
                                 </div>
@@ -253,7 +253,7 @@ export default function LandingPage() {
 
                                     <div className="faq-content">
                                         <p className="faq-description">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquid quidem dolor alias doloremque necessitatibus! Reprehenderit, dolor maiores porro minus asperiores excepturi corrupti totam tenetur quaerat architecto, hic enim. Consectetur!
+                                        sim, é possível cadastrar mais de uma viagem, entretanto temos uma limite para que não sobrecarregue nenhuma motorista.
                                         </p>
                                     </div>
                                 </div>
@@ -268,7 +268,7 @@ export default function LandingPage() {
 
                                     <div className="faq-content">
                                         <p className="faq-description">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquid quidem dolor alias doloremque necessitatibus! Reprehenderit, dolor maiores porro minus asperiores excepturi corrupti totam tenetur quaerat architecto, hic enim. Consectetur!
+                                        claro, temos as opção para você que é passageira ser uma motorista e vice-versa, na nossa página inicial quando você clicar no opção de cadastro, você pode escolher a sua melhor opção
                                         </p>
                                     </div>
                                 </div>

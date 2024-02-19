@@ -234,10 +234,13 @@ export default function Validation() {
                                         placeholder="insira aqui informações relevantes sobre a viagem" />                                      
                                 </div>
                             </fieldset>
+                            <div className='button-wrapper'>
                             <button type="submit" onClick={handleFormSubmit}>
                                 cadastrar viagem
                             </button>
-                            <button id="limp" onclick="limpar()">X limpar tudo</button>
+                            <button id="limp" onclick="limpar()">limpar tudo</button>
+                            </div>
+                           
                         </form>
                     </div>
                 </div>

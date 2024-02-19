@@ -107,7 +107,7 @@ export default function HomeDriver() {
                                 <p className="home-description">explore o mundo conosco e crie memórias inesquecíveis. somos uma comunidade exclusiva para mulheres que desejam explorar, aprender e crescer juntas, sem limites.</p>
                                 <button onClick={navegarViagem}
                                     className="button button-flex">
-                                    Cadastrar viagem
+                                   cadastrar viagem
                                 </button>
 
 

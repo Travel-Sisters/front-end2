@@ -1,5 +1,5 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import './Report.css'
@@ -8,7 +8,6 @@ import MenuConfirmation from '../../components/MenuConfirmation/Menu'
 
 
 export default function Report() {
-
     const storedViagem = JSON.parse(sessionStorage.getItem('viagem'));
     if (storedViagem) {
         console.log('Detalhes da Viagem:', storedViagem);
@@ -16,7 +15,7 @@ export default function Report() {
 
     const navigate = useNavigate();
     const navegarConfirmacao = () => {
-        
+
         navigate('/confirmacao-passageira');
     };
 
@@ -25,7 +24,7 @@ export default function Report() {
             <div className="point-container container grid">
                 <div id="page-create-point">
                     <header>
-                        <MenuConfirmation/>
+                        <MenuConfirmation />
                     </header>
                     <div id="container">
                         <div class="img"></div>
