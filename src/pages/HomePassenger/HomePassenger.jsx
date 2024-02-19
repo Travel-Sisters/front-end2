@@ -270,7 +270,23 @@ export default function HomePassenger() {
                             </section>
                         </div>
                     </section> */}
-                                        
+
+                    <section className="visited section container">
+                    <h2 className="section-title about-title">últimas viagens</h2>
+                        {
+                            Array.isArray(fila) && fila.length > 0 ? (
+                                fila.map((viagem, index) => (
+                                    <div key={index}>
+                                        <div className="body"> {index + 1} - {viagem.data} - {viagem.pontoEmbarque.nome}- {viagem.pontoDesembarque.nome}
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <h1>----</h1>
+                            )
+                        }
+                    </section>
+                    x'
                     <section className="visited section container" id="visited">
                         <div className="visited-container grid">
                             <div className="visited-data">
