@@ -7,6 +7,25 @@ import shield from '../../assets/img/shield-check.svg'
 
 import './Payment.css'
 
+const formatInputDate = (dateString, forBackend = false) => {
+    if (forBackend) {
+        // formato "AAAA-MM"
+        return dateString.replace(/(\d{4})(\d{2})/, '$1-$2');
+    } else {
+        // formato "MM/AAAA"
+        return dateString.replace(/(\d{2})(\d{4})/, '$1/$2');
+    }
+};
+
+const handleDateChange = (event) => {
+    const inputDate = event.target.value;
+    const cleanedValue = inputDate.replace(/\D/g, '');
+    const formattedDateForDisplay = formatInputDate(cleanedValue, false);
+    const formattedDateForBackend = formatInputDate(cleanedValue, true);
+
+    setData(formattedDateForDisplay);
+    setDataForBackend(formattedDateForBackend);
+};
 function Payment() {
     return (
         <>
@@ -54,7 +73,8 @@ function Payment() {
                             <div class="col-2 flex">
                                 <div class="input-wrapper">
                                     <label for="cc-validity">validade</label>
-                                    <input id="cc-validity" type="text" placeholder="mm/aa" />
+                                    <input id="cc-validity" type="text" placeholder="mm/aa" 
+                                    />
                                 </div>
 
                                 <div class="input-wrapper">

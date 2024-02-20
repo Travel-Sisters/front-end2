@@ -25,6 +25,16 @@ export default function Validation() {
     const [valor, setValor] = useState(0.0);
     const [motorista, setMotorista] = useState({});
 
+    const formatInputDate = (dateString, forBackend = false) => {
+        if (forBackend) {
+            // formato "AAAA-MM-DD"
+            return dateString.replace(/(\d{2})(\d{2})(\d{4})/, '$3-$2-$1');
+        } else {
+            // formato "DD-MM-AAAA"
+            return dateString.replace(/(\d{2})(\d{2})(\d{4})/, '$1-$2-$3');
+        }
+    };
+
     const handleChange = (event, pontoType) => {
         const selectedAddress = enderecos.find((endereco) => endereco.nome === event.target.value);
 
@@ -93,6 +103,7 @@ export default function Validation() {
             });
         }
     };
+    
 
     // const navegarChat = () => {
     //     alert('Viagem confirmada!')
@@ -199,7 +210,7 @@ export default function Validation() {
                                             (e) => setData(e.target.value)
                                         }
                                         required
-                                        placeholder="2025-05-12"
+                                        placeholder="DD-MM-AAAA"
                                     />
                                 </div>
                                 <div className="field">

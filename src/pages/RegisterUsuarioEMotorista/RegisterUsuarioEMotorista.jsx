@@ -24,10 +24,28 @@ export default function Register() {
 
     const [passwordVisible, setPasswordVisible] = useState(false);
 
+    const formatInputDate = (dateString, forBackend = false) => {
+        if (forBackend) {
+            // formato "AAAA-MM-DD"
+            return dateString.replace(/(\d{2})(\d{2})(\d{4})/, '$3-$2-$1');
+        } else {
+            // formato "DD-MM-AAAA"
+            return dateString.replace(/(\d{2})(\d{2})(\d{4})/, '$1-$2-$3');
+        }
+    };
     const togglePassword = () => {
         setPasswordVisible((prev) => !prev);
     };
 
+            const handleDateChange = (event) => {
+            const inputDate = event.target.value;
+            const cleanedValue = inputDate.replace(/\D/g, '');
+            const formattedDateForDisplay = formatInputDate(cleanedValue, false);
+            const formattedDateForBackend = formatInputDate(cleanedValue, true);
+        
+            setNascimento(formattedDateForDisplay);
+            setNascimentoForBackend(formattedDateForBackend);
+        };
     const handleFormSubmit = async (evento) => {
         evento.preventDefault();
         const usuario = {
@@ -162,10 +180,10 @@ export default function Register() {
                             <label className='custom-date-input' htmlFor="date">data de nascimento</label>
                             <input id="date" name="data"
                                 value={
-                                    nascimento.nascimento
+                                    nascimento
                                 }
                                 onChange={
-                                    (e) => setNascimento(e.target.value)
+                                    handleDateChange
                                 }
                                 required
                                 placeholder="digite sua data de nascimento" />
