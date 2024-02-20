@@ -140,12 +140,12 @@ function Confirmation() {
 
                             <div className='button-wrapper'>
                                 <button type="submit"
-                                    onClick={registerChat}>
-                                    confirmar viagem
-                                </button>
-                                <button type="submit"
                                     onClick={handleFormSubmit}>
                                     cancelar
+                                </button>
+                                <button type="submit"
+                                    onClick={registerChat}>
+                                    confirmar viagem
                                 </button>
                             </div>
 

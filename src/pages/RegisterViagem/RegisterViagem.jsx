@@ -268,10 +268,10 @@ export default function Validation() {
                                 </div>
                             </fieldset>
                             <div className='button-wrapper'>
+                            <button id="limp" onclick="limpar()">limpar tudo</button>
                             <button type="submit" onClick={handleFormSubmit}>
                                 cadastrar viagem
                             </button>
-                            <button id="limp" onclick="limpar()">limpar tudo</button>
                             </div>
                            
                         </form>

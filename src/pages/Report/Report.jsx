@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './Report.css'
 
-import MenuConfirmation from '../../components/MenuConfirmation/Menu'
+import MenuConfirmation from '@/components/MenuConfirmation/Menu'
 
 
 export default function Report() {
