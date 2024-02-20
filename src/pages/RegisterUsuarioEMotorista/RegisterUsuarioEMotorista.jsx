@@ -23,6 +23,7 @@ export default function Register() {
     const [fkEmpresa, setFkEmpresa] = useState('');
 
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [nascimentoForBackend, setNascimentoForBackend] = useState('');
 
     const formatInputDate = (dateString, forBackend = false) => {
         if (forBackend) {
@@ -52,7 +53,7 @@ export default function Register() {
             nome,
             email,
             cpf,
-            nascimento,
+            nascimento: nascimentoForBackend,
             senha
         };
 

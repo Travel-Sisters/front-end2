@@ -24,6 +24,7 @@ export default function Validation() {
     const [horario, setHorario] = useState('');
     const [valor, setValor] = useState(0.0);
     const [motorista, setMotorista] = useState({});
+    const [dataForBackend, setDataForBackend] = useState('');
 
     const formatInputDate = (dateString, forBackend = false) => {
         if (forBackend) {
@@ -35,6 +36,15 @@ export default function Validation() {
         }
     };
 
+    const handleDateChange = (event) => {
+        const inputDate = event.target.value;
+        const cleanedValue = inputDate.replace(/\D/g, '');
+        const formattedDateForDisplay = formatInputDate(cleanedValue, false);
+        const formattedDateForBackend = formatInputDate(cleanedValue, true);
+    
+        setData(formattedDateForDisplay);
+        setDataForBackend(formattedDateForBackend);
+    };
     const handleChange = (event, pontoType) => {
         const selectedAddress = enderecos.find((endereco) => endereco.nome === event.target.value);
 
@@ -66,7 +76,7 @@ export default function Validation() {
     const handleFormSubmit = async (evento) => {
         evento.preventDefault();
         const viagem = {
-            data,
+            data : dataForBackend,
             pontoEmbarque,
             pontoDesembarque,
             descricao,
@@ -207,7 +217,7 @@ export default function Validation() {
                                             data.data
                                         }
                                         onChange={
-                                            (e) => setData(e.target.value)
+                                            handleDateChange
                                         }
                                         required
                                         placeholder="DD-MM-AAAA"

@@ -38,9 +38,6 @@ function Confirmation() {
 
     const [selectedPosition, setSelectedPosition] = useState(null);
 
-    const handleMapClick = (event) => {
-        setSelectedPosition([event.latlng.lat, event.latlng.lng]);
-    };
 
     return (
         <>
