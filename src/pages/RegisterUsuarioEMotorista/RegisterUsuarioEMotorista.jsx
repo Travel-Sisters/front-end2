@@ -90,7 +90,12 @@ export default function Register() {
             }
         } catch (error) {
             console.error('Erro ao cadastrar o usuário: ', error);
-            alert('OPS! Alguma coisa deu errado!');
+            //alert('OPS! Alguma coisa deu errado!');
+            Swal.fire({
+                title: 'OPS! Alguma coisa deu errado!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     };
 

@@ -1,9 +1,14 @@
 import React from 'react'
 import MenuConfirmation from '@/components/MenuConfirmation/Menu'
+import axios from 'axios';
 
 import warning from '@/assets/img/warning.svg'
 import question from '@/assets/img/question.svg'
 import shield from '@/assets/img/shield-check.svg'
+
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 import './Payment.css'
 
@@ -25,10 +30,23 @@ const handleDateChange = (event) => {
 
     setData(formattedDateForDisplay);
     setDataForBackend(formattedDateForBackend);
+
 };
 
 
+
 function Payment() {
+
+    const navigate = useNavigate();
+    const alerta = () => {
+        Swal.fire({
+            title: 'Pagamento efetuado com sucesso!',
+            icon: 'ok',
+            confirmButtonText: 'OK'
+        });
+        navigate('/passageira');
+    };
+    
     return (
         <>
             <section className="point" id="page-create-point">
@@ -97,7 +115,7 @@ function Payment() {
                         </section>
 
                         <div className='button-wrapper'>
-                            <button>
+                            <button type="submit" onClick={alerta}>
                                 confirmar pagamento
                             </button>
                         </div>

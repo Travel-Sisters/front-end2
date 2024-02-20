@@ -69,7 +69,7 @@ function Confirmation() {
             // console.log('CHAT REGISTRADO NO BANCO, ID: ', respondeChat.data.viagem)
 
 
-            navigate('/chat');
+            navigate('/motorista');
         } catch (error) {
             console.error('Erro ao cancelar:', error);
             //alert('OPS! Alguma coisa deu errado!');
