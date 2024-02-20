@@ -84,7 +84,7 @@ export default function LandingPage() {
                                     cadastrar
                                 </Link>
 
-                                <Link to="/login" target="_blank" className="nav-item" style={{ color: '#202020', fontWeight: '500', textDecoration: 'none' }} hover={{ color: 'red' }}>
+                                <Link to="/login" target="_blank" className="nav-item" style={{ color: '#202020', fontWeight: '500', textDecoration: 'none' }} hover={{ color: '#fafafa' }}>
                                     entrar
                                 </Link>
                             </ul>

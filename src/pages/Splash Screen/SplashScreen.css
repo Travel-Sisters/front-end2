@@ -62,11 +62,15 @@
     color:  #fff;
     padding: 1rem 1.75rem;
     border-radius: .5rem;
+    outline: none;
+    border: none;
     transition: .4s;
+    cursor: pointer;
+    
 }
 
 #splash-screen-page .home-button:hover {
-    box-shadow: 0 4px 12px hsla(38, 69%, 8%, .2);
+    background-color: #bb2550;
 }
 
 #splash-screen-page .home-button-second {

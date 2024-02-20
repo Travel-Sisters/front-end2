@@ -43,7 +43,6 @@ export default function Report() {
                                 <div class="icon">
                                     <i class="fa-regular fa-calendar"></i>
                                     <p>{storedViagem.data}</p>
-
                                     <i id="teste" class="fa-regular fa-clock"></i>
                                     <p id="teste2">{storedViagem.horario}</p>
                                 </div>
@@ -57,18 +56,9 @@ export default function Report() {
                                 </div>
                                 <div class="icon">
                                     <i class="fa-solid fa-van-shuttle"></i>
-                                    <p>van rosa, placa {storedViagem.motorista.placaVan}</p>
+                                    <p>Van Rosa, placa {storedViagem.motorista.placaVan}</p>
                                 </div>
-                                <div class="reserva">
-                                    <div class="qtd">
-                                        <div class="num">
-                                            <p>
-                                                <b>1</b>
-                                            </p>
-                                        </div>
-                                        <p>lugar reservado</p>
-                                    </div>
-                                </div>
+                                
                                 <div class="botao">
                                     <button onClick={navegarConfirmacao} id="butt">contratar
                                     </button>

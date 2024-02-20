@@ -212,14 +212,6 @@
   background-color: var(--first-color-alt);
 }
 
-#page-all-users .button-icon {
-  transition: .3s;
-}
-
-#page-all-users .button:hover .button-icon {
-  transform: translateX(.25rem);
-}
-
 #page-all-users .button-flex {
   display: inline-flex;
   align-items: center;
@@ -229,10 +221,6 @@
 #page-all-users .button-link {
   color: var(--first-color);
   font-weight: var(--font-medium);
-}
-
-#page-all-users .button-link:hover .button_icon {
-  transform: translateX(.25rem);
 }
 
 #page-all-users .about-container {

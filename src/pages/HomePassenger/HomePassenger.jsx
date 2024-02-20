@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import './HomePassenger.css';
-import Footer from '../../components/Footer/Footer';
+import Footer from '@/components/Footer/Footer';
 
 import passageira from '@/assets/img/passageira.png';
 import passageiraAmarelo from '@/assets/img/fpassageira.png';
@@ -144,7 +144,7 @@ export default function HomePassenger() {
                                 </h1>
                                 <p className="home-description">
                                     somos uma comunidade exclusiva para
-                                    mulheres que desejam explorar juntas.</p>
+                                    mulheres que desejam explorar juntas. escolha seu destino e embarque em uma viagem segura.</p>
                             </div>
                         </div>
                     </section>
@@ -271,7 +271,7 @@ export default function HomePassenger() {
                         </div>
                     </section> */}
 
-                    <section className="visited section container">
+                    {/* <section className="visited section container">
                     <h2 className="section-title about-title">últimas viagens</h2>
                         {
                             Array.isArray(fila) && fila.length > 0 ? (
@@ -285,8 +285,8 @@ export default function HomePassenger() {
                                 <h1>----</h1>
                             )
                         }
-                    </section>
-                    x'
+                    </section> */}
+                    
                     <section className="visited section container" id="visited">
                         <div className="visited-container grid">
                             <div className="visited-data">

@@ -1,9 +1,9 @@
 import React from 'react'
-import MenuConfirmation from '../../components/MenuConfirmation/Menu'
+import MenuConfirmation from '@/components/MenuConfirmation/Menu'
 
-import warning from '../../assets/img/warning.svg'
-import question from '../../assets/img/question.svg'
-import shield from '../../assets/img/shield-check.svg'
+import warning from '@/assets/img/warning.svg'
+import question from '@/assets/img/question.svg'
+import shield from '@/assets/img/shield-check.svg'
 
 import './Payment.css'
 
@@ -26,6 +26,8 @@ const handleDateChange = (event) => {
     setData(formattedDateForDisplay);
     setDataForBackend(formattedDateForBackend);
 };
+
+
 function Payment() {
     return (
         <>
@@ -35,7 +37,6 @@ function Payment() {
                         <header>
                             <MenuConfirmation />
                         </header>
-
                     </div>
                     <form>
                         <h1 style={
@@ -73,7 +74,7 @@ function Payment() {
                             <div class="col-2 flex">
                                 <div class="input-wrapper">
                                     <label for="cc-validity">validade</label>
-                                    <input id="cc-validity" type="text" placeholder="mm/aa" 
+                                    <input id="cc-validity" type="text" placeholder="mm/aa"
                                     />
                                 </div>
 
@@ -100,7 +101,6 @@ function Payment() {
                                 confirmar pagamento
                             </button>
                         </div>
-
                     </form>
                 </div>
             </section>
