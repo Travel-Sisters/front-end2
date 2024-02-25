@@ -113,7 +113,7 @@ export default function Profile() {
                             <div style={{ gap: '0.5rem', width: '100%' }}>
                                 <button onClick={handleFormSubmit} className="button button-flex" type="submit" style={{ border: 'none', marginRight: '10px' }}>confirmar</button>
                             </div>
-                            <h2 className="section-title about-title" style={{ fontSize: '1.6rem' }}>
+                            {/*<h2 className="section-title about-title" style={{ fontSize: '1.6rem' }}>
                                 confira suas viagens até agora
                             </h2>
                             <p>gere relatório das suas viagens e tenha controle de tudo.
@@ -124,7 +124,7 @@ export default function Profile() {
                             </button>
                             <button className="button button-flex" type="submit" onClick={gerarTxt} style={{ border: 'none', marginRight: '10px' }}>
                                 gerar TXT
-                            </button>
+                            </button>*/}
                         </div>
                         <br />
                         <br />

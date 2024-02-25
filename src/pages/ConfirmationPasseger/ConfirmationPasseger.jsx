@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 // import * as map from './mapa.js';
 // import L from 'leaflet';
-import axios from 'axios';
 
 import MenuConfirmation from '../../components/MenuConfirmation/Menu'
 import './ConfirmationPasseger.css'
@@ -19,17 +19,29 @@ function Confirmation() {
     if (storedViagem) {
         console.log('Detalhes da Viagem:', storedViagem);
     }
-    const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
+    const idViagem = storedViagem.id
+    const idUsuario = sessionStorage.getItem('idUsuarioLogin') || {};
 
-    const navegarChat = () => {
-        //alert('Viagem confirmada!')
-        Swal.fire({
-            title: 'Viagem confirmada!',
-            icon: 'ok',
-            confirmButtonText: 'OK'
-        });
-        navigate('/pagamento');
+    console.log(idViagem)
+    console.log("-"+idUsuario)
+
+    const navegarPagamento = () => {
+        try {
+
+            const response = axios.post(`http://localhost:8080/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
+            alert("Viagem confirmada")
+                navigate('/pagamento');
+            }
+         catch (error) {
+            console.error('Erro ao realizar a requisição:', error);
+            Swal.fire({
+                title: 'Erro ao confirmar viagem',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
     };
+    
 
     const navegarHome = () => {
         alert('Ok!')
@@ -96,7 +108,7 @@ function Confirmation() {
                                     cancelar
                                 </button>
                                 <button type="submit"
-                                    onClick={navegarChat}>
+                                    onClick={navegarPagamento}>
                                     confirmar viagem
                                 </button>
                             </div>

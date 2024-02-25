@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import jsPDF from 'jspdf';
 
 import './HomePassenger.css';
 import Footer from '@/components/Footer/Footer';
@@ -78,6 +80,43 @@ export default function HomePassenger() {
         navigate('/relatorio');
     }
 
+    const gerarPdf = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/viagens/listarPorIdUsuario/${idUsuario}`);      
+            const viagens = response.data;
+            const pdf = new jsPDF();
+
+            viagens.forEach((viagem, index) => {
+                if (index > 0) {
+                    pdf.addPage();
+                  }
+                const verticalPosition = 20 + index * 5;
+                pdf.text(`Viagem: ${viagem.id}`, 20, verticalPosition);
+                pdf.text(`Data: ${viagem.data}`, 20, verticalPosition + 10);
+                pdf.text(`Ponto de embarque: ${viagem.pontoEmbarque.rua}`, 20, verticalPosition + 20);
+                pdf.text(`Ponto de desembarque: ${viagem.pontoDesembarque.rua}`, 20, verticalPosition + 30);
+                pdf.text(`Descrição: ${viagem.descricao}`, 20, verticalPosition + 40);
+                pdf.text(`Horário: ${viagem.horario}`, 20, verticalPosition + 50);
+                pdf.text(`Valor: ${viagem.valor}`, 20, verticalPosition + 60);
+                pdf.text(`Nome da motorista: ${viagem.motorista.usuario.nome}`, 20, verticalPosition + 70);
+                pdf.text(`Placa da van: ${viagem.motorista.placaVan}`, 20, verticalPosition + 80);
+              });
+      
+            const blob = pdf.output('blob');
+            const blobUrl = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.setAttribute('download', 'suas_viagens.pdf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(blobUrl);
+          } catch (error) {
+            alert('Você ainda não tem viagens contratadas:')
+            console.error('Você não tem viagens cadastradas:', error);
+          }
+        };
+
     return (
         <>
             <div id="page-passenger">
@@ -145,6 +184,10 @@ export default function HomePassenger() {
                                 <p className="home-description">
                                     somos uma comunidade exclusiva para
                                     mulheres que desejam explorar juntas. escolha seu destino e embarque em uma viagem segura.</p>
+                                    <button onClick={gerarPdf}
+                                    className="button button-flex">
+                                   gerar pdf das suas viagens
+                                </button>
                             </div>
                         </div>
                     </section>

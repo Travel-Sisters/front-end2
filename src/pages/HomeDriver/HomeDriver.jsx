@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import jsPDF from 'jspdf';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,24 +17,49 @@ import brotas from '@/assets/img/brotas.png';
 import mis from '@/assets/img/mis.png';
 
 export default function HomeDriver() {
-
+    const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
     const navigate = useNavigate();
 
     const navegarViagem = () => {
         navigate('/cadastro-viagem');
     };
 
-    const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
+    const gerarPdf = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/viagens/listarPorId/${idMotorista}`);      
+            const viagens = response.data;
+            const pdf = new jsPDF();
 
-    const gerarCsv = () => {
-        const response = axios.get(`http://localhost:8080/viagens/csv/${idMotorista}`);
-        alert('Csv entrou com sucesso!');
-    };
-
-    const gerarTxt = () => {
-        const response = axios.get(`http://localhost:8080/viagens/txt/${idMotorista}`);
-        alert('Txt entrou com sucesso!');
-    };
+            viagens.forEach((viagem, index) => {
+                if (index > 0) {
+                    pdf.addPage();
+                  }
+                const verticalPosition = 20 + index * 5;
+                pdf.text(`Viagem: ${viagem.id}`, 20, verticalPosition);
+                pdf.text(`Data: ${viagem.data}`, 20, verticalPosition + 10);
+                pdf.text(`Ponto de embarque: ${viagem.pontoEmbarque.rua}`, 20, verticalPosition + 20);
+                pdf.text(`Ponto de desembarque: ${viagem.pontoDesembarque.rua}`, 20, verticalPosition + 30);
+                pdf.text(`Descrição: ${viagem.descricao}`, 20, verticalPosition + 40);
+                pdf.text(`Horário: ${viagem.horario}`, 20, verticalPosition + 50);
+                pdf.text(`Valor: ${viagem.valor}`, 20, verticalPosition + 60);
+                pdf.text(`Nome da motorista: ${viagem.motorista.usuario.nome}`, 20, verticalPosition + 70);
+                pdf.text(`Placa da van: ${viagem.motorista.placaVan}`, 20, verticalPosition + 80);
+              });
+      
+            const blob = pdf.output('blob');
+            const blobUrl = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.setAttribute('download', 'suas_viagens.pdf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(blobUrl);
+          } catch (error) {
+            alert('Você não tem viagens cadastradas:')
+            console.error('Você não tem viagens cadastradas:', error);
+          }
+        };
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -109,7 +135,12 @@ export default function HomeDriver() {
                                     className="button button-flex">
                                    cadastrar viagem
                                 </button>
-
+                                <br />
+                                <br />
+                                <button onClick={gerarPdf}
+                                    className="button button-flex">
+                                   gerar pdf das suas viagens
+                                </button>
 
                             </div>
 
