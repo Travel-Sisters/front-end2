@@ -11,7 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-env.homolog
+.env.homolog
 
 # Editor directories and files
 .vscode/*
