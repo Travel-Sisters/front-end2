@@ -58,13 +58,11 @@ export default function Report() {
                                     <i class="fa-solid fa-van-shuttle"></i>
                                     <p>Van Rosa, placa {storedViagem.motorista.placaVan}</p>
                                 </div>
-                                
                                 <div class="botao">
                                     <button onClick={navegarConfirmacao} id="butt">contratar
                                     </button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
