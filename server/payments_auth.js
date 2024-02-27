@@ -1,9 +1,8 @@
-require('dotenv').config({path:'./.env.homolog'})
 const options = require('./credentials')
 
 const EfiPay = require('sdk-node-apis-efi')
 const efipay = new EfiPay(options)
-const EfiJs = require('./distNode/payment-token-efi');
+const EfiJs = require('payment-token-efi');
 
 try {
     EfiJs.CreditCard
