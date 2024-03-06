@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react';
+import Modal from 'react-modal';
 import MenuConfirmation from '@/components/MenuConfirmation/Menu'
 import axios from 'axios';
 
@@ -36,6 +37,13 @@ const handleDateChange = (event) => {
 
 
 function Payment() {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const handleConfirmPayment = () => {
+        alerta();
+        navigate();
+        setModalIsOpen(false); // Fechar o modal após o pagamento ser confirmado
+    };
 
     const navigate = useNavigate();
     const alerta = () => {
@@ -119,6 +127,20 @@ function Payment() {
                                 confirmar pagamento
                             </button>
                         </div>
+                        <button onClick={() => setModalIsOpen(true)}>WhatsApp</button>
+
+                        <Modal
+                            isOpen={modalIsOpen}
+                            onRequestClose={() => setModalIsOpen(false)}
+                            contentLabel="Modal de Pagamento"
+                        >
+                                <div>
+                                    <p>Entre em contato pelo WhatsApp:</p>
+                                    <a href={`https://wa.me/${11967918215}`} target="_blank" rel="noopener noreferrer">
+                                    <button onClick={handleConfirmPayment}>Abrir WhatsApp</button>
+                                    </a>
+                                </div>
+                        </Modal>
                     </form>
                 </div>
             </section>

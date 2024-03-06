@@ -14,6 +14,7 @@ export default function Register() {
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
+    const [telefone, setTelefone] = useState('');
     const [cpf, setCPF] = useState('');
     const [nascimento, setNascimento] = useState('');
     const [senha, setSenha] = useState('');
@@ -58,6 +59,7 @@ export default function Register() {
         };
 
         const motorista = {
+            telefone,
             cnh,
             placaVan,
             fkEmpresa,
@@ -167,6 +169,19 @@ export default function Register() {
                                 }
                                 required
                                 placeholder="digite seu e-mail" />
+                        </div>
+                        
+                        <div className="input-wrapper">
+                            <label htmlFor="telefone">telefone</label>
+                            <input id="telefone" type="telefone" name="telefone"
+                                value={
+                                    telefone.telefone
+                                }
+                                onChange={
+                                    (e) => setTelefone(e.target.value)
+                                }
+                                required
+                                placeholder="digite seu telefone" />
                         </div>
 
                         <div className="input-wrapper">
