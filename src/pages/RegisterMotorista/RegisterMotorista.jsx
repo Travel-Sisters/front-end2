@@ -10,6 +10,7 @@ import bg from '../../assets/img/bg-azul.png';
 
 export default function Register() {
     const navigate = useNavigate();
+    const [telefone,setTelefone] = useState('');
     const [cnh, setCnh] = useState('');
     const [placaVan, setPlacaVan] = useState('');
     const [fkEmpresa, setFkEmpresa] = useState({});
@@ -19,6 +20,7 @@ export default function Register() {
     const handleFormSubmit = async (evento) => {
         evento.preventDefault();
         const motorista = {
+            telefone,
             cnh,
             placaVan,
             fkEmpresa,
@@ -62,6 +64,30 @@ export default function Register() {
 
                     </div>
                     <form>
+                    <div className="input-wrapper">
+                            <label htmlFor="number">telefone</label>
+                            <input id="telefone" name="telefone"
+                                value={
+                                    cnh.cnh
+                                }
+                                onChange={
+                                    (e) => setTelefone(e.target.value)
+                                }
+                                required
+                                placeholder="insira o número do seu telefone" />
+                        </div>
+                        <div className="input-wrapper">
+                            <label htmlFor="text">CNH</label>
+                            <input id="cnh" name="cnh"
+                                value={
+                                    cnh.cnh
+                                }
+                                onChange={
+                                    (e) => setCnh(e.target.value)
+                                }
+                                required
+                                placeholder="insira o número da sua CNH" />
+                        </div>
                         <div className="input-wrapper">
                             <label htmlFor="text">CNH</label>
                             <input id="cnh" name="cnh"
