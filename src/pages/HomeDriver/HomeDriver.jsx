@@ -44,6 +44,7 @@ export default function HomeDriver() {
                 pdf.text(`Valor: ${viagem.valor}`, 20, verticalPosition + 60);
                 pdf.text(`Nome da motorista: ${viagem.motorista.usuario.nome}`, 20, verticalPosition + 70);
                 pdf.text(`Placa da van: ${viagem.motorista.placaVan}`, 20, verticalPosition + 80);
+                pdf.text(`Telefone da motorista: ${viagem.motorista.telefone}`, 20, verticalPosition + 90);
               });
       
             const blob = pdf.output('blob');
