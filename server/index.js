@@ -1,7 +1,7 @@
 const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io')
-const cors = require('cors'); 
+const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
@@ -15,6 +15,22 @@ const io = socketIO(server, {
 app.use(cors());
 
 const PORT = 3001;
+
+const sdk_path = 'pix'
+
+app.post('/'+sdk_path+'/cobrar', (req, res) => {
+
+  efipay.pixCreateCharge(params, body)
+    .then((resposta) => {
+      const resultado = (resposta)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
+
+  res.json({ resultado });
+});
 
 io.on('connection', (socket) => {
   console.log('Usuário conectado:', socket.id);
