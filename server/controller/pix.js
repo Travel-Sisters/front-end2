@@ -2,7 +2,7 @@ const https = require("https");
 var axios = require("axios");
 var fs = require("fs");
 
-const options = require('./credentials/credentials')
+const options = require('../credentials/credentials')
 
 
 base_url = options.sandbox == true ? "https://pix-h.api.efipay.com.br" : "https://pix.api.efipay.com.br"
@@ -97,28 +97,55 @@ const getQrcode = async (access_token, locId) => {
 
 }
 
-const runApp = async () => {
-    const access_token = await getAccessToken()
+var data = JSON.stringify({
+	"calendario": {
+		"expiracao": 3600
+	},
+	"devedor": {
+		"cpf": "12345678909",
+		"nome": "Francisco da Silva"
+	},
+	"valor": {
+		"original": "123.45"
+	},
+	"chave": "71cdf9ba-c695-4e3c-b010-abb521a3f1be",
+	"solicitacaoPagador": "Cobrança dos serviços prestados."
+})
 
-    var data = JSON.stringify({
-        "calendario": {
-            "expiracao": 3600
-        },
-        "devedor": {
-            "cpf": "12345678909",
-            "nome": "Francisco da Silva"
-        },
-        "valor": {
-            "original": "123.45"
-        },
-        "chave": "71cdf9ba-c695-4e3c-b010-abb521a3f1be",
-        "solicitacaoPagador": "Cobrança dos serviços prestados."
-    })
+async function gerar_cobranca(req, res) {
 
-    const getCob = await create_cob(access_token, data)
-    console.log("COBBBBBBBBBBBBBBBBB")
-    const locId = getCob.loc.id
-    const qrcode = await getQrcode(access_token, locId)
-    console.log(qrcode)
+	// data = req.body
+
+	try {
+
+		token = await getAccessToken()
+		const response = await create_cob(token, data)
+		res.status(200).json({response})
+	
+	} catch (error) {
+		console.error('Erro ao atualizar dados', error)
+    	res.status(500).json({ error: 'Erro interno do servidor' })
+	}
+	
 }
-runApp()
+
+async function gerar_qrcode(req, res) {
+	
+	const locId = req.params.locId
+
+	try {
+
+		token = await getAccessToken()
+		const response = await getQrcode(token, locId)
+		res.status(200).json({response})
+
+	} catch (error) {
+
+	}
+
+}
+
+module.exports = {
+    gerar_cobranca,
+	gerar_qrcode
+}

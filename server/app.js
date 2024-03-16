@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io')
 const cors = require('cors');
+const PORTA = 3001;
 
 const app = express();
 const server = http.createServer(app);
@@ -13,24 +14,11 @@ const io = socketIO(server, {
 });
 
 app.use(cors());
+app.use(express.json());
 
-const PORT = 3001;
+const routes = require('./router/routes')
 
-const sdk_path = 'pix'
-
-app.post('/'+sdk_path+'/cobrar', (req, res) => {
-
-  efipay.pixCreateCharge(params, body)
-    .then((resposta) => {
-      const resultado = (resposta)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-
-
-  res.json({ resultado });
-});
+app.use('/pix', routes)
 
 io.on('connection', (socket) => {
   console.log('Usuário conectado:', socket.id);
@@ -40,7 +28,7 @@ io.on('connection', (socket) => {
 
     // Emite uma mensagem para o chat específico informando que um usuário entrou
     io.to(chatId).emit('user_joined', `Usuário ${socket.id} entrou no chat.`);
-  });
+  }); 
 
   socket.on('message', (data) => {
     // Envia a mensagem para o chat específico
@@ -55,6 +43,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+server.listen(PORTA, () => {
+  console.log(`\tServer running on port ${PORTA} \n\n \t\thttp://localhost:${PORTA}`);
 });
