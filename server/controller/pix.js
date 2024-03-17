@@ -97,24 +97,9 @@ const getQrcode = async (access_token, locId) => {
 
 }
 
-var data = JSON.stringify({
-	"calendario": {
-		"expiracao": 3600
-	},
-	"devedor": {
-		"cpf": "12345678909",
-		"nome": "Francisco da Silva"
-	},
-	"valor": {
-		"original": "123.45"
-	},
-	"chave": "71cdf9ba-c695-4e3c-b010-abb521a3f1be",
-	"solicitacaoPagador": "Cobrança dos serviços prestados."
-})
-
 async function gerar_cobranca(req, res) {
 
-	// data = req.body
+	data = req.body
 
 	try {
 

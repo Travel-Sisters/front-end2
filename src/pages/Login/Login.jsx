@@ -36,6 +36,16 @@ export default function Login() {
             return;
         }
 
+        const setSessionStoraged = async (userId) => {
+            try {
+                const response = await axios.get(`http://localhost:8080/usuarios/buscarPoId/${userId}`)
+                console.log(response)
+                
+            } catch (error) {
+                console.log('erro ao buscar usuário: ', error)
+            }
+        }
+
 
         try {
             const response = await axios.post('http://localhost:8080/usuarios/entrar', usuario);
@@ -46,6 +56,7 @@ export default function Login() {
                 sessionStorage.setItem('authToken', token);
                 sessionStorage.setItem('usuario', response.data.nome);
                 sessionStorage.setItem('idUsuarioLogin', response.data.userId);
+                // sessionStorage.setItem('cpf', response.data.cpf)
 
                 console.log('Resposta do servidor:', response.data);
                 //alert('Usuário entrou com sucesso!');
@@ -53,6 +64,9 @@ export default function Login() {
                 setSenha('');
 
                 if (response.data.userId !== null && response.data.userId !== undefined) {
+
+                    // setSessionStoraged(response.data.userId)
+
                     const responseM = await axios.get(`http://localhost:8080/usuarios/verificar-perfil/${response.data.userId}`);
 
                     sessionStorage.setItem('idMotoristaLogin', responseM.data.id);

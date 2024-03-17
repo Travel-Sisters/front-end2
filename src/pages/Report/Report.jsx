@@ -14,9 +14,42 @@ export default function Report() {
     }
 
     const navigate = useNavigate();
-    const navegarConfirmacao = () => {
+    const navegarConfirmacao = async () => {
+
+        var data = JSON.stringify({
+            "calendario": {
+                "expiracao": 3600
+            },
+            "devedor": {
+                "cpf": "12345678909",
+                "nome": "Francisco da Silva"
+            },
+            "valor": {
+                "original": "123.45"
+            },
+            "chave": "71cdf9ba-c695-4e3c-b010-abb521a3f1be",
+            "solicitacaoPagador": "Cobrança dos serviços prestados."
+        })
+
+
+        try {
+
+            const resposta = await axios.post('https://localhost:3001/pix/cob', data, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            console.log(response.data);
+    
+        } catch (error) {
+            console.error('Erro ao gerar cobrança', error);
+        }
+
+
 
         navigate('/confirmacao-passageira');
+
     };
 
     return (
@@ -57,6 +90,11 @@ export default function Report() {
                                 <div class="icon">
                                     <i class="fa-solid fa-van-shuttle"></i>
                                     <p>Van Rosa, placa {storedViagem.motorista.placaVan}</p>
+                                </div>
+                                <div class="icon">
+                                    {/* TROCAR ICONE PARA TELEFONE */}
+                                    <i class="fa-regular fa-user"></i>
+                                    <p>Telefone: {storedViagem.motorista.telefone}</p>
                                 </div>
                                 <div class="botao">
                                     <button onClick={navegarConfirmacao} id="butt">contratar
