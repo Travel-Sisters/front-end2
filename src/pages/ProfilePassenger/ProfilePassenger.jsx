@@ -6,6 +6,7 @@ import './Profile.css'
 import Menu from '../../components/Menu/Menu'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import API_URL from './config';
 
 export default function ProfilePassenger() {
     const navigate = useNavigate();
@@ -25,7 +26,8 @@ export default function ProfilePassenger() {
         };
 
         try {
-            const response = await axios.put(`http://localhost:8080/usuarios/alterar/${idUsuario}`, passageira);
+            //const response = await axios.put(`http://localhost:8080/usuarios/alterar/${idUsuario}`, passageira);
+            axios.get(`${API_URL}/usuarios/alterar/${idUsuario}`, passageira);
             console.log('Resposta do servidor:', response.data);
             //alert('passageira foi alterado com sucesso!');
             Swal.fire({

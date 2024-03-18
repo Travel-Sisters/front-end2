@@ -7,6 +7,7 @@ import azul from '../../assets/img/logo-azul.png';
 import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg-azul.png';
+import API_URL from './config';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -32,7 +33,8 @@ export default function Register() {
 
             console.log('SESSION STORAGE USUARIO ' + idUsuario)
 
-            const response = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
+            //const response = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
+            axios.get(`${API_URL}/motoristas/cadastrar/${idUsuario}`, motorista);
             console.log('Resposta do servidor:', response.data);
             Swal.fire({
                 title: 'Cadastro efetuado com sucesso!!',

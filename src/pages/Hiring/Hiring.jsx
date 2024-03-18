@@ -6,6 +6,7 @@ import './Hiring.css';
 import Menu from '../../components/Menu/Menu'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import API_URL from './config';
 
 function Hiring() {
 
@@ -35,7 +36,8 @@ function Hiring() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8080/enderecos/');
+                //const response = await fetch('http://localhost:8080/enderecos/');
+                axios.get(`${API_URL}/enderecos/`);
                 const data = await response.json();
 
                 setEnderecos(data);
@@ -65,7 +67,8 @@ function Hiring() {
         try {
             console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
 
-            const response = await axios.post(`http://localhost:8080/viagens/cadastrar/${idMotorista}`, viagem);
+            //const response = await axios.post(`http://localhost:8080/viagens/cadastrar/${idMotorista}`, viagem);
+            axios.get(`${API_URL}/viagens/cadastrar/${idMotorista}`, viagem);
             console.log('Resposta do servidor:', response.data);
 
             //alert('Viagem cadastrada com sucesso!');

@@ -8,6 +8,7 @@ import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg.jpg';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import API_URL from './config';
 
 export default function Teste() {
     const navigate = useNavigate();
@@ -15,7 +16,8 @@ export default function Teste() {
 
     const handleFormSubmit = async (evento) => {
         try {
-            const response = await axios.get(`http://localhost:8080/viagens/fila/${1}`);
+            //const response = await axios.get(`http://localhost:8080/viagens/fila/${1}`);
+            axios.get(`${API_URL}/viagens/fila/${1}`);
 
             console.log('Resposta do servidor:', response.data);
             if (response.status === 200) {

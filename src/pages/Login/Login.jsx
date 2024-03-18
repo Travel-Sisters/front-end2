@@ -8,6 +8,7 @@ import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg.jpg';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import API_URL from './config';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -38,7 +39,8 @@ export default function Login() {
 
         const setSessionStoraged = async (userId) => {
             try {
-                const response = await axios.get(`http://localhost:8080/usuarios/buscarPoId/${userId}`)
+                //const response = await axios.get(`http://localhost:8080/usuarios/buscarPoId/${userId}`)
+                axios.get(`${API_URL}/usuarios/buscarPoId/${userId}`);
                 console.log(response)
                 
             } catch (error) {
@@ -48,7 +50,8 @@ export default function Login() {
 
 
         try {
-            const response = await axios.post('http://localhost:8080/usuarios/entrar', usuario);
+            //const response = await axios.post('http://localhost:8080/usuarios/entrar', usuario);
+            axios.get(`${API_URL}/usuarios/entrar`, usuario);
 
             if (response.status === 200) {
                 const token = response.data.token;
@@ -67,7 +70,8 @@ export default function Login() {
 
                     // setSessionStoraged(response.data.userId)
 
-                    const responseM = await axios.get(`http://localhost:8080/usuarios/verificar-perfil/${response.data.userId}`);
+                    //const responseM = await axios.get(`http://localhost:8080/usuarios/verificar-perfil/${response.data.userId}`);
+                    axios.get(`${API_URL}/usuarios/verificar-perfil/${response.data.userId}`);
 
                     sessionStorage.setItem('idMotoristaLogin', responseM.data.id);
 

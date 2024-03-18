@@ -15,6 +15,7 @@ import parque from '@/assets/img/parque.png';
 import holambra from '@/assets/img/holambra.png';
 import brotas from '@/assets/img/brotas.png';
 import mis from '@/assets/img/mis.png';
+import API_URL from './config';
 
 export default function HomeDriver() {
     const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
@@ -26,7 +27,8 @@ export default function HomeDriver() {
 
     const gerarPdf = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/viagens/listarPorId/${idMotorista}`);      
+            //const response = await axios.get(`http://localhost:8080/viagens/listarPorId/${idMotorista}`); 
+            axios.get(`${API_URL}/viagens/listarPorId/${idMotorista}`);     
             const viagens = response.data;
             const pdf = new jsPDF();
 
