@@ -9,7 +9,7 @@ import MenuConfirmation from '../../components/MenuConfirmation/Menu'
 import './ConfirmationPasseger.css'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import API_URL from './config';
+import config from '../../../config';
 
 function Confirmation() {
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ function Confirmation() {
         try {
 
             //const response = axios.post(`http://localhost:8080/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
-            axios.get(`${API_URL}/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
+            axios.get(`${config.API_URL}/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
 
             alert("Viagem confirmada")
                 navigate('/pagamento');

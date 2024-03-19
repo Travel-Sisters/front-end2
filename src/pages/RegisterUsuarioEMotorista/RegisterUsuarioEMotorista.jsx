@@ -8,7 +8,7 @@ import roxo from '../../assets/img/logo-roxo.png';
 import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg-roxo.png';
-import API_URL from './config';
+import config from '../../../config';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -69,7 +69,7 @@ export default function Register() {
 
         try {
             //const responseUsuario = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
-            axios.get(`${API_URL}/usuarios/cadastrar`, usuario);
+            axios.get(`${config.API_URL}/usuarios/cadastrar`, usuario);
             console.log('Resposta do servidor (Usuário):', responseUsuario.data);
 
             if (responseUsuario.data.id != null) {
@@ -77,7 +77,7 @@ export default function Register() {
 
                 const idUsuario = responseUsuario.data.id;
                 //const responseMotorista = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
-                axios.get(`${API_URL}/motoristas/cadastrar/${idUsuario}`, motorista);
+                axios.get(`${config.API_URL}/motoristas/cadastrar/${idUsuario}`, motorista);
                 console.log('Resposta do servidor (Motorista):', responseMotorista.data.id);
 
                 Swal.fire({

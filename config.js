@@ -1,12 +1,14 @@
-const config = {
-    development: {
-      API_URL: 'http://localhost:8080', // Endereço do backend para ambiente de desenvolvimento
-    },
-    production: {
-      API_URL: 'http://10.0.0.230:porta', // Endereço do backend para ambiente de produção
-    },
+  const dev = {
+        API_URL: "http://localhost:8080"
+      };
+      
+  const prod = {
+        API_URL: "http://10.0.0.230:3000"
+      };
+
+  var config = {
+        ...(import.meta.env.VITE_ENV === "prod" ? prod : dev)
   };
-  
-  const environment = process.env.NODE_ENV || 'development'; // Define o ambiente de execução como desenvolvimento por padrão
-  
-  export default config[environment];
+
+
+export default config;

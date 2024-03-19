@@ -9,7 +9,7 @@ import bg from '../../assets/img/bg-azul.png';
 import { analyze } from 'eslint-scope';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import API_URL from './config';
+import config from '../../../config';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -39,7 +39,7 @@ export default function Login() {
 
         try {
             //const response = await axios.post('http://localhost:8080/usuarios/entrar', usuario);
-            axios.get(`${API_URL}/usuarios/entrar`, usuario);
+            axios.get(`${config.API_URL}/usuarios/entrar`, usuario);
 
             if (response.status === 200) {
                 const token = response.data.token;

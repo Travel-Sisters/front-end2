@@ -16,7 +16,7 @@ import parque from '@/assets/img/parque.png';
 import holambra from '@/assets/img/holambra.png';
 import brotas from '@/assets/img/brotas.png';
 import mis from '@/assets/img/mis.png';
-import API_URL from './config';
+import config from '../../../config';
 
 
 export default function HomePassenger() {
@@ -47,7 +47,7 @@ export default function HomePassenger() {
             try {
                 console.log('id usuário ' + idUsuario)
                 //const response = await fetch('http://localhost:8080/viagens/listar');
-                axios.get(`${API_URL}/viagens/listar`);
+                axios.get(`${config.API_URL}/viagens/listar`);
                 const data = await response.json();
 
                 setViagens(data);
@@ -65,7 +65,7 @@ export default function HomePassenger() {
         const fetchData = async () => {
             try {
                 //const response2 = await fetch('http://localhost:8080/viagens/fila');
-                axios.get(`${API_URL}/viagens/fila`);
+                axios.get(`${config.API_URL}/viagens/fila`);
                 const data2 = await response2.json();
 
                 setFila(data2);
@@ -86,7 +86,7 @@ export default function HomePassenger() {
     const gerarPdf = async () => {
         try {
             //const response = await axios.get(`http://localhost:8080/viagens/listarPorIdUsuario/${idUsuario}`);  
-            axios.get(`${API_URL}/viagens/listarPorIdUsuario/${idUsuario}`);   
+            axios.get(`${config.API_URL}/viagens/listarPorIdUsuario/${idUsuario}`);   
             const viagens = response.data;
             const pdf = new jsPDF();
 

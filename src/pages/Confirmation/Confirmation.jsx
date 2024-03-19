@@ -9,7 +9,7 @@ import './Confirmation.css'
 import Menu from '../../components/Menu/Menu'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import API_URL from './config';
+import config from '../../../config';
 
 function Confirmation() {
     const navigate = useNavigate();
@@ -33,7 +33,7 @@ function Confirmation() {
             console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
 
             //const response = await axios.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
-            axios.get(`${API_URL}/viagens/pilha/${idMotorista}`);
+            axios.get(`${config.API_URL}/viagens/pilha/${idMotorista}`);
 
             console.log('Resposta do servidor:', response.data);
 
