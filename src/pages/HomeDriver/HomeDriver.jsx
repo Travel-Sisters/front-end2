@@ -28,7 +28,7 @@ export default function HomeDriver() {
     const gerarPdf = async () => {
         try {
             //const response = await axios.get(`http://localhost:8080/viagens/listarPorId/${idMotorista}`); 
-            axios.get(`${config.API_URL}/viagens/listarPorId/${idMotorista}`);     
+            const response = await axios.get(`${config.API_URL}/viagens/listarPorId/${idMotorista}`);     
             const viagens = response.data;
             const pdf = new jsPDF();
 

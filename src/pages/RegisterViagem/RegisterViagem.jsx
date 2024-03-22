@@ -60,7 +60,7 @@ export default function Validation() {
         const fetchData = async () => {
             try {
                 //const response = await fetch('http://localhost:8080/enderecos/');
-                axios.get(`${config.API_URL}/enderecos/`);
+                const reponse = await fetch(`${config.API_URL}/enderecos/`);
                 const data = await response.json();
 
                 setEnderecos(data);
@@ -91,7 +91,7 @@ export default function Validation() {
             console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
 
             //const response = await axios.post(`http://localhost:8080/viagens/cadastrar/${idMotorista}`, viagem);
-            axios.get(`${config.API_URL}/viagens/cadastrar/${idMotorista}`, motorista);
+            const response = await axios.post(`${config.API_URL}/viagens/cadastrar/${idMotorista}`, motorista);
             console.log('Resposta do servidor:', response.data);
 
             //alert('Viagem cadastrada com sucesso!');

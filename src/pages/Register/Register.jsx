@@ -125,7 +125,7 @@ export default function Register() {
 
         try { 
             //const response = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
-            axios.get(`${config.API_URL}/usuarios/cadastrar`, usuario);
+            const response = await axios.post(`${config.API_URL}/usuarios/cadastrar`, usuario);
             console.log('Resposta do servidor:', response.data);
             Swal.fire({
                 title: 'Cadastro efetuado com sucesso!!',

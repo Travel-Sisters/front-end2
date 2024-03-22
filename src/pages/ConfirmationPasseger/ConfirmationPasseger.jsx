@@ -30,7 +30,7 @@ function Confirmation() {
         try {
 
             //const response = axios.post(`http://localhost:8080/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
-            axios.get(`${config.API_URL}/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
+            const response = axios.post(`${config.API_URL}/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
 
             alert("Viagem confirmada")
                 navigate('/pagamento');

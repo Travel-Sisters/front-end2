@@ -69,7 +69,7 @@ export default function Register() {
 
         try {
             //const responseUsuario = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
-            axios.get(`${config.API_URL}/usuarios/cadastrar`, usuario);
+            const responseUsuario = await axios.post(`${config.API_URL}/usuarios/cadastrar`, usuario);
             console.log('Resposta do servidor (Usuário):', responseUsuario.data);
 
             if (responseUsuario.data.id != null) {
@@ -77,7 +77,7 @@ export default function Register() {
 
                 const idUsuario = responseUsuario.data.id;
                 //const responseMotorista = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
-                axios.get(`${config.API_URL}/motoristas/cadastrar/${idUsuario}`, motorista);
+                const responseMotorista = await axios.post(`${config.API_URL}/motoristas/cadastrar/${idUsuario}`, motorista);
                 console.log('Resposta do servidor (Motorista):', responseMotorista.data.id);
 
                 Swal.fire({

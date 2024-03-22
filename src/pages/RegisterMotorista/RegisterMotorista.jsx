@@ -34,7 +34,7 @@ export default function Register() {
             console.log('SESSION STORAGE USUARIO ' + idUsuario)
 
             //const response = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
-            axios.get(`${config.API_URL}/motoristas/cadastrar/${idUsuario}`, motorista);
+            const response = await axios.post(`${config.API_URL}/motoristas/cadastrar/${idUsuario}`, motorista);
             console.log('Resposta do servidor:', response.data);
             Swal.fire({
                 title: 'Cadastro efetuado com sucesso!!',
