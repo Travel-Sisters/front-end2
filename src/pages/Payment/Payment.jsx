@@ -4,6 +4,7 @@ import MenuConfirmation from '@/components/MenuConfirmation/Menu'
 import warning from '@/assets/img/warning.svg'
 import question from '@/assets/img/question.svg'
 import shield from '@/assets/img/shield-check.svg'
+import manutencao from '@/assets/img/manutencao.png';
 
 import {useNavigate} from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -70,8 +71,8 @@ function Payment() {
                             <MenuConfirmation/>
                         </header>
                     </div>
-                    <form>
-                        <h1 style={
+                    {/* <form> */}
+                        {/* <h1 style={ 
                             {
                                 color: '#202020',
                                 fontSize: '1.7rem'
@@ -119,7 +120,13 @@ function Payment() {
                             <img src={shield}
                                 alt="ícone de segurança"/>
                             seus dados estão seguros
-                        </section>
+                        </section>*/}
+                        <h1>Estamos em manutenção</h1>
+                        <br/>
+                        <h3>Nosso site está passando por mudanças, em breve nessa tela você acesso área de pagamento</h3>
+                        <img src={manutencao}
+                                alt=""
+                                className="payment-img" />
 
                         <div className='button-wrapper'>
                             <button type="submit"
@@ -127,7 +134,7 @@ function Payment() {
                                 confirmar pagamento
                             </button>
                         </div>
-                    </form>
+                    {/* </form> */}
                 </div>
             </section>
         </>

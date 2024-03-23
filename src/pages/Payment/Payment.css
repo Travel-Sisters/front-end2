@@ -114,7 +114,7 @@
     border: 1px solid red;
 }
 
-#page-create-point form button {
+#page-create-point button {
     width: 30%;
     padding: 1rem 1rem;
     background: var(--pink);
