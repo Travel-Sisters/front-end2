@@ -9,6 +9,7 @@ import bg from '../../assets/img/bg.jpg';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import config from '../../../config';
+import api from '../../api';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -125,7 +126,7 @@ export default function Register() {
 
         try { 
             //const response = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
-            const response = await axios.post(`${config.API_URL}/usuarios/cadastrar`, usuario);
+            const response = await api.post(`/usuarios/cadastrar`, usuario);
             console.log('Resposta do servidor:', response.data);
             Swal.fire({
                 title: 'Cadastro efetuado com sucesso!!',
