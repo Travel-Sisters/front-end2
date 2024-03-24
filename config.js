@@ -3,7 +3,7 @@
       };
       
   const prod = {
-        API_URL: "http://10.0.0.215:8080"
+        API_URL: "/api"
       };
 
   var config = {

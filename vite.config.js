@@ -5,7 +5,7 @@ import sass from 'sass'
 export default defineConfig({
   server:{
     proxy:{
-      '/API_URL':{
+      '/api':{
         target: 'http://10.0.0.215:8080',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\API_URL/,''),
