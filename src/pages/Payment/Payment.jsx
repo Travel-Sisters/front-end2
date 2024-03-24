@@ -123,7 +123,7 @@ function Payment() {
                         </section>*/}
                         <h1>Estamos em manutenção</h1>
                         <br/>
-                        <h3>Nosso site está passando por mudanças, em breve nessa tela você acesso área de pagamento</h3>
+                        <h3>Nosso site está passando por mudanças, em breve nessa tela você terá acesso a área de pagamento</h3>
                         <img src={manutencao}
                                 alt=""
                                 className="payment-img" />
