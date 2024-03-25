@@ -41,7 +41,7 @@ const storedViagem = JSON.parse(sessionStorage.getItem('viagem'));
 
 function Payment() {
     const navigate = useNavigate();
-    const whatsappURL = `https://wa.me/${telefoneMotorista}`;
+    const whatsappURL = `https://wa.me/55${telefoneMotorista}`;
 
     const alerta = () => {
 
