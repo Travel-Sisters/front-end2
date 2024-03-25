@@ -50,7 +50,7 @@ export default function Profile() {
             //alert('Motorista foi alterado com sucesso!');
             Swal.fire({
                 title: 'Motorista foi alterado com sucesso!',
-                icon: 'error',
+                icon: 'success',
                 confirmButtonText: 'OK'
             });
 
