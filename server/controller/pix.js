@@ -102,13 +102,12 @@ async function gerar_cobranca(req, res) {
 	data = req.body
 
 	try {
-
 		token = await getAccessToken()
 		const response = await create_cob(token, data)
 		res.status(200).json({response})
 	
 	} catch (error) {
-		console.error('Erro ao atualizar dados', error)
+		console.error('erro na cobrança', error)
     	res.status(500).json({ error: 'Erro interno do servidor' })
 	}
 	
@@ -125,7 +124,8 @@ async function gerar_qrcode(req, res) {
 		res.status(200).json({response})
 
 	} catch (error) {
-
+        console.error('erro no qrcode', error)
+    	res.status(500).json({ error: 'Erro interno do servidor' })
 	}
 
 }
