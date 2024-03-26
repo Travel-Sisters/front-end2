@@ -17,7 +17,7 @@ body {
 }
 
 #page-create-point header a {
-  color: var(--pink);
+  color: var(--purple);
   font-weight: bold;
   text-decoration: none;
   display: flex;

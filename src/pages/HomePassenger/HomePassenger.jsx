@@ -116,8 +116,8 @@ export default function HomePassenger() {
             document.body.removeChild(link);
             URL.revokeObjectURL(blobUrl);
           } catch (error) {
-            alert('Você ainda não tem viagens contratadas:')
-            console.error('Você não tem viagens cadastradas:', error);
+            alert('você ainda não tem viagens contratadas')
+            console.error('você não tem viagens cadastradas', error);
           }
         };
 
@@ -190,7 +190,7 @@ export default function HomePassenger() {
                                     mulheres que desejam explorar juntas. escolha seu destino e embarque em uma viagem segura.</p>
                                     <button onClick={gerarPdf}
                                     className="button button-flex">
-                                   gerar pdf das suas viagens
+                                   gerar PDF das suas viagens
                                 </button>
                             </div>
                         </div>

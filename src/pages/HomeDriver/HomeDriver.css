@@ -202,7 +202,7 @@
 }
 
 #page-driver .home-description {
-  margin-bottom: var(--mb-2-5);
+  margin-bottom: var(--mb-1);
 }
 
 #page-driver .button {
@@ -214,6 +214,7 @@
   font-weight: var(--font-medium);
   transition: .3s;
   cursor: pointer;
+
 }
 
 #page-driver .button:hover {
@@ -230,6 +231,16 @@
   color: var(--purple);
   font-weight: var(--font-medium);
 }
+
+.home-button-second {
+  margin-top: 2rem;
+  display: inline-block;
+  margin-left: 1rem;
+  color:  var(--purple);
+  transition: .4s;
+  text-decoration: none;
+}
+
 
 #page-driver .sr-only {
   position: absolute;

@@ -6,7 +6,7 @@ import question from '@/assets/img/question.svg'
 import shield from '@/assets/img/shield-check.svg'
 import manutencao from '@/assets/img/manutencao.png';
 
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -33,25 +33,24 @@ const handleDateChange = (event) => {
 
 var telefoneMotorista = null
 const storedViagem = JSON.parse(sessionStorage.getItem('viagem'));
-    if (storedViagem) {
-        console.log('Detalhes da Viagem:', storedViagem);
-        console.log('Número:', storedViagem.motorista.telefone);
-        telefoneMotorista = storedViagem.motorista.telefone;
-    }
+if (storedViagem) {
+    console.log('Detalhes da Viagem:', storedViagem);
+    console.log('Número:', storedViagem.motorista.telefone);
+    telefoneMotorista = storedViagem.motorista.telefone;
+}
 
 function Payment() {
     const navigate = useNavigate();
     const whatsappURL = `https://wa.me/55${telefoneMotorista}`;
 
     const alerta = () => {
-
         Swal.fire({
             title: 'Pagamento efetuado com sucesso:',
             icon: 'question',
             showCancelButton: true,
             confirmButtonText: 'Falar com a motorista',
             cancelButtonText: 'Voltar para home'
-            
+
         }).then((result) => {
 
             if (result.isConfirmed) {
@@ -68,34 +67,34 @@ function Payment() {
                 <div className="point-container container grid">
                     <div id="page-create-point">
                         <header>
-                            <MenuConfirmation/>
+                            <MenuConfirmation />
                         </header>
                     </div>
-                    {/* <form> */}
-                        {/* <h1 style={ 
+                    <form>
+                        <h1 style={
                             {
                                 color: '#202020',
                                 fontSize: '1.7rem'
                             }
-                        }>confirme os detalhes de pagamento</h1>
+                        }>página em manutenção!</h1>
                         <p style={
                             {
                                 color: '#999999',
                                 fontSize: '1rem',
                                 fontWeight: '500'
                             }
-                        }>revise e junte-se ao seu grupo de viagem!</p>
-                        <section class="inputs flex">
+                        }>nosso site está passando por mudanças, em breve nessa tela você terá acesso a área de pagamento.</p>
+                        {/* <section class="inputs flex">
                             <div class="input-wrapper">
                                 <label for="cc-number">número do cartão</label>
-                                <input id="cc-number" type="text" placeholder="**** **** **** ****"/>
+                                <input id="cc-number" type="text" placeholder="**** **** **** ****" />
                             </div>
                             <div class="input-wrapper">
                                 <label for="cc-holder">nome do titular</label>
-                                <input id="cc-holder" type="text" placeholder="nome como está no cartão" required/>
+                                <input id="cc-holder" type="text" placeholder="nome como está no cartão" required />
                                 <div class="warning">
                                     <img src={warning}
-                                        alt="ícone de alerta"/>
+                                        alt="ícone de alerta" />
                                     nome do titular é obrigatório
                                 </div>
                             </div>
@@ -103,38 +102,32 @@ function Payment() {
                             <div class="col-2 flex">
                                 <div class="input-wrapper">
                                     <label for="cc-validity">validade</label>
-                                    <input id="cc-validity" type="text" placeholder="mm/aa"/>
+                                    <input id="cc-validity" type="text" placeholder="mm/aa" />
                                 </div>
 
                                 <div class="input-wrapper">
                                     <label class="flex help" for="cc-cvv">CVV
                                         <img src={question}
                                             alt="ícone de ajuda"
-                                            title="esse número está, geralmente, nas costas do seu cartão"/>
+                                            title="esse número está, geralmente, nas costas do seu cartão" />
                                     </label>
-                                    <input id="cc-cvv" type="text" placeholder="***"/>
+                                    <input id="cc-cvv" type="text" placeholder="***" />
                                 </div>
                             </div>
                         </section>
                         <section class="info-security flex">
                             <img src={shield}
-                                alt="ícone de segurança"/>
+                                alt="ícone de segurança" />
                             seus dados estão seguros
-                        </section>*/}
-                        <h1>Estamos em manutenção</h1>
-                        <br/>
-                        <h3>Nosso site está passando por mudanças, em breve nessa tela você terá acesso a área de pagamento</h3>
-                        <img src={manutencao}
-                                alt=""
-                                className="payment-img" />
-
+                        </section>
+*/}
                         <div className='button-wrapper'>
-                            <button type="submit"
+                            <button type="button"
                                 onClick={alerta}>
-                                confirmar pagamento
+                                falar com motorista
                             </button>
                         </div>
-                    {/* </form> */}
+                    </form>
                 </div>
             </section>
         </>

@@ -28,14 +28,14 @@ export default function HomeDriver() {
     const gerarPdf = async () => {
         try {
             //const response = await axios.get(`http://localhost:8080/viagens/listarPorId/${idMotorista}`); 
-            const response = await axios.get(`${config.API_URL}/viagens/listarPorId/${idMotorista}`);     
+            const response = await axios.get(`${config.API_URL}/viagens/listarPorId/${idMotorista}`);
             const viagens = response.data;
             const pdf = new jsPDF();
 
             viagens.forEach((viagem, index) => {
                 if (index > 0) {
                     pdf.addPage();
-                  }
+                }
                 const verticalPosition = 20 + index * 5;
                 pdf.text(`Viagem: ${viagem.id}`, 20, verticalPosition);
                 pdf.text(`Data: ${viagem.data}`, 20, verticalPosition + 10);
@@ -47,8 +47,8 @@ export default function HomeDriver() {
                 pdf.text(`Nome da motorista: ${viagem.motorista.usuario.nome}`, 20, verticalPosition + 70);
                 pdf.text(`Placa da van: ${viagem.motorista.placaVan}`, 20, verticalPosition + 80);
                 pdf.text(`Telefone da motorista: ${viagem.motorista.telefone}`, 20, verticalPosition + 90);
-              });
-      
+            });
+
             const blob = pdf.output('blob');
             const blobUrl = URL.createObjectURL(blob);
             const link = document.createElement('a');
@@ -58,11 +58,11 @@ export default function HomeDriver() {
             link.click();
             document.body.removeChild(link);
             URL.revokeObjectURL(blobUrl);
-          } catch (error) {
+        } catch (error) {
             alert('Você não tem viagens cadastradas:')
             console.error('Você não tem viagens cadastradas:', error);
-          }
-        };
+        }
+    };
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -136,14 +136,12 @@ export default function HomeDriver() {
                                 <p className="home-description">explore o mundo conosco e crie memórias inesquecíveis. somos uma comunidade exclusiva para mulheres que desejam explorar, aprender e crescer juntas, sem limites.</p>
                                 <button onClick={navegarViagem}
                                     className="button button-flex">
-                                   cadastrar viagem
+                                    cadastrar viagem
                                 </button>
-                                <br />
-                                <br />
-                                <button onClick={gerarPdf}
-                                    className="button button-flex">
-                                   gerar pdf das suas viagens
-                                </button>
+                                <b><a href="#" className="home-button-second" onClick={gerarPdf}>
+                                    gerar PDF das viagens →
+                                </a>
+                                </b>
 
                             </div>
 
