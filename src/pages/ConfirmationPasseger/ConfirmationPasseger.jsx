@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 function Confirmation() {
+    const [dadoUser, setDadoUser] = useState(null);
+
     const navigate = useNavigate();
 
     const storedViagem = JSON.parse(sessionStorage.getItem('viagem'));
@@ -22,17 +24,41 @@ function Confirmation() {
     const idViagem = storedViagem.id
     const idUsuario = sessionStorage.getItem('idUsuarioLogin') || {};
 
+    // var desc = `Data da viagem ${storedViagem.data}, 
+    //         Horário: ${storedViagem.horario}, 
+    //         Detalhes da viagem: ${storedViagem.descricao} 
+    //         Motorista: ${storedViagem.usuario}
+    //         Telefone da motorista: ${storedViagem.motorista.telefone}
+    //         `
+    // console.log(desc)
     console.log(idViagem)
-    console.log("-"+idUsuario)
+    console.log("-" + idUsuario)
+
+    // useEffect(() => {
+    //     const getDadosUser = async () => {
+    //       try {
+    //         const idUser = sessionStorage.getItem('idUsuarioLogin');
+    //         const response = await axios.get(`http://localhost:8080/usuario/buscarPorId/${idUser}`);
+    //         setDadoUser(response.data);
+    //       } catch (error) {
+    //         console.error('Erro ao buscar dados da usuaria:', error);
+    //       }
+    //     };
+
+    //     getDadosUser(); 
+
+    //   }, []); 
+
+
 
     const navegarPagamento = () => {
         try {
 
-            const response = axios.post(`http://localhost:8080/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
-            alert("Viagem confirmada")
-                navigate('/pagamento');
-            }
-         catch (error) {
+            axios.post(`http://localhost:8080/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
+
+            getPix()
+            
+        } catch (error) {
             console.error('Erro ao realizar a requisição:', error);
             Swal.fire({
                 title: 'Erro ao confirmar viagem',
@@ -41,7 +67,55 @@ function Confirmation() {
             });
         }
     };
-    
+
+    const getPix = async () => {
+        try {
+
+            var desc = `Data da viagem ${storedViagem.data}, Horário: ${storedViagem.horario}, Detalhes da viagem: ${storedViagem.descricao}, Motorista: ${storedViagem.motorista.usuario.nome}, Telefone da motorista: ${storedViagem.motorista.telefone}`
+
+            var data = JSON.stringify({
+                "calendario": {
+                    "expiracao": 3600
+                },
+                "devedor": {
+                    "cpf": "12345678909",
+                    "nome": sessionStorage.getItem('usuario')
+                },
+                "valor": {
+                    "original": parseFloat(storedViagem.valor).toFixed(2).toString()
+                },
+                "chave": storedViagem.motorista.telefone,
+                "solicitacaoPagador": desc
+            })
+
+            navigate('/pagamento');
+
+            const resposta = await axios.post('http://localhost:3001/pix/cob', data, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const pix = {
+                "id": resposta.data.response.txid,
+                "expiracao": resposta.data.response.calendario.expiracao,
+                "locid": resposta.data.response.loc.id,
+                "pixCopiaECola": resposta.data.response.pixCopiaECola
+            }
+
+            console.log(resposta.data);
+            sessionStorage.setItem('pix', JSON.stringify(pix))
+            // navigate('/pagamento');
+
+        } catch (error) {
+            console.error('Erro ao gerar cobrança', error);
+            Swal.fire({
+                title: "erro ao gerar cobrança, tente novamente mais tarde",
+                icon: "error",
+            })
+        }
+        // alert("Viagem confirmada")
+    }
 
     const navegarHome = () => {
         alert('Ok!')
@@ -49,7 +123,6 @@ function Confirmation() {
     };
 
     const [selectedPosition, setSelectedPosition] = useState(null);
-
 
     return (
         <>

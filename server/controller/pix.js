@@ -66,7 +66,42 @@ const create_cob = async (access_token, dataCob) => {
         console.log('\n', error, '\n');
     }
 
+
 }
+
+// const create_cob = async (access_token, dataCob) => {
+//     const certificate = fs.readFileSync(options.certificate);
+//     const agent = new https.Agent({
+//         pfx: certificate,
+//         passphrase: '',
+//     });
+
+//     var config = {
+//         method: "POST",
+//         url: base_url + "/v2/cob",
+//         headers: {
+//             Authorization: "Bearer " + access_token,
+//             "Content-Type": "application/json",
+//         },
+//         httpsAgent: agent,
+//         data: dataCob,
+//     };
+
+//     try {
+//         const response = await axios(config);
+//         // Verifica o status HTTP da resposta
+//         if (response.status === 200 || response.status === 201) {
+//             console.log('\n', JSON.stringify(response.data), '\n');
+//             return response.data;
+//         } else {
+//             // Se o status não for 200, lança um erro
+//             throw new Error(`Erro na requisição: status ${response.status}`);
+//         }
+//     } catch (error) {
+//         console.log('\n', error, '\n');
+//         throw error; // Lança o erro para ser tratado pelo código que chama essa função
+//     }
+// };
 
 const getQrcode = async (access_token, locId) => {
 
