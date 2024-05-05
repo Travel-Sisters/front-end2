@@ -3,17 +3,8 @@ import react from '@vitejs/plugin-react'
 import sass from 'sass'
 
 export default defineConfig({
-  server:{
-    proxy:{
-      '/api':{
-        target: 'http://10.0.0.215:8080/api',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/,''),
-      },
-    },
-    cors: true,
-  },
   plugins: [react()],
+  cors: true
   css: {
     preprocessorOptions: {
       scss: {
