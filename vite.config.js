@@ -6,7 +6,7 @@ export default defineConfig({
   server:{
     proxy:{
       '/api':{
-        target: 'http://10.0.0.215:8080',
+        target: 'http://10.0.0.215:8080/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/,''),
       },
