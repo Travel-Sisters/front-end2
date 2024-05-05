@@ -24,40 +24,18 @@ function Confirmation() {
     const idViagem = storedViagem.id
     const idUsuario = sessionStorage.getItem('idUsuarioLogin') || {};
 
-    // var desc = `Data da viagem ${storedViagem.data}, 
-    //         Horário: ${storedViagem.horario}, 
-    //         Detalhes da viagem: ${storedViagem.descricao} 
-    //         Motorista: ${storedViagem.usuario}
-    //         Telefone da motorista: ${storedViagem.motorista.telefone}
-    //         `
-    // console.log(desc)
     console.log(idViagem)
     console.log("-" + idUsuario)
 
-    // useEffect(() => {
-    //     const getDadosUser = async () => {
-    //       try {
-    //         const idUser = sessionStorage.getItem('idUsuarioLogin');
-    //         const response = await axios.get(`http://localhost:8080/usuario/buscarPorId/${idUser}`);
-    //         setDadoUser(response.data);
-    //       } catch (error) {
-    //         console.error('Erro ao buscar dados da usuaria:', error);
-    //       }
-    //     };
+    const navegarPagamento = (event) => {
+        event.preventDefault(); // Impede o comportamento padrão do evento (recarregar a página)
 
-    //     getDadosUser(); 
-
-    //   }, []); 
-
-
-
-    const navegarPagamento = () => {
         try {
 
             axios.post(`http://localhost:8080/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
 
             getPix()
-            
+
         } catch (error) {
             console.error('Erro ao realizar a requisição:', error);
             Swal.fire({
@@ -88,7 +66,13 @@ function Confirmation() {
                 "solicitacaoPagador": desc
             })
 
-            navigate('/pagamento');
+            Swal.fire({
+                title: 'Gerando QRCode',
+                // text: 'Mensagem do Alerta',
+                timer: 2000,
+                timerProgressBar: true,
+                showConfirmButton: false
+              });
 
             const resposta = await axios.post('http://localhost:3001/pix/cob', data, {
                 headers: {
@@ -105,7 +89,7 @@ function Confirmation() {
 
             console.log(resposta.data);
             sessionStorage.setItem('pix', JSON.stringify(pix))
-            // navigate('/pagamento');
+            navigate('/pagamento');
 
         } catch (error) {
             console.error('Erro ao gerar cobrança', error);

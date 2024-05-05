@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MenuConfirmation from '@/components/MenuConfirmation/Menu'
 
 import warning from '@/assets/img/warning.svg'
@@ -39,92 +39,86 @@ if (storedViagem) {
     telefoneMotorista = storedViagem.motorista.telefone;
 }
 
-setTimeout(() => {
 
-    getQrcode()
-
-}, 5000);
-
-const getQrcode = async () => {
-
-    const pix = JSON.parse(sessionStorage.getItem('pix'))
-
-
-    try {
-        const qrcode = await axios.get(`http://localhost:3001/pix/qrcode/${pix.locid}`);
-        console.log(qrcode.data);
-    } catch (error) {
-        console.error('Erro ao obter QR code:', error);
-
-    }
-
-}
 
 function Payment() {
     const navigate = useNavigate();
     const whatsappURL = `https://wa.me/5511948350477`;
 
-    const alerta = () => {
+    const [qrcode, setQrcode] = useState("");
+    const [infoPreenchida, setInfoPreenchida] = useState(false);
 
+    const getQrcode = async () => {
+
+        try {
+            const pix = JSON.parse(sessionStorage.getItem('pix'));
+            const response = await axios.get(`http://localhost:3001/pix/qrcode/${pix.locid}`);
+            console.log('MOSTRANDO QRCODE -> ', response.data.response.imagemQrcode);
+            // const t = response.data.imagemQrcode
+            // console.log(t)
+            setQrcode(response.data.response.imagemQrcode);
+            setInfoPreenchida(true)
+        } catch (error) {
+            console.error('Erro ao obter QR code:', error);
+        }
+    };
+
+    // const preencherInformacao = () => {
+    //     setQrcode(getQrcode())
+    //     setInfoPreenchida(true);
+    // };
+
+    // useEffect(() => {
+    //     preencherInformacao();
+    // }, [qrcode]);
+
+    const alerta = () => {
         Swal.fire({
             title: 'Pagamento efetuado com sucesso:',
             icon: 'question',
             showCancelButton: true,
             confirmButtonText: 'Falar com a motorista',
             cancelButtonText: 'Voltar para home'
-
         }).then((result) => {
-
             if (result.isConfirmed) {
                 window.open(whatsappURL, '_blank');
             } else if (result.isDismissed) {
-                navigate('/passageira')
+                navigate('/passageira');
             }
         });
     };
 
+    if (!infoPreenchida) {
+        getQrcode()
+        console.log('VARIAVEL ', qrcode)
+    }
+
+
     return (
         <>
-            <section className="point" id="page-create-point">
-                <div className="point-container container grid">
-                    <div id="page-create-point">
+            {infoPreenchida ?
+                <section className="point" id="page-create-point">
+                    <div className="point-container container grid">
                         <header>
                             <MenuConfirmation />
                         </header>
-                    </div>
-                    <form>
-                        <h1 style={
-                            {
-                                color: '#202020',
-                                fontSize: '1.7rem'
-                            }
-                        }>confirme os detalhes de pagamento</h1>
-                        <p style={
-                            {
-                                color: '#999999',
-                                fontSize: '1rem',
-                                fontWeight: '500'
-                            }
-                        }>revise e junte-se ao seu grupo de viagem!</p>
-                        <section class="inputs flex">
-                            <img src={qrcode.response.imagemQrcode} />
-                            <div>GERANDO QRCODE</div>
-                        </section>
-                        <section class="info-security flex">
-                            <img src={shield}
-                                alt="ícone de segurança" />
-                            seus dados estão seguros
-                        </section>
-
-                        <div className='button-wrapper'>
-                            <button type="submit"
-                                onClick={alerta}>
-                                confirmar pagamento
-                            </button>
+                        <div className='form-payment'>
+                            <h1 style={{ color: '#202020', fontSize: '1.7rem' }}>confirme os detalhes de pagamento</h1>
+                            <p style={{ color: '#999999', fontSize: '1rem', fontWeight: '500' }}>revise e junte-se ao seu grupo de viagem!</p>
+                            <div style={{ height: '100%' }} >
+                                <img  src={qrcode} alt="" />
+                            </div>
+                            <section className="info-security flex">
+                                <img src={shield} alt="ícone de segurança" />
+                                seus dados estão seguros
+                            </section>
+                            <div className='button-wrapper'>
+                                <button className='button-form' onClick={alerta}>confirmar pagamento</button>
+                            </div>
                         </div>
-                    </form>
-                </div>
-            </section>
+                    </div>
+                </section>
+                : <div> carregando</div>}
         </>
     )
 }
