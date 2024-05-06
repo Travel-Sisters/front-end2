@@ -3,7 +3,7 @@
       };
       
   const prod = {
-        ...(import.meta.env.prod.API_BACK)
+        ...(import.meta.env.API_BACK)
       };
 
   const config = {
