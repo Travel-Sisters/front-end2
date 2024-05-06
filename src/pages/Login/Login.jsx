@@ -39,8 +39,8 @@ export default function Login() {
 
         const setSessionStoraged = async (userId) => {
             try {
-                //const response = await axios.get(`http://localhost:8080/usuarios/buscarPoId/${userId}`)
-                const response = await axios.get(`${config.API_URL}/usuarios/buscarPoId/${userId}`);
+                //const response = await api.get(`http://localhost:8080/usuarios/buscarPoId/${userId}`)
+                const response = await api.get(`${config.API_URL}/usuarios/buscarPoId/${userId}`);
                 console.log(response)
                 
             } catch (error) {
@@ -50,8 +50,8 @@ export default function Login() {
 
 
         try {
-            //const response = await axios.post('http://localhost:8080/usuarios/entrar', usuario);
-            const response = await axios.post(`${config.API_URL}/usuarios/entrar`, usuario);
+            //const response = await api.post('http://localhost:8080/usuarios/entrar', usuario);
+            const response = await api.post(`${config.API_URL}/usuarios/entrar`, usuario);
 
             if (response.status === 200) {
                 const token = response.data.token;
@@ -70,8 +70,8 @@ export default function Login() {
 
                     // setSessionStoraged(response.data.userId)
 
-                    //const responseM = await axios.get(`http://localhost:8080/usuarios/verificar-perfil/${response.data.userId}`);
-                    const responseM = await axios.get(`${config.API_URL}/usuarios/verificar-perfil/${response.data.userId}`);
+                    //const responseM = await api.get(`http://localhost:8080/usuarios/verificar-perfil/${response.data.userId}`);
+                    const responseM = await api.get(`/usuarios/verificar-perfil/${response.data.userId}`);
 
                     sessionStorage.setItem('idMotoristaLogin', responseM.data.id);
 

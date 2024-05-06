@@ -68,16 +68,16 @@ export default function Register() {
 
 
         try {
-            //const responseUsuario = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
-            const responseUsuario = await axios.post(`${config.API_URL}/usuarios/cadastrar`, usuario);
+            //const responseUsuario = await api.post('http://localhost:8080/usuarios/cadastrar', usuario);
+            const responseUsuario = await api.post(`${config.API_URL}/usuarios/cadastrar`, usuario);
             console.log('Resposta do servidor (Usuário):', responseUsuario.data);
 
             if (responseUsuario.data.id != null) {
                 console.log('Id usuário: ', responseUsuario.data.id);
 
                 const idUsuario = responseUsuario.data.id;
-                //const responseMotorista = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
-                const responseMotorista = await axios.post(`${config.API_URL}/motoristas/cadastrar/${idUsuario}`, motorista);
+                //const responseMotorista = await api.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
+                const responseMotorista = await api.post(`${config.API_URL}/motoristas/cadastrar/${idUsuario}`, motorista);
                 console.log('Resposta do servidor (Motorista):', responseMotorista.data.id);
 
                 Swal.fire({
@@ -118,7 +118,7 @@ export default function Register() {
             console.log(response.data.userId)
             setFkUsuario(response.data.userId)
 
-            const response = await axios.post('http://localhost:8080/motoristas/cadastrar', motorista);
+            const response = await api.post('http://localhost:8080/motoristas/cadastrar', motorista);
             console.log('Resposta do servidor:', response.data);
             alert('Usuário foi cadastrado com sucesso!');
             setCnh('');

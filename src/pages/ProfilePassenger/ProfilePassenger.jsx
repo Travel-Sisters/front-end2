@@ -26,8 +26,8 @@ export default function ProfilePassenger() {
         };
 
         try {
-            //const response = await axios.put(`http://localhost:8080/usuarios/alterar/${idUsuario}`, passageira);
-            const response = await axios.put(`${config.API_URL}/usuarios/alterar/${idUsuario}`, passageira);
+            //const response = await api.put(`http://localhost:8080/usuarios/alterar/${idUsuario}`, passageira);
+            const response = await api.put(`${config.API_URL}/usuarios/alterar/${idUsuario}`, passageira);
             console.log('Resposta do servidor:', response.data);
             //alert('passageira foi alterado com sucesso!');
             Swal.fire({

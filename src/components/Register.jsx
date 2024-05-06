@@ -87,7 +87,7 @@
 //         };
 
 //         try {
-//             const response = await axios.post('http://localhost:8080/usuarios/', usuario);
+//             const response = await api.post('http://localhost:8080/usuarios/', usuario);
 //             console.log('Resposta do servidor:', response.data);
 //             alert('Usuário foi cadastrado com sucesso!');
 //             setNome('');

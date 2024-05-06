@@ -34,7 +34,7 @@ export default function Report() {
 
         try {
 
-            const resposta = await axios.post('https://localhost:3001/pix/cob', data, {
+            const resposta = await api.post('https://localhost:3001/pix/cob', data, {
                 headers: {
                     'Content-Type': 'application/json'
                 }

@@ -38,8 +38,8 @@ export default function Login() {
         }
 
         try {
-            //const response = await axios.post('http://localhost:8080/usuarios/entrar', usuario);
-            const response = await axios.post(`${config.API_URL}/usuarios/entrar`, usuario);
+            //const response = await api.post('http://localhost:8080/usuarios/entrar', usuario);
+            const response = await api.post(`${config.API_URL}/usuarios/entrar`, usuario);
 
             if (response.status === 200) {
                 const token = response.data.token;

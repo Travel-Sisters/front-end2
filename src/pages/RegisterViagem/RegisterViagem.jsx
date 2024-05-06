@@ -90,8 +90,8 @@ export default function Validation() {
         try {
             console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
 
-            //const response = await axios.post(`http://localhost:8080/viagens/cadastrar/${idMotorista}`, viagem);
-            const response = await axios.post(`${config.API_URL}/viagens/cadastrar/${idMotorista}`, viagem);
+            //const response = await api.post(`http://localhost:8080/viagens/cadastrar/${idMotorista}`, viagem);
+            const response = await api.post(`${config.API_URL}/viagens/cadastrar/${idMotorista}`, viagem);
             console.log('Resposta do servidor:', response.data);
 
             //alert('Viagem cadastrada com sucesso!');
@@ -127,7 +127,7 @@ export default function Validation() {
     //     try {
     //         console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
 
-    //         const response = await axios.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
+    //         const response = await api.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
     //         console.log('Resposta do servidor:', response.data);
 
     //         alert('Viagem desfeita com sucesso!');

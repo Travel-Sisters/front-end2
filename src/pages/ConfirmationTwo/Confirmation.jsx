@@ -35,8 +35,8 @@ function Confirmation() {
         try {
             console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
 
-            //const response = await axios.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
-            const response = await axios.get(`${config.API_URL}/viagens/pilha/${idMotorista}`);
+            //const response = await api.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
+            const response = await api.get(`${config.API_URL}/viagens/pilha/${idMotorista}`);
 
             console.log('Resposta do servidor:', response.data);
             //alert('Viagem desfeita com sucesso!');
@@ -66,7 +66,7 @@ function Confirmation() {
             viagem
         }
         try {
-            // const responseChat = await axios.post(`http://localhost:8080/chat/publicar`, bodyChat);
+            // const responseChat = await api.post(`http://localhost:8080/chat/publicar`, bodyChat);
             // console.log('Resposta do servidor:', responseChat.data);
             // console.log('')
             // console.log('CHAT REGISTRADO NO BANCO, ID: ', respondeChat.data.viagem)

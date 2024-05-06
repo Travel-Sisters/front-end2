@@ -16,8 +16,8 @@ export default function Teste() {
 
     const handleFormSubmit = async (evento) => {
         try {
-            //const response = await axios.get(`http://localhost:8080/viagens/fila/${1}`);
-            const response = await axios.get(`${config.API_URL}/viagens/fila/${1}`);
+            //const response = await api.get(`http://localhost:8080/viagens/fila/${1}`);
+            const response = await api.get(`${config.API_URL}/viagens/fila/${1}`);
 
             console.log('Resposta do servidor:', response.data);
             if (response.status === 200) {
