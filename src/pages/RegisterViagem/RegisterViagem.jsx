@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 // import * as map from './mapa.js';
 // import L from 'leaflet';
 import axios from 'axios';
+import api from '../../api';
 
 import MenuConfirmation from '../../components/MenuConfirmation/Menu'
 import './RegisterViagem.css'
@@ -60,7 +61,7 @@ export default function Validation() {
         const fetchData = async () => {
             try {
                 //const response = await fetch('http://localhost:8080/enderecos/');
-                const response = await fetch(`${config.API_URL}/enderecos/`);
+                const response = await api.get(`/enderecos/`);
                 const data = await response.json();
 
                 setEnderecos(data);
@@ -91,7 +92,7 @@ export default function Validation() {
             console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
 
             //const response = await api.post(`http://localhost:8080/viagens/cadastrar/${idMotorista}`, viagem);
-            const response = await api.post(`${config.API_URL}/viagens/cadastrar/${idMotorista}`, viagem);
+            const response = await api.post(`/viagens/cadastrar/${idMotorista}`, viagem);
             console.log('Resposta do servidor:', response.data);
 
             //alert('Viagem cadastrada com sucesso!');

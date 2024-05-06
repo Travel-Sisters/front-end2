@@ -7,6 +7,7 @@ import Menu from '../../components/Menu/Menu'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import config from '../../../config';
+import api from '../../api';
 
 function Hiring() {
 
@@ -37,7 +38,7 @@ function Hiring() {
         const fetchData = async () => {
             try {
                 //const response = await fetch('http://localhost:8080/enderecos/');
-                const response = await fetch(`${config.API_URL}/enderecos/`);
+                const response = await api.get(`/enderecos/`);
                 const data = await response.json();
 
                 setEnderecos(data);
@@ -68,7 +69,7 @@ function Hiring() {
             console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
 
             //const response = await api.post(`http://localhost:8080/viagens/cadastrar/${idMotorista}`, viagem);
-            const response = await api.post(`${config.API_URL}/viagens/cadastrar/${idMotorista}`, viagem);
+            const response = await api.post(`/viagens/cadastrar/${idMotorista}`, viagem);
             console.log('Resposta do servidor:', response.data);
 
             //alert('Viagem cadastrada com sucesso!');

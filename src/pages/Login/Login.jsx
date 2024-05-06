@@ -9,6 +9,7 @@ import bg from '../../assets/img/bg.jpg';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import config from '../../../config';
+import api from '../../api';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -40,7 +41,7 @@ export default function Login() {
         const setSessionStoraged = async (userId) => {
             try {
                 //const response = await api.get(`http://localhost:8080/usuarios/buscarPoId/${userId}`)
-                const response = await api.get(`${config.API_URL}/usuarios/buscarPoId/${userId}`);
+                const response = await api.get(`/usuarios/buscarPoId/${userId}`);
                 console.log(response)
                 
             } catch (error) {
@@ -51,7 +52,7 @@ export default function Login() {
 
         try {
             //const response = await api.post('http://localhost:8080/usuarios/entrar', usuario);
-            const response = await api.post(`${config.API_URL}/usuarios/entrar`, usuario);
+            const response = await api.post(`/usuarios/entrar`, usuario);
 
             if (response.status === 200) {
                 const token = response.data.token;

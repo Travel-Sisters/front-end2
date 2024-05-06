@@ -1,9 +1,9 @@
   const dev = {
-        API_URL: "http://localhost:8080/api"
+        API_URL: (import.meta.env.VITE_API_BACK)
       };
       
   const prod = {
-        API_URL: "http://10.0.0.185:8080/api"
+        API_URL: (import.meta.env.prod.VITE_API_BACK)
       };
 
   const config = {

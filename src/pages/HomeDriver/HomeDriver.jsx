@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import axios from 'axios';
+import api from '../../api';
 import { useNavigate } from 'react-router-dom';
 
 import './HomeDriver.css';
@@ -28,7 +29,7 @@ export default function HomeDriver() {
     const gerarPdf = async () => {
         try {
             //const response = await api.get(`http://localhost:8080/viagens/listarPorId/${idMotorista}`); 
-            const response = await api.get(`${config.API_URL}/viagens/listarPorId/${idMotorista}`);
+            const response = await api.get(`/viagens/listarPorId/${idMotorista}`);
             const viagens = response.data;
             const pdf = new jsPDF();
 

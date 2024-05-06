@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import api from '../../api';
 
 import './Profile.css'
 import Menu from '../../components/Menu/Menu'
@@ -25,13 +25,13 @@ export default function Profile() {
 
     const gerarCsv = () => {
         //const response = api.get(`http://localhost:8080/viagens/csv/${idMotorista}`);
-        const response = api.get(`${config.API_URL}/viagens/csv/${idMotorista}`);
+        const response = api.get(`/viagens/csv/${idMotorista}`);
         alert('Csv entrou com sucesso!');
     };
 
     const gerarTxt = () => {
         //const response = api.get(`http://localhost:8080/viagens/txt/${idMotorista}`);
-        const response = api.get(`${config.API_URL}/viagens/txt/${idMotorista}`);
+        const response = api.get(`/viagens/txt/${idMotorista}`);
         alert('Txt entrou com sucesso!');
     };
 
@@ -45,7 +45,7 @@ export default function Profile() {
 
         try {
             //const response = await api.put(`http://localhost:8080/motoristas/alterar/${idMotorista}`, motorista);
-            const response = await api.put(`${config.API_URL}/motoristas/alterar/${idMotorista}`, motorista);
+            const response = await api.put(`/motoristas/alterar/${idMotorista}`, motorista);
             console.log('Resposta do servidor:', response.data);
             //alert('Motorista foi alterado com sucesso!');
             Swal.fire({

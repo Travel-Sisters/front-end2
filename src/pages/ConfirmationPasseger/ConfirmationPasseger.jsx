@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import api from '../../api';
 // import * as map from './mapa.js';
 // import L from 'leaflet';
 
@@ -30,7 +31,7 @@ function Confirmation() {
         try {
 
             //const response = api.post(`http://localhost:8080/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
-            const response = api.post(`${config.API_URL}/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
+            const response = api.post(`/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
 
             alert("Viagem confirmada")
                 navigate('/pagamento');

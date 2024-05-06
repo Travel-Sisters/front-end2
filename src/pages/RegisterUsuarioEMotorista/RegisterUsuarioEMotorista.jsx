@@ -3,6 +3,7 @@ import './Register.css';
 
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import api from '../../api';
 import { useNavigate } from 'react-router-dom';
 import roxo from '../../assets/img/logo-roxo.png';
 import eye from '../../assets/img/eye.svg';
@@ -69,7 +70,7 @@ export default function Register() {
 
         try {
             //const responseUsuario = await api.post('http://localhost:8080/usuarios/cadastrar', usuario);
-            const responseUsuario = await api.post(`${config.API_URL}/usuarios/cadastrar`, usuario);
+            const responseUsuario = await api.post(`/usuarios/cadastrar`, usuario);
             console.log('Resposta do servidor (Usuário):', responseUsuario.data);
 
             if (responseUsuario.data.id != null) {
@@ -77,7 +78,7 @@ export default function Register() {
 
                 const idUsuario = responseUsuario.data.id;
                 //const responseMotorista = await api.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
-                const responseMotorista = await api.post(`${config.API_URL}/motoristas/cadastrar/${idUsuario}`, motorista);
+                const responseMotorista = await api.post(`/motoristas/cadastrar/${idUsuario}`, motorista);
                 console.log('Resposta do servidor (Motorista):', responseMotorista.data.id);
 
                 Swal.fire({

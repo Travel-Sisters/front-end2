@@ -8,6 +8,7 @@ import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg-azul.png';
 import config from '../../../config';
+import api from '../../api';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ export default function Register() {
             console.log('SESSION STORAGE USUARIO ' + idUsuario)
 
             //const response = await api.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
-            const response = await api.post(`${config.API_URL}/motoristas/cadastrar/${idUsuario}`, motorista);
+            const response = await api.post(`/motoristas/cadastrar/${idUsuario}`, motorista);
             console.log('Resposta do servidor:', response.data);
             Swal.fire({
                 title: 'Cadastro efetuado com sucesso!!',
