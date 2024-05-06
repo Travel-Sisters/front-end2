@@ -3,7 +3,7 @@
       };
       
   const prod = {
-        ...(import.meta.env.API_BACK)
+        API_URL: "http://10.0.0.185:8080/api"
       };
 
   const config = {
