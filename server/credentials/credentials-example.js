@@ -1,3 +1,6 @@
+const path = require('path');
+const userDir = process.env.USERPROFILE
+const caminhoCompleto = path.join(userDir, 'caminho/certificado');
 module.exports = {
 	// PRODUÇÃO = false
 	// HOMOLOGAÇÃO = true
