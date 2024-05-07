@@ -47,8 +47,8 @@ export default function HomePassenger() {
         const fetchData = async () => {
             try {
                 console.log('id usuário ' + idUsuario)
-                //const response = await fetch('http://localhost:8080/viagens/listar');
-                const response = await api.get(`/viagens/listar`);
+                const response = await fetch(`${config.API_URL}/viagens/listar`);
+                // const response = await api.get(`/viagens/listar`);
                 const data = await response.json();
 
                 setViagens(data);

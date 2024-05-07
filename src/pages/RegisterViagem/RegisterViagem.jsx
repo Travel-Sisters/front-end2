@@ -60,8 +60,7 @@ export default function Validation() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                //const response = await fetch('http://localhost:8080/enderecos/');
-                const response = await api.get(`/enderecos/`);
+                const response = await fetch(`${config.API_URL}/enderecos/`);
                 const data = await response.json();
 
                 setEnderecos(data);

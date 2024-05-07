@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import * as map from './mapa.js';
 import L from 'leaflet';
 import axios from 'axios';
-import api from '../../api';
 
 import './Confirmation.css'
 import Menu from '../../components/Menu/Menu'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import config from '../../../config';
+
 
 function Confirmation() {
     const navigate = useNavigate();
