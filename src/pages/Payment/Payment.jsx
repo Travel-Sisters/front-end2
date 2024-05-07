@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MenuConfirmation from '@/components/MenuConfirmation/Menu'
 
-import warning from '@/assets/img/warning.svg'
-import question from '@/assets/img/question.svg'
 import shield from '@/assets/img/shield-check.svg'
-import manutencao from '@/assets/img/manutencao.png';
 
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 import './Payment.css'
+import { api, api_pix } from '../../api';
 
 const formatInputDate = (dateString, forBackend = false) => {
     if (forBackend) { // formato "AAAA-MM"
@@ -39,9 +37,38 @@ if (storedViagem) {
     telefoneMotorista = storedViagem.motorista.telefone;
 }
 
+
+
 function Payment() {
     const navigate = useNavigate();
-    const whatsappURL = `https://wa.me/55${telefoneMotorista}`;
+    const whatsappURL = `https://wa.me/5511948350477`;
+
+    const [qrcode, setQrcode] = useState("");
+    const [infoPreenchida, setInfoPreenchida] = useState(false);
+
+    const getQrcode = async () => {
+
+        try {
+            const pix = JSON.parse(sessionStorage.getItem('pix'));
+            const response = await api_pix.get(`/qrcode/${pix.locid}`);
+            console.log('MOSTRANDO QRCODE -> ', response.data.response.imagemQrcode);
+            // const t = response.data.imagemQrcode
+            // console.log(t)
+            setQrcode(response.data.response.imagemQrcode);
+            setInfoPreenchida(true)
+        } catch (error) {
+            console.error('Erro ao obter QR code:', error);
+        }
+    };
+
+    // const preencherInformacao = () => {
+    //     setQrcode(getQrcode())
+    //     setInfoPreenchida(true);
+    // };
+
+    // useEffect(() => {
+    //     preencherInformacao();
+    // }, [qrcode]);
 
     const alerta = () => {
         Swal.fire({
@@ -50,86 +77,46 @@ function Payment() {
             showCancelButton: true,
             confirmButtonText: 'Falar com a motorista',
             cancelButtonText: 'Voltar para home'
-
         }).then((result) => {
-
             if (result.isConfirmed) {
                 window.open(whatsappURL, '_blank');
             } else if (result.isDismissed) {
-                navigate('/passageira')
+                navigate('/passageira');
             }
         });
     };
 
+    if (!infoPreenchida) {
+        getQrcode()
+        console.log('VARIAVEL ', qrcode)
+    }
+
+
     return (
         <>
-            <section className="point" id="page-create-point">
-                <div className="point-container container grid">
-                    <div id="page-create-point">
+            {infoPreenchida ?
+                <section className="point" id="page-create-point">
+                    <div className="point-container container grid">
                         <header>
                             <MenuConfirmation />
                         </header>
-                    </div>
-                    <form>
-                        <h1 style={
-                            {
-                                color: '#202020',
-                                fontSize: '1.7rem'
-                            }
-                        }>página em manutenção!</h1>
-                        <p style={
-                            {
-                                color: '#999999',
-                                fontSize: '1rem',
-                                fontWeight: '500'
-                            }
-                        }>nosso site está passando por mudanças, em breve nessa tela você terá acesso a área de pagamento.</p>
-                        {/* <section class="inputs flex">
-                            <div class="input-wrapper">
-                                <label for="cc-number">número do cartão</label>
-                                <input id="cc-number" type="text" placeholder="**** **** **** ****" />
+                        <div className='form-payment'>
+                            <h1 style={{ color: '#202020', fontSize: '1.7rem' }}>confirme os detalhes de pagamento</h1>
+                            <p style={{ color: '#999999', fontSize: '1rem', fontWeight: '500' }}>revise e junte-se ao seu grupo de viagem!</p>
+                            <div style={{ height: '100%' }} >
+                                <img  src={qrcode} alt="" />
                             </div>
-                            <div class="input-wrapper">
-                                <label for="cc-holder">nome do titular</label>
-                                <input id="cc-holder" type="text" placeholder="nome como está no cartão" required />
-                                <div class="warning">
-                                    <img src={warning}
-                                        alt="ícone de alerta" />
-                                    nome do titular é obrigatório
-                                </div>
+                            <section className="info-security flex">
+                                <img src={shield} alt="ícone de segurança" />
+                                seus dados estão seguros
+                            </section>
+                            <div className='button-wrapper'>
+                                <button className='button-form' onClick={alerta}>confirmar pagamento</button>
                             </div>
-
-                            <div class="col-2 flex">
-                                <div class="input-wrapper">
-                                    <label for="cc-validity">validade</label>
-                                    <input id="cc-validity" type="text" placeholder="mm/aa" />
-                                </div>
-
-                                <div class="input-wrapper">
-                                    <label class="flex help" for="cc-cvv">CVV
-                                        <img src={question}
-                                            alt="ícone de ajuda"
-                                            title="esse número está, geralmente, nas costas do seu cartão" />
-                                    </label>
-                                    <input id="cc-cvv" type="text" placeholder="***" />
-                                </div>
-                            </div>
-                        </section>
-                        <section class="info-security flex">
-                            <img src={shield}
-                                alt="ícone de segurança" />
-                            seus dados estão seguros
-                        </section>
-*/}
-                        <div className='button-wrapper'>
-                            <button type="button"
-                                onClick={alerta}>
-                                falar com motorista
-                            </button>
                         </div>
-                    </form>
-                </div>
-            </section>
+                    </div>
+                </section>
+                : <div> carregando</div>}
         </>
     )
 }

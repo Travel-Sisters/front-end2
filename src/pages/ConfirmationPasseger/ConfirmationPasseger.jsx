@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import api from '../../api';
+import { api, api_pix } from '../../api';
 // import * as map from './mapa.js';
 // import L from 'leaflet';
 
@@ -13,6 +13,8 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import config from '../../../config';
 
 function Confirmation() {
+    const [dadoUser, setDadoUser] = useState(null);
+
     const navigate = useNavigate();
 
     const storedViagem = JSON.parse(sessionStorage.getItem('viagem'));
@@ -25,18 +27,20 @@ function Confirmation() {
     const idUsuario = sessionStorage.getItem('idUsuarioLogin') || {};
 
     console.log(idViagem)
-    console.log("-"+idUsuario)
+    console.log("-" + idUsuario)
 
-    const navegarPagamento = () => {
+    const navegarPagamento = (event) => {
+        event.preventDefault(); // Impede o comportamento padrão do evento (recarregar a página)
+
         try {
 
-            //const response = api.post(`http://localhost:8080/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
+   //         api.post(`http://localhost:8080/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
             const response = api.post(`/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
 
-            alert("Viagem confirmada")
-                navigate('/pagamento');
-            }
-         catch (error) {
+
+            getPix()
+
+        } catch (error) {
             console.error('Erro ao realizar a requisição:', error);
             Swal.fire({
                 title: 'Erro ao confirmar viagem',
@@ -45,7 +49,61 @@ function Confirmation() {
             });
         }
     };
-    
+
+    const getPix = async () => {
+        try {
+
+            var desc = `Data da viagem ${storedViagem.data}, Horário: ${storedViagem.horario}, Detalhes da viagem: ${storedViagem.descricao}, Motorista: ${storedViagem.motorista.usuario.nome}, Telefone da motorista: ${storedViagem.motorista.telefone}`
+
+            var data = JSON.stringify({
+                "calendario": {
+                    "expiracao": 3600
+                },
+                "devedor": {
+                    "cpf": "12345678909",
+                    "nome": sessionStorage.getItem('usuario')
+                },
+                "valor": {
+                    "original": parseFloat(storedViagem.valor).toFixed(2).toString()
+                },
+                "chave": "travel@sisters.com.br",
+                "solicitacaoPagador": desc
+            })
+
+            Swal.fire({
+                title: 'Gerando QRCode',
+                // text: 'Mensagem do Alerta',
+                timer: 2000,
+                timerProgressBar: true,
+                showConfirmButton: false
+              });
+
+            const resposta = await api_pix.post('/cob', data, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const pix = {
+                "id": resposta.data.response.txid,
+                "expiracao": resposta.data.response.calendario.expiracao,
+                "locid": resposta.data.response.loc.id,
+                "pixCopiaECola": resposta.data.response.pixCopiaECola
+            }
+
+            console.log(resposta.data);
+            sessionStorage.setItem('pix', JSON.stringify(pix))
+            navigate('/pagamento');
+
+        } catch (error) {
+            console.error('Erro ao gerar cobrança', error);
+            Swal.fire({
+                title: "erro ao gerar cobrança, tente novamente mais tarde",
+                icon: "error",
+            })
+        }
+        // alert("Viagem confirmada")
+    }
 
     const navegarHome = () => {
         alert('Ok!')
@@ -53,7 +111,6 @@ function Confirmation() {
     };
 
     const [selectedPosition, setSelectedPosition] = useState(null);
-
 
     return (
         <>

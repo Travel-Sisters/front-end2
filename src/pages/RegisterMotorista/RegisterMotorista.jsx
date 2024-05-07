@@ -8,7 +8,7 @@ import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg-azul.png';
 import config from '../../../config';
-import api from '../../api';
+import { api, api_pix } from '../../api';
 
 export default function Register() {
     const navigate = useNavigate();

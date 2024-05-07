@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 // import * as map from './mapa.js';
 // import L from 'leaflet';
 import axios from 'axios';
-import api from '../../api';
+import { api, api_pix } from '../../api';
 
 import MenuConfirmation from '../../components/MenuConfirmation/Menu'
 import './Confirmation.css'

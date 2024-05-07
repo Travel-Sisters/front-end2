@@ -30,7 +30,7 @@ function Rota() {
                 <Routes>
                     <Route path="/motorista" element={<HomeDriver />} />
                     <Route path="/passageira" element={<HomePassenger />} />
-                    <Route path={"/"} element={<SplashScreen />} />
+                    <Route path="/" element={<SplashScreen />} />
                     <Route path="/direcionador" element={<Redirection />} />
                     <Route path="/confirmacao" element={<ConfirmationTwo />} />
                     <Route path="/confirmacao-passageira" element={<ConfirmationPasseger />} />
@@ -49,7 +49,6 @@ function Rota() {
                     <Route path="/cadastro-viagem" element={<RegisterViagem />} />
                     <Route path="/pagamento" element={<Payment/>} />
                 </Routes>
-
             </Router>
         </>
     )

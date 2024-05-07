@@ -3,7 +3,7 @@ const router = express.Router()
 const pixController = require('../controller/pix')
 
 
-router.get('/cob', (req,res) => {
+router.post('/cob', (req,res) => {
     pixController.gerar_cobranca(req, res) 
 }) 
 

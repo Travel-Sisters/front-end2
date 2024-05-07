@@ -3,7 +3,7 @@ import './Register.css';
 
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import api from '../../api';
+import { api, api_pix } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import roxo from '../../assets/img/logo-roxo.png';
 import eye from '../../assets/img/eye.svg';

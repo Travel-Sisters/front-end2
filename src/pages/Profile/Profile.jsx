@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import api from '../../api';
+import { api, api_pix } from '../../api';
 
 import './Profile.css'
 import Menu from '../../components/Menu/Menu'

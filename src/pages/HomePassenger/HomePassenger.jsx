@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import jsPDF from 'jspdf';
-import api from '../../api';
+import { api, api_pix } from '../../api';
 
 import './HomePassenger.css';
 import Footer from '@/components/Footer/Footer';

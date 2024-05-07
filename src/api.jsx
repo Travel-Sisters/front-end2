@@ -6,6 +6,10 @@ const api = axios.create({
   baseURL: config.API_URL,
 });
 
+const api_pix = axios.create({
+  baseURL: config.API_PIX
+})
+
 
 api.interceptors.request.use(
   (config) => {
@@ -23,4 +27,4 @@ api.interceptors.request.use(
     return Promise.reject(error);
 });
 
-export default api;
+export { api, api_pix };

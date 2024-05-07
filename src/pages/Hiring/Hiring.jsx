@@ -7,7 +7,7 @@ import Menu from '../../components/Menu/Menu'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import config from '../../../config';
-import api from '../../api';
+import { api, api_pix } from '../../api';
 
 function Hiring() {
 

@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useNavigate } from 'react-router-dom';
 import * as map from './mapa.js';
 import L from 'leaflet';
-import axios from 'axios';
+import { api, api_pix } from '../../api';
 
 import './Confirmation.css'
 import Menu from '../../components/Menu/Menu'
