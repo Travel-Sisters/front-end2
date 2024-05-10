@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { api, api_pix } from '../../api';
 
 import './Profile.css'
 import Menu from '../../components/Menu/Menu'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import config from '../../../config';
 
 export default function Profile() {
 
@@ -23,12 +24,14 @@ export default function Profile() {
     const idMotorista = sessionStorage.getItem('idMotoristaLogin') || {};
 
     const gerarCsv = () => {
-        const response = axios.get(`http://localhost:8080/viagens/csv/${idMotorista}`);
+        //const response = api.get(`http://localhost:8080/viagens/csv/${idMotorista}`);
+        const response = api.get(`/viagens/csv/${idMotorista}`);
         alert('Csv entrou com sucesso!');
     };
 
     const gerarTxt = () => {
-        const response = axios.get(`http://localhost:8080/viagens/txt/${idMotorista}`);
+        //const response = api.get(`http://localhost:8080/viagens/txt/${idMotorista}`);
+        const response = api.get(`/viagens/txt/${idMotorista}`);
         alert('Txt entrou com sucesso!');
     };
 
@@ -41,12 +44,13 @@ export default function Profile() {
         };
 
         try {
-            const response = await axios.put(`http://localhost:8080/motoristas/alterar/${idMotorista}`, motorista);
+            //const response = await api.put(`http://localhost:8080/motoristas/alterar/${idMotorista}`, motorista);
+            const response = await api.put(`/motoristas/alterar/${idMotorista}`, motorista);
             console.log('Resposta do servidor:', response.data);
             //alert('Motorista foi alterado com sucesso!');
             Swal.fire({
                 title: 'Motorista foi alterado com sucesso!',
-                icon: 'error',
+                icon: 'success',
                 confirmButtonText: 'OK'
             });
 

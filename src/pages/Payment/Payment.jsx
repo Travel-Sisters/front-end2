@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MenuConfirmation from '@/components/MenuConfirmation/Menu'
 
-import warning from '@/assets/img/warning.svg'
-import question from '@/assets/img/question.svg'
 import shield from '@/assets/img/shield-check.svg'
 
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +8,7 @@ import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 import './Payment.css'
-import axios from 'axios';
+import { api, api_pix } from '../../api';
 
 const formatInputDate = (dateString, forBackend = false) => {
     if (forBackend) { // formato "AAAA-MM"
@@ -52,7 +50,7 @@ function Payment() {
 
         try {
             const pix = JSON.parse(sessionStorage.getItem('pix'));
-            const response = await axios.get(`http://localhost:3001/pix/qrcode/${pix.locid}`);
+            const response = await api_pix.get(`/qrcode/${pix.locid}`);
             console.log('MOSTRANDO QRCODE -> ', response.data.response.imagemQrcode);
             // const t = response.data.imagemQrcode
             // console.log(t)

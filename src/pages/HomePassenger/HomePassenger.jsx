@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import jsPDF from 'jspdf';
+import { api, api_pix } from '../../api';
 
 import './HomePassenger.css';
 import Footer from '@/components/Footer/Footer';
@@ -16,6 +17,7 @@ import parque from '@/assets/img/parque.png';
 import holambra from '@/assets/img/holambra.png';
 import brotas from '@/assets/img/brotas.png';
 import mis from '@/assets/img/mis.png';
+import config from '../../../config';
 
 
 export default function HomePassenger() {
@@ -45,7 +47,8 @@ export default function HomePassenger() {
         const fetchData = async () => {
             try {
                 console.log('id usuário ' + idUsuario)
-                const response = await fetch('http://localhost:8080/viagens/listar');
+                const response = await fetch(`${config.API_URL}/viagens/listar`);
+                // const response = await api.get(`/viagens/listar`);
                 const data = await response.json();
 
                 setViagens(data);
@@ -62,7 +65,8 @@ export default function HomePassenger() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response2 = await fetch('http://localhost:8080/viagens/fila');
+                //const response2 = await fetch('http://localhost:8080/viagens/fila');
+                const response2 = await api.get(`/viagens/fila`);
                 const data2 = await response2.json();
 
                 setFila(data2);
@@ -82,7 +86,8 @@ export default function HomePassenger() {
 
     const gerarPdf = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/viagens/listarPorIdUsuario/${idUsuario}`);      
+            //const response = await api.get(`http://localhost:8080/viagens/listarPorIdUsuario/${idUsuario}`);  
+            const response = await api.get(`/viagens/listarPorIdUsuario/${idUsuario}`);   
             const viagens = response.data;
             const pdf = new jsPDF();
 
@@ -112,8 +117,8 @@ export default function HomePassenger() {
             document.body.removeChild(link);
             URL.revokeObjectURL(blobUrl);
           } catch (error) {
-            alert('Você ainda não tem viagens contratadas:')
-            console.error('Você não tem viagens cadastradas:', error);
+            alert('você ainda não tem viagens contratadas')
+            console.error('você não tem viagens cadastradas', error);
           }
         };
 
@@ -186,7 +191,7 @@ export default function HomePassenger() {
                                     mulheres que desejam explorar juntas. escolha seu destino e embarque em uma viagem segura.</p>
                                     <button onClick={gerarPdf}
                                     className="button button-flex">
-                                   gerar pdf das suas viagens
+                                   gerar PDF das suas viagens
                                 </button>
                             </div>
                         </div>

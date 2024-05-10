@@ -3,11 +3,13 @@ import './Register.css';
 
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { api, api_pix } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import roxo from '../../assets/img/logo-roxo.png';
 import eye from '../../assets/img/eye.svg';
 import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg-roxo.png';
+import config from '../../../config';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -67,14 +69,16 @@ export default function Register() {
 
 
         try {
-            const responseUsuario = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
+            //const responseUsuario = await api.post('http://localhost:8080/usuarios/cadastrar', usuario);
+            const responseUsuario = await api.post(`/usuarios/cadastrar`, usuario);
             console.log('Resposta do servidor (Usuário):', responseUsuario.data);
 
             if (responseUsuario.data.id != null) {
                 console.log('Id usuário: ', responseUsuario.data.id);
 
                 const idUsuario = responseUsuario.data.id;
-                const responseMotorista = await axios.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
+                //const responseMotorista = await api.post(`http://localhost:8080/motoristas/cadastrar/${idUsuario}`, motorista);
+                const responseMotorista = await api.post(`/motoristas/cadastrar/${idUsuario}`, motorista);
                 console.log('Resposta do servidor (Motorista):', responseMotorista.data.id);
 
                 Swal.fire({
@@ -115,7 +119,7 @@ export default function Register() {
             console.log(response.data.userId)
             setFkUsuario(response.data.userId)
 
-            const response = await axios.post('http://localhost:8080/motoristas/cadastrar', motorista);
+            const response = await api.post('http://localhost:8080/motoristas/cadastrar', motorista);
             console.log('Resposta do servidor:', response.data);
             alert('Usuário foi cadastrado com sucesso!');
             setCnh('');

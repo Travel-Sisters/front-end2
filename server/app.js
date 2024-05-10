@@ -44,5 +44,5 @@ io.on('connection', (socket) => {
 });
 
 server.listen(PORTA, () => {
-  console.log(`\tServer running on port ${PORTA} \n\n \t\thttp://localhost:${PORTA}`);
+  console.log(`\n\tServer running on port ${PORTA} \n\n \thttp://localhost:${PORTA}`);
 });

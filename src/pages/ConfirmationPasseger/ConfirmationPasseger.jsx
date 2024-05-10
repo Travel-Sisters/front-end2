@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { api, api_pix } from '../../api';
 // import * as map from './mapa.js';
 // import L from 'leaflet';
 
@@ -9,6 +10,7 @@ import MenuConfirmation from '../../components/MenuConfirmation/Menu'
 import './ConfirmationPasseger.css'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import config from '../../../config';
 
 function Confirmation() {
     const [dadoUser, setDadoUser] = useState(null);
@@ -32,7 +34,9 @@ function Confirmation() {
 
         try {
 
-            axios.post(`http://localhost:8080/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
+   //         api.post(`http://localhost:8080/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
+            const response = api.post(`/viagens/cadastrarUsuarioViagem/${idViagem}/${idUsuario}`);
+
 
             getPix()
 
@@ -62,7 +66,7 @@ function Confirmation() {
                 "valor": {
                     "original": parseFloat(storedViagem.valor).toFixed(2).toString()
                 },
-                "chave": storedViagem.motorista.telefone,
+                "chave": "travel@sisters.com.br",
                 "solicitacaoPagador": desc
             })
 
@@ -74,7 +78,7 @@ function Confirmation() {
                 showConfirmButton: false
               });
 
-            const resposta = await axios.post('http://localhost:3001/pix/cob', data, {
+            const resposta = await api_pix.post('/cob', data, {
                 headers: {
                     'Content-Type': 'application/json'
                 }

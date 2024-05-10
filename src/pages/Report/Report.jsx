@@ -56,14 +56,15 @@ export default function Report() {
                                     <p>Motorista: {storedViagem.motorista.usuario.nome}</p>
                                 </div>
                                 <div class="icon">
+                                    {/* TROCAR ICONE PARA TELEFONE */}
+                                    <i class="fa-solid fa-phone"></i>
+                                    <p>Telefone: {storedViagem.motorista.telefone}</p>
+                                </div>
+                                <div class="icon">
                                     <i class="fa-solid fa-van-shuttle"></i>
                                     <p>Van Rosa, placa {storedViagem.motorista.placaVan}</p>
                                 </div>
-                                <div class="icon">
-                                    {/* TROCAR ICONE PARA TELEFONE */}
-                                    <i class="fa-regular fa-user"></i>
-                                    <p>Telefone: {storedViagem.motorista.telefone}</p>
-                                </div>
+                               
                                 <div class="botao">
                                     <button onClick={navegarConfirmacao} id="butt">contratar
                                     </button>

@@ -3,12 +3,13 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useNavigate } from 'react-router-dom';
 import * as map from './mapa.js';
 import L from 'leaflet';
-import axios from 'axios';
+import { api, api_pix } from '../../api';
 
 import './Confirmation.css'
 import Menu from '../../components/Menu/Menu'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 function Confirmation() {
     const navigate = useNavigate();
@@ -31,7 +32,9 @@ function Confirmation() {
         try {
             console.log('SESSION STORAGE MOTORISTA ' + idMotorista);
 
-            const response = await axios.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
+            //const response = await api.get(`http://localhost:8080/viagens/pilha/${idMotorista}`);
+            const response = await api.get(`/viagens/pilha/${idMotorista}`);
+
             console.log('Resposta do servidor:', response.data);
 
             //alert('Viagem desfeita com sucesso!');

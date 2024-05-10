@@ -8,6 +8,8 @@ import eyeOff from '../../assets/img/eye-off.svg';
 import bg from '../../assets/img/bg.jpg';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import config from '../../../config';
+import { api, api_pix } from '../../api';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -31,7 +33,7 @@ export default function Register() {
     };
 
     // const fetchVerifcaCpf = async () => {
-    //     const response = await axios.get('http://localhost:8080/usuarios/listar');
+    //     const response = await api.get('http://localhost:8080/usuarios/listar');
     //     console.log("DADOS RECEBIDOS >> ", response.data)
     //     const resposta = response.data
     //     for (let index = 0; index < resposta.length; index++) {
@@ -123,7 +125,8 @@ export default function Register() {
         // }
 
         try { 
-            const response = await axios.post('http://localhost:8080/usuarios/cadastrar', usuario);
+            //const response = await api.post('http://localhost:8080/usuarios/cadastrar', usuario);
+            const response = await api.post(`/usuarios/cadastrar`, usuario);
             console.log('Resposta do servidor:', response.data);
             Swal.fire({
                 title: 'Cadastro efetuado com sucesso!!',
@@ -149,7 +152,7 @@ export default function Register() {
     };
     
     // try{
-    //     const teste = await axios.get('http://localhost:8080/usuarios/listar', cpf);
+    //     const teste = await api.get('http://localhost:8080/usuarios/listar', cpf);
 
     // }
 

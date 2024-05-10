@@ -20,7 +20,7 @@ export default function Chat() {
     const fetchChatId = async () => {
       try {
         const viagem = sessionStorage.getItem('viagemId')
-        const response = await axios.get(`http://localhost:8080/chat/${viagem}`);
+        const response = await api.get(`http://localhost:8080/chat/${viagem}`);
         console.log(response)
         setChatId(1)
         //const parametro = response.data[0][1].id
