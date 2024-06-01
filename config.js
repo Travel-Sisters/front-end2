@@ -4,8 +4,8 @@
       };
       
   const prod = {
-        API_URL: "http://44.208.115.29/api",
-        API_PIX: "http://44.208.115.29/pix"
+        API_URL: "https://44.208.115.29/api",
+        API_PIX: "https://44.208.115.29/pix"
       };
 
   const config = {
