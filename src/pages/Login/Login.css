@@ -250,7 +250,7 @@
     background: white;
     padding: 2rem;
     border-radius: 10px;
-    max-width: 1800px;
+    max-width: 2000px;
     max-height: 80%;
     overflow-y: auto;
     position: relative;
@@ -261,10 +261,10 @@
     top: 10px;
     right: 10px;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 50px;
     background: transparent;
     border: none;
-    color: black;
+    color: var(--pink);
 }
 
 .modal-title {
@@ -276,18 +276,6 @@
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 2rem;
-}
-
-.modal-button {
-    display: inline-block;
-    color: #FFF;
-    padding: 1rem 1.25rem;
-    border-radius: .5rem;
-    transition: .3s;
-}
-
-.modal-button:hover {
-    background-color: #0056b3;
 }
 
 .modal-button-width {
